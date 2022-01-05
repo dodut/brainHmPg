@@ -25,5 +25,10 @@ public class Comcontroller {
 	public String sub_bbs(@PathVariable("subpage_path") String subpage_path) { 
 		return subpage_path;
 	} 
+	
+	@RequestMapping("/shop_info/{subpage_path}") 
+	public String shop_info(@PathVariable("subpage_path") String subpage_path) { 
+		return subpage_path;
+	} 
 
 }

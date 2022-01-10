@@ -403,22 +403,8 @@ var ai_log_event_sale_price = ""; // ai_log_event_mode가 sale 일때  매출 �
 </div>    </div>
        </div>
 </div>
-<div id="footer">
-  <div class="inner">
-    <p>
-      <img src="/img_up/shop_pds/brin/design/img/logo_b.png" alt="(주)브레인컨설팅">
-    </p>
-    <ul>
-      <li>(주)브레인컨설팅<span>대표 : 박수영</span><span>사업자번호 : 117-81-52367</span></li>
-      <li><span>대표번호 : 02-801-1900</span><span>대표메일 : brain@brain21c.co.kr</span></li>
-      <li>주소 : 서울특별시 구로구 디지털로34길 27 (구로동, 대륭포스트타워3차) <span class="no">1301호,1302호</span></li>
-      <li class="copy">Copyright(c) (주)브레인컨설팅. All rights reserved.</li>
-    </ul>
-  </div>
-</div><script type="text/javascript" src="/js/all_bottom_script.js"></script>
-<script type="text/javascript">
-all_page_script('','','','','','','','','0');
-</script>
+
+<jsp:include page="../views/comm/bottom.jsp"/>
 
 <script type="text/javascript" src='/bbs_shop/js/board.js'></script>
 <script type="text/javascript" src='/bbs_shop/js/sub_menu.js'></script>
@@ -641,8 +627,4 @@ function tmp_div2_close(){
 </div>
 <script type="text/javascript" src="/img_up/tmp_img/service/board_tpl/8/pc/js/default.js"></script>
 
-		<script type="text/javascript">
-		setTimeout("create_iframe(0,'ok_frame');",100);
-		setTimeout("create_iframe(0,'ok_frame2');",100);
-		</script>
-		</body></html>
+</body></html>

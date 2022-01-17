@@ -28,7 +28,7 @@ public class Comcontroller {
 	
 	@RequestMapping("/shop_info/{subpage_path}") 
 	public String shop_info(@PathVariable("subpage_path") String subpage_path) { 
-		return subpage_path;
+		return subpage_path; 
 	} 
 
 }

@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-//import com.dior.food.dto.famFood;
-//import com.dior.food.dto.famQR;
+import co.kr.brain21c.dto.*;
 
 public interface AdminService{
+	
+	ArrayList<history> getBoard() throws Exception;
+	
 	/*
 	ArrayList<famFood> getStore() throws Exception;	
 	ArrayList<famFood> getFood() throws Exception;

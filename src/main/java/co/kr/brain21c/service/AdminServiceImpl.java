@@ -7,20 +7,23 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-//import com.dior.food.dao.AdminDao;
-//import com.dior.food.dto.famFood;
-//import com.dior.food.dto.famQR;
+import co.kr.brain21c.dao.*;
+import co.kr.brain21c.dto.*;
+
 
 @Service("AdminService")
 public class AdminServiceImpl implements AdminService{
-	/*
+	
 	@Autowired
 	private AdminDao AdminDao;
-	
-	@Override
-	public ArrayList<famFood> getStore() throws Exception{
-		return AdminDao.getStore();
+
+	public ArrayList<history> getBoard() throws Exception{
+		return AdminDao.getBoard();
 	}
+	
+	/*
+	
+	
 	
 	@Override
 	public ArrayList<famFood> get_ResStore(Map menuMap) throws Exception{

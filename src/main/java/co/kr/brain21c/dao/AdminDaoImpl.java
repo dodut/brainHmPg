@@ -23,14 +23,17 @@ public class AdminDaoImpl implements AdminDao{
 
 	
 	@Override
-	public ArrayList<board> getBoard(Map menuMap) throws Exception{				
-		String sql = "SELECT * FROM TEST_TB"
-				   + " WHERE STONO = " + menuMap.get("storeId");
-		List<board> boardList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(board.class));		
+	public ArrayList<history> getBoard() throws Exception{				
+		String sql = "SELECT * FROM history ORDER BY hisyear desc, hismonth desc";
+		System.out.println(sql);
 		
-		boardList.forEach(System.out :: println);
+		List<history> testList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(history.class));		
 		
-		return (ArrayList<board>) boardList;
+		System.out.println(testList);
+		
+		testList.forEach(System.out :: println);
+		
+		return (ArrayList<history>) testList;
 	}
 	
 	/*	

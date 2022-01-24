@@ -10,7 +10,7 @@ import co.kr.brain21c.dto.*;
 
 public interface AdminDao{
 
-	ArrayList<board> getBoard(Map menuMap) throws Exception;
+	ArrayList<history> getBoard() throws Exception;
 /*
 	ArrayList<famFood> getFood() throws Exception;
 	ArrayList<famFood> getFood(Map menuMap) throws Exception;

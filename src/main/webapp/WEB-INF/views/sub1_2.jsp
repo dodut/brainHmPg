@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
@@ -64,8 +65,7 @@ var isKitkat = window.navigator.userAgent.search( "AnybuildApp Android 4.4") > -
 <link rel="stylesheet" type="text/css" href="/img_up/shop_pds/brin/src_css/base_m.css" media="only all and (max-width:1000px)"/>
 
 
-		<script type="text/javascript">
-	
+<script type="text/javascript">
 	var ssl_host = "www.anybuild.com";
 	var mall_id = "brin";
 	var ssl_possible = 'on';
@@ -78,73 +78,58 @@ var isKitkat = window.navigator.userAgent.search( "AnybuildApp Android 4.4") > -
 		window.external.AddFavorite('http://www.brain21c.co.kr', "") ;
 	}
 	var page_title = "(주)브레인컨설팅 브레인컨설팅 연혁&실적";
-	</script>
-				<script>
-			// AI-LOG 기본 스크립트
-			var ai_log_user_key = "";  // 최초접속자 설정 키값 (default:null)
-			var ai_log_account_id = "brin"; // AI-LOG 계정 아이디
-			var ai_log_mem_id = ""; // 고객 아이디
-			var ai_log_mobile_web_yn = "0"; // 모바일웹 이라면 1, 데스크탑 홈페이지라면 0
-			var ai_log_app_conn_yn = "0"; // 하이브리드 앱이라면 1, 아닌경우 0
-			var ai_log_page_title = "(주)브레인컨설팅 브레인컨설팅 연혁&실적"; // 페이지 제목
-			var ai_log_page_url = ""; // 페이지 url, 빈값 입력시 브라우져 url 자동 입력 입니다.
-			var ai_log_event_mode = ""; // board_reg:게시글 작성, mem_reg:회원가입, sale:매출발생  (default:빈칸)
-			var ai_log_event_sale_price = ""; // ai_log_event_mode가 sale 일때  매출 금액
-			</script>
-							<script type="text/javascript" id="ai_log_chk_script"></script>
-				<script type="text/javascript" id="ai_log_default_script" src="https://chk101.ai-log.biz/etc/connect_ai_set.js?ver=2"></script>
-							</head>
+</script>
+
+
+<!-- script type="text/javascript" id="ai_log_default_script" src="https://chk101.ai-log.biz/etc/connect_ai_set.js?ver=2"></script-->
+</head>
 
 <body>
 <jsp:include page="../views/comm/gnb.jsp"/>
 
 <div id="sub">
-  <div class="sub_visual"></div>
-  <div class="inner">
-<div class="snb">
-  
-<style>
-	#pm2-snb {position:relative;z-index:10}
-	#pm2-snb * {box-sizing:border-box}
-	#pm2-snb ul {margin:0;padding:0;list-style:none}
-	#pm2-snb a {display:block;overflow:hidden;white-space:normal;text-overflow:ellipsis}
-	#pm2-snb a > img {vertical-align:top}
+	<div class="sub_visual"></div>
+	<div class="inner">
+		<div class="snb">
 
-	#pm2-snb .dep2 {position:relative; border:1px solid #c6c6c6; border-bottom:0;}
-	#pm2-snb .dep2 > li {border-bottom:1px solid #c6c6c6;}
-	#pm2-snb .dep2 > li:first-child {border-top:none}
-	#pm2-snb .dep2 > li > a {padding:27px 20px; font-size:15px;color:#3f3f3f;}
-	#pm2-snb .dep2 > li > a.bt_img {padding:0}
-	#pm2-snb .dep2 > li.on > a,
-	#pm2-snb .dep2 > li:hover > a {background:#f0f0f0; font-weight:bold; color:#1e3d75; }
+			<style>
+				#pm2-snb {position:relative;z-index:10}
+				#pm2-snb * {box-sizing:border-box}
+				#pm2-snb ul {margin:0;padding:0;list-style:none}
+				#pm2-snb a {display:block;overflow:hidden;white-space:normal;text-overflow:ellipsis}
+				#pm2-snb a > img {vertical-align:top}
+			
+				#pm2-snb .dep2 {position:relative; border:1px solid #c6c6c6; border-bottom:0;}
+				#pm2-snb .dep2 > li {border-bottom:1px solid #c6c6c6;}
+				#pm2-snb .dep2 > li:first-child {border-top:none}
+				#pm2-snb .dep2 > li > a {padding:27px 20px; font-size:15px;color:#3f3f3f;}
+				#pm2-snb .dep2 > li > a.bt_img {padding:0}
+				#pm2-snb .dep2 > li.on > a,
+				#pm2-snb .dep2 > li:hover > a {background:#f0f0f0; font-weight:bold; color:#1e3d75; }
+			
+				#pm2-snb .dep3 {padding:0px 0;background:#f8f8f8; border-top:1px solid #c6c6c6; }
+				#pm2-snb .dep3 > li > a {padding:10px 20px;font-size:14px;color:#333; border-top:1px dashed #c6c6c6}
+			    #pm2-snb .dep3 > li:first-child >a {border-top:0;}
+				#pm2-snb .dep3 > li > a.bt_img {padding:0}
+				#pm2-snb .dep3 > li.on > a,
+				#pm2-snb .dep3 > li:hover > a {font-weight:bold;color:#1479c1}
+			  
+			    #pm2-snb h3 {height:80px; line-height:80px; background:#1479c0; color:#fff; font-size:20px; text-align:center;}
+			</style>
+	
+			<div id="pm2-snb">
+			  <h3>회사소개</h3>
+				<ul class="dep2">
+					<li><a href="/page/sub1_1">CEO인사말</a>
+					</li><li class="on"><a href="/myboard/sub1_2">연혁&실적</a>
+					</li><li><a href="/page/sub1_3">조직도</a>
+					</li><li><a href="/page/sub1_4">찾아오시는 길</a>
+					</li>
+				</ul>
+			</div>
 
-	#pm2-snb .dep3 {padding:0px 0;background:#f8f8f8; border-top:1px solid #c6c6c6; }
-	#pm2-snb .dep3 > li > a {padding:10px 20px;font-size:14px;color:#333; border-top:1px dashed #c6c6c6}
-  #pm2-snb .dep3 > li:first-child >a {border-top:0;}
-	#pm2-snb .dep3 > li > a.bt_img {padding:0}
-	#pm2-snb .dep3 > li.on > a,
-	#pm2-snb .dep3 > li:hover > a {font-weight:bold;color:#1479c1}
-  
-  #pm2-snb h3 {height:80px; line-height:80px; background:#1479c0; color:#fff; font-size:20px; text-align:center;}
-</style>
+		</div><!-- div of class sub  -->
 
-<div id="pm2-snb">
-  <h3>회사소개</h3>
-	<ul class="dep2">
-					<li>
-				<a href="/page/sub1_1">
-											CEO인사말									</a>
-							</li>					<li class="on">
-				<a href="/myboard/sub1_2">
-											연혁&실적									</a>
-							</li>					<li>
-				<a href="/page/sub1_3">
-											조직도									</a>
-							</li>					<li>
-				<a href="/page/sub1_4">
-											찾아오시는 길									</a>
-							</li>			</ul>
-</div>    </div>
     <div class="cont">
       <h3>연혁&실적</h3>
       <p class="navi">
@@ -225,178 +210,47 @@ var isKitkat = window.navigator.userAgent.search( "AnybuildApp Android 4.4") > -
 
 <div class="glores-A-customize-board">
   
-  <div class="wrap wrap03">
-    <div>
-      <p>2011~현재 <span>미래를 향한 발돋움</span></p>
+  	<div class="wrap wrap03">
+		<div><p>2011~현재 <span>미래를 향한 발돋움</span></p></div>
+		<ul>
+		<c:forEach items="${list2011}" var="item" varStatus="stsc">
+	   		<li><b>${item.hisyear}. ${item.hismonth}</b>${item.hiscntn}</li>
+	    </c:forEach>
+	    </ul>
+	</div>
+	<div class="wrap wrap02">
+    	<div><p>2001~2010 <span>도전과 개척</span></p></div>
+    	<ul>
+	    <c:forEach items="${list2001}" var="item" varStatus="stsc">
+	    	<li><b>${item.hisyear}. ${item.hismonth}</b>${item.hiscntn}</li>
+    	</c:forEach>
+    	</ul>
     </div>
-    <ul>
-             
-      <li><b>2021. 12</b>무안농협 스마트III-DOUBLE 적용</li>
-                   
-      <li><b>2021. 12</b>용현농협 전자경매시스템 신규 구축 </li>
-                   
-      <li><b>2021. 10</b>홍성축산농협 스마트III-DOUBLE 적용</li>
-                   
-      <li><b>2021. 06</b>가치소비 쇼핑 플랫폼 '굿바이마켓' 오픈</li>
-                   
-      <li><b>2021. 06</b>남원원예농협 농산물 전자경매시스템 구축</li>
-                   
-      <li><b>2021. 04</b>진주원예농협 스마트III-DOUBLE 적용</li>
-                   
-      <li><b>2021. 03</b>농협경제지주 구리공판장 스마트III-DOUBLE 적용</li>
-                   
-      <li><b>2021. 03</b>농협경제지주 가락공판장 스마트III-DOUBLE 적용</li>
-                   
-      <li><b>2021. 03</b>파주축협 스마트III-DOUBLE 적용</li>
-                   
-      <li><b>2020. 12</b>수원축협 곡반정점 하나로마트 POS시스템 구축</li>
-                   
-      <li><b>2020. 08</b>울산원예농협 스마트III-DOUBLE 적용</li>
-                   
-      <li><b>2020. 07</b>하남농협하나로마트 POS시스템 구축</li>
-                   
-      <li><b>2020. 07</b>남원축협 가축시장 전자경매시스템 재구축 </li>
-                   
-      <li><b>2020. 06</b>대구경북능금농협(영천) 스마트III-DOUBLE 적용</li>
-                   
-      <li><b>2020. 06</b>최신형 무선응찰기 스마트III-DOUBLE 출시</li>
-                   
-      <li><b>2020. 06</b>합천동부농협 농산물산지유통센터 전자경매시스템 구축</li>
-                   
-      <li><b>2020. 06</b>농협중앙회 농촌인력 중계시스템 재구축 수주</li>
-                   
-      <li><b>2020. 05</b>금성농협 농산물집하장 전자경매시스템 구축</li>
-                   
-      <li><b>2020. 05</b>농협 온라인농산물거래소 구축</li>
-                   
-      <li><b>2020. 04</b>장성축협 가축시장 전자경매시스템 구축</li>
-                   
-      <li><b>2020. 03</b>괴산증평축협 가축시장 전자경매시스템 재구축</li>
-                   
-      <li><b>2020. 03</b>영산농협 농산물산지유통센터 전자경매시스템 구축</li>
-                   
-      <li><b>2020. 02</b>초전농협 농산물산지유통센터 전자경매시스템 구축</li>
-                   
-      <li><b>2019. 09</b>솔루션사업부, 이유엔㈜ 메디통 솔루션 파트너사 계약 </li>
-                   
-      <li><b>2019. 08</b>킴스클럽 강남점 전자가격표시기(ESL)시스템 구축</li>
-                   
-      <li><b>2019. 12</b>농협 경제통합 기능고도화 구축</li>
-                   
-      <li><b>2019. 02</b>하나로마트 봉담점 전자가격표시기(ESL)시스템 구축</li>
-                   
-      <li><b>2019. 01</b>하나로유통 직영점 하나로마트 봉담점 전산시스템 구축(ESL포함)</li>
-                   
-      <li><b>2018. 09</b>농협 하나로유통 직영유통센터 전산시스템 유지보수 계약</li>
-                   
-      <li><b>2018. 09</b>고정자산관리시스템 고도화</li>
-                   
-      <li><b>2018. 05</b>충북유통 직영점 전자가격표시기(ESL)시스템 구축</li>
-                   
-      <li><b>2018. 05</b>고흥축산농협 가축시장 전자경매시스템 설치</li>
-                   
-      <li><b>2017. 09</b>농협중앙회 양주유통센터 전산시스템 구축(ESL포함) </li>
-                   
-      <li><b>2017. 07</b>농협중앙회 축산부문 경제통합시스템 2단계(2차) 구축 수주</li>
-                                                       
-      <li><b>2016. 09</b>농협성남유통 네트웍 교체</li>
-                   
-      <li><b>2016. 06</b>농협중앙회 농산물공판장 통합홈페이지 재구축</li>
-                   
-      <li><b>2015. 05</b>농협 경제지주 전자경매시스템 공급사 선정</li>
-                   
-      <li><b>2014. 10</b>농협 유통사업장 협력사 MOU 체결</li>
-                   
-      <li><b>2013. 07</b>최신형 무선 응찰기 SMART-Ⅱ 출시</li>
-                   
-      <li><b>2012. 06</b>안성팜랜드 전산시스템 구축 및 운영 계약</li>
-                                                                                                                                                                                                                </ul>
-  </div>
-  <div class="wrap wrap02">
-    <div>
-      <p>2001~2010 <span>도전과 개척</span></p>
-    </div>
-    <ul>
-                                                                                                                                                                                                                                                                                                                                                                                                                                     
-      <li><b>2010. 06</b>농협정보시스템 육성협력사 선정</li>
-                   
-      <li><b>2010. 05</b>NH주유소 종합정보시스템 개발</li>
-                   
-      <li><b>2009. 05</b>경제통합시스템 고도화 구축(유통 매입/매출 관리)</li>
-                                                                                           
-      <li><b>2008. 01</b>INN0-BIZ(기술혁신 중소기업)인증</li>
-                   
-      <li><b>2007. 06</b>본사 사옥 이전(대륭포스트타워3차)</li>
-                   
-      <li><b>2007. 05</b>농협중앙회 농협경제통합 시스템 구축(매장통합시스템,농산물공판장)</li>
-                   
-      <li><b>2004. 09</b>송아지 전자경매시스템 개발 및 시장진출</li>
-                   
-      <li><b>2003. 12</b>(주)농협유통 소매유통 POS SYSTEM 개발 공급업체 선정</li>
-                   
-      <li><b>2001. 10</b>기술신보 우량기술기업 선정        </li>
-                                                                                                                                        </ul>
-  </div>
-  <div class="wrap wrap01">
-    <div>
-      <p>~2000 <span>시작과 도약</span></p>
-    </div>
-    <ul>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-      <li><b>1998. 12</b>농협 전자경매시스템 개발 및 시장진출</li>
-                   
-      <li><b>1998. 07</b>벤처기업 인증 (신기술개발기업)</li>
-                   
-      <li><b>1997. 05</b>(주)농협유통 직영점 POS SYSTEM 구축 및 유지보수 업체 선정</li>
-                   
-      <li><b>1996. 08</b>농협 경제사업종합시스템 설치협력사 선정(농협중앙회)</li>
-                   
-      <li><b>1993. 03</b>기술연구소 설립</li>
-                   
-      <li><b>1992. 12</b>농협중앙회 업무전산화 협력사 지정</li>
-                   
-      <li><b>1992. 05</b>농협 하나로마트 POS 시스템 공급업체 지정</li>
-                   
-      <li><b>1991. 04</b>축협중앙회 업무전산화 협력사 단독 지정</li>
-                   
-      <li><b>1989. 05</b>주식회사 법인 전환 ((주)브레인컨설팅)</li>
-                   
-      <li><b>1984. 10</b>브레인컨설팅 설립</li>
-                </ul>
-  </div>
-  
-  <!-- 
-  <div class="glores-A-paginate">
-    <div class='ui-pagenate'><strong>1</strong></div>  </div>
--->
-    
-  
-</div>　    </div>
-       </div>
+    <div class="wrap wrap01">
+  		<div><p>~2000 <span>시작과 도약</span></p></div>
+  		<ul>
+    	<c:forEach items="${list1984}" var="item" varStatus="stsc">
+  			<li><b>${item.hisyear}. ${item.hismonth}</b>${item.hiscntn}</li>
+	    </c:forEach>
+	    </ul>
+	</div>
+
+</div>
+</div><!-- cont -->
+</div><!-- inner -->
+</div><!-- id=sub  -->
 </div>
 
 <jsp:include page="../views/comm/bottom.jsp"/>
 
-<script src="/img_up/_addon/ui/1.10.3/jquery-ui.js"></script>
 <link rel="stylesheet" href="/img_up/_addon/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
 <script type="text/javascript">
-$(function() {
-	var clareCalendar = {
-					monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-					dayNamesMin: ['일','월','화','수','목','금','토'],
-					weekHeader: 'Wk',
-					dateFormat: 'yy-mm-dd', //형식(20120303)
-					autoSize: false, //오토리사이즈(body등 상위태그의 설정에 따른다)
-					changeMonth: true, //월변경가능
-					changeYear: true, //년변경가능
-					showMonthAfterYear: true, //년 뒤에 월 표시
-					yearRange: '1930:2050' //1990년부터 2020년까지
-					};
 
-	$( '#datepicker' ).datepicker(clareCalendar);
-	$( '#datepicker2' ).datepicker(clareCalendar);
+$(function() {
+	
 });
+
 
 if(document.getElementsByName('myboard_search_form_sub1_2').length){
 	var form = document.myboard_search_form_sub1_2
@@ -648,8 +502,6 @@ function multi_sel_parse(s_v, num, val){
 		document.getElementsByName('s_v'+s_v)[0].value = chk_val;
 	}
 }
-
-
 </script>
-
-		</body></html>
+</body>
+</html>

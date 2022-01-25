@@ -7,6 +7,7 @@ public class history {
 	private int seq		    ;
 	private String hisyear	;
 	private String hismonth	;
+	
 	private String hiscntn  ;		
 	private String rgdtm    ;
 	
@@ -14,10 +15,10 @@ public class history {
 	@Override
 	public String toString() {
 		
-		return "history [seq=" + seq + ""
+		return "{seq=" + seq + ""
 			 + ", hisyear=" + hisyear + ""
 			 + ", hismonth=" + hismonth + ""
-			 + ", hiscntn=" + hiscntn + "]";
+			 + ", hiscntn=" + hiscntn + "}"; 
 	}
 
 

@@ -51,14 +51,34 @@ public class Comcontroller {
 	@RequestMapping("/myboard/sub1_2") 
 	public ModelAndView test(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		List testList   = new ArrayList<history>();
+		ArrayList<history> returnList   = new ArrayList<history>();
+		ArrayList<history> list2011   = new ArrayList<history>();
+		ArrayList<history> list2001   = new ArrayList<history>();
+		ArrayList<history> list1984   = new ArrayList<history>();
+		
 		//Map testMap     = new HashMap<String, Map<String, Object>>();
 		try {
-			testList = AdminService.getBoard();
+			returnList = AdminService.getBoard();
+			
+			for(int i=0; i<returnList.size(); i++) {
+				int compYear = Integer.parseInt(returnList.get(i).getHisyear());
+				if( compYear > 2010  ) {
+					list2011.add(returnList.get(i));
+				} else if(compYear < 2011 && compYear > 1999){
+					list2001.add(returnList.get(i));
+				} else {
+					list1984.add(returnList.get(i));
+				}
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		mv.addObject("testList",testList);
+		
+		mv.addObject("list2011",list2011);
+		mv.addObject("list2001",list2001);
+		mv.addObject("list1984",list1984);
+		
 		mv.setViewName("sub1_2");
 		
 		return mv;

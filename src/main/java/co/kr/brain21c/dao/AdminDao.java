@@ -11,6 +11,8 @@ import co.kr.brain21c.dto.*;
 public interface AdminDao{
 
 	ArrayList<history> getBoard() throws Exception;
+	
+	//ArrayList<contact> getContact() throws Exception;
 /*
 	ArrayList<famFood> getFood() throws Exception;
 	ArrayList<famFood> getFood(Map menuMap) throws Exception;
@@ -28,4 +30,8 @@ public interface AdminDao{
 	int setMenu_Del(Map MenuMap) throws Exception;
 	int setQR_Ins(Map MenuMap) throws Exception;
 */
+
+	ArrayList<contact> getContact();
+
+
 }

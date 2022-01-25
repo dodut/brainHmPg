@@ -35,6 +35,21 @@ public class AdminDaoImpl implements AdminDao{
 		
 		return (ArrayList<history>) testList;
 	}
+
+
+	@Override
+	public ArrayList<contact> getContact() {
+		String sql = "SELECT * FROM contact ORDER BY ctseq asc";
+		System.out.println(sql);
+		
+		List<contact> ctList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(contact.class));		
+		
+		System.out.println(ctList);
+		
+		ctList.forEach(System.out :: println);
+		
+		return (ArrayList<contact>) ctList;
+	}
 	
 	/*	
 	@Override
@@ -56,7 +71,7 @@ public class AdminDaoImpl implements AdminDao{
 				   + "     , B.FDNO     "
 			 	   + "     , B.FDNM     "
 		 		   + "     , Replace(Convert(Varchar, Convert(Money, B.FDPRICE),112),'.00','') AS FDPRICE  "
-	 			   + "     , CASE WHEN B.FDOP_YN = 1 THEN '�삤�뵂' ELSE '誘몄삤�뵂' END AS FDOP_YN   "
+	 			   + "     , CASE WHEN B.FDOP_YN = 1 THEN '�뜝�럩沅롥뜝�럥�깯' ELSE '亦껋꼶梨뤄옙沅롥뜝�럥�깯' END AS FDOP_YN   "
  			       //+ "     , B.FDIMG    "
  			      + "     , B.TIMG    "
 				   + "  FROM TB_STORE A "
@@ -113,7 +128,7 @@ public class AdminDaoImpl implements AdminDao{
 				   + "     , B.FDNO     "
 			 	   + "     , B.FDNM     "
 		 		   + "     , Replace(Convert(Varchar, Convert(Money, B.FDPRICE),112),'.00','') AS FDPRICE  "
-	 			   + "     , CASE WHEN B.FDOP_YN = 1 THEN '�삤�뵂' ELSE '誘몄삤�뵂' END AS FDOP_YN   "
+	 			   + "     , CASE WHEN B.FDOP_YN = 1 THEN '�뜝�럩沅롥뜝�럥�깯' ELSE '亦껋꼶梨뤄옙沅롥뜝�럥�깯' END AS FDOP_YN   "
  			       //+ "     , B.FDIMG    "
  			       + "     , B.TIMG    "
 				   + "  FROM TB_STORE A "

@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
@@ -64,7 +67,7 @@ var isKitkat = window.navigator.userAgent.search( "AnybuildApp Android 4.4") > -
 <link rel="stylesheet" type="text/css" href="/img_up/shop_pds/brin/src_css/base_m.css" media="only all and (max-width:1000px)"/>
 
 
-		<script type="text/javascript">
+<script type="text/javascript">
 	
 	var ssl_host = "www.anybuild.com";
 	var mall_id = "brin";
@@ -78,165 +81,161 @@ var isKitkat = window.navigator.userAgent.search( "AnybuildApp Android 4.4") > -
 		window.external.AddFavorite('http://www.brain21c.co.kr', "") ;
 	}
 	var page_title = "(주)브레인컨설팅 담당자안내";
-	</script>
-				<script>
-			// AI-LOG 기본 스크립트
-			var ai_log_user_key = "";  // 최초접속자 설정 키값 (default:null)
-			var ai_log_account_id = "brin"; // AI-LOG 계정 아이디
-			var ai_log_mem_id = ""; // 고객 아이디
-			var ai_log_mobile_web_yn = "0"; // 모바일웹 이라면 1, 데스크탑 홈페이지라면 0
-			var ai_log_app_conn_yn = "0"; // 하이브리드 앱이라면 1, 아닌경우 0
-			var ai_log_page_title = "(주)브레인컨설팅 담당자안내"; // 페이지 제목
-			var ai_log_page_url = ""; // 페이지 url, 빈값 입력시 브라우져 url 자동 입력 입니다.
-			var ai_log_event_mode = ""; // board_reg:게시글 작성, mem_reg:회원가입, sale:매출발생  (default:빈칸)
-			var ai_log_event_sale_price = ""; // ai_log_event_mode가 sale 일때  매출 금액
-			</script>
-							<script type="text/javascript" id="ai_log_chk_script"></script>
-				<script type="text/javascript" id="ai_log_default_script" src="https://chk101.ai-log.biz/etc/connect_ai_set.js?ver=2"></script>
-							</head>
+</script>
+<script>
+	// AI-LOG 기본 스크립트
+	var ai_log_user_key = "";  // 최초접속자 설정 키값 (default:null)
+	var ai_log_account_id = "brin"; // AI-LOG 계정 아이디
+	var ai_log_mem_id = ""; // 고객 아이디
+	var ai_log_mobile_web_yn = "0"; // 모바일웹 이라면 1, 데스크탑 홈페이지라면 0
+	var ai_log_app_conn_yn = "0"; // 하이브리드 앱이라면 1, 아닌경우 0
+	var ai_log_page_title = "(주)브레인컨설팅 담당자안내"; // 페이지 제목
+	var ai_log_page_url = ""; // 페이지 url, 빈값 입력시 브라우져 url 자동 입력 입니다.
+	var ai_log_event_mode = ""; // board_reg:게시글 작성, mem_reg:회원가입, sale:매출발생  (default:빈칸)
+	var ai_log_event_sale_price = ""; // ai_log_event_mode가 sale 일때  매출 금액
+</script>
+<script type="text/javascript" id="ai_log_chk_script"></script>
+<script type="text/javascript" id="ai_log_default_script" src="https://chk101.ai-log.biz/etc/connect_ai_set.js?ver=2"></script>
+</head>
 
 
 <body>
 <jsp:include page="../views/comm/gnb.jsp"/>	
 
 <div id="sub">
-  <div class="sub_visual"></div>
-  <div class="inner">
-<div class="snb">
+	<div class="sub_visual"></div>
+	<div class="inner">
+		<div class="snb">
   
-<style>
-	#pm2-snb {position:relative;z-index:10}
-	#pm2-snb * {box-sizing:border-box}
-	#pm2-snb ul {margin:0;padding:0;list-style:none}
-	#pm2-snb a {display:block;overflow:hidden;white-space:normal;text-overflow:ellipsis}
-	#pm2-snb a > img {vertical-align:top}
+		<style>
+		#pm2-snb {position:relative;z-index:10}
+		#pm2-snb * {box-sizing:border-box}
+		#pm2-snb ul {margin:0;padding:0;list-style:none}
+		#pm2-snb a {display:block;overflow:hidden;white-space:normal;text-overflow:ellipsis}
+		#pm2-snb a > img {vertical-align:top}
+	
+		#pm2-snb .dep2 {position:relative; border:1px solid #c6c6c6; border-bottom:0;}
+		#pm2-snb .dep2 > li {border-bottom:1px solid #c6c6c6;}
+		#pm2-snb .dep2 > li:first-child {border-top:none}
+		#pm2-snb .dep2 > li > a {padding:27px 20px; font-size:15px;color:#3f3f3f;}
+		#pm2-snb .dep2 > li > a.bt_img {padding:0}
+		#pm2-snb .dep2 > li.on > a,
+		#pm2-snb .dep2 > li:hover > a {background:#f0f0f0; font-weight:bold; color:#1e3d75; }
+	
+		#pm2-snb .dep3 {padding:0px 0;background:#f8f8f8; border-top:1px solid #c6c6c6; }
+		#pm2-snb .dep3 > li > a {padding:10px 20px;font-size:14px;color:#333; border-top:1px dashed #c6c6c6}
+	  	#pm2-snb .dep3 > li:first-child >a {border-top:0;}
+		#pm2-snb .dep3 > li > a.bt_img {padding:0}
+		#pm2-snb .dep3 > li.on > a,
+		#pm2-snb .dep3 > li:hover > a {font-weight:bold;color:#1479c1}
+	  
+	 	#pm2-snb h3 {height:80px; line-height:80px; background:#1479c0; color:#fff; font-size:20px; text-align:center;}
+		</style>
 
-	#pm2-snb .dep2 {position:relative; border:1px solid #c6c6c6; border-bottom:0;}
-	#pm2-snb .dep2 > li {border-bottom:1px solid #c6c6c6;}
-	#pm2-snb .dep2 > li:first-child {border-top:none}
-	#pm2-snb .dep2 > li > a {padding:27px 20px; font-size:15px;color:#3f3f3f;}
-	#pm2-snb .dep2 > li > a.bt_img {padding:0}
-	#pm2-snb .dep2 > li.on > a,
-	#pm2-snb .dep2 > li:hover > a {background:#f0f0f0; font-weight:bold; color:#1e3d75; }
-
-	#pm2-snb .dep3 {padding:0px 0;background:#f8f8f8; border-top:1px solid #c6c6c6; }
-	#pm2-snb .dep3 > li > a {padding:10px 20px;font-size:14px;color:#333; border-top:1px dashed #c6c6c6}
-  #pm2-snb .dep3 > li:first-child >a {border-top:0;}
-	#pm2-snb .dep3 > li > a.bt_img {padding:0}
-	#pm2-snb .dep3 > li.on > a,
-	#pm2-snb .dep3 > li:hover > a {font-weight:bold;color:#1479c1}
-  
-  #pm2-snb h3 {height:80px; line-height:80px; background:#1479c0; color:#fff; font-size:20px; text-align:center;}
-</style>
-
-<div id="pm2-snb">
-  <h3>고객지원</h3>
-	<ul class="dep2">
-					<li>
-				<a href="/bbs/sub3_1">
-											공지사항									</a>
-							</li>					<li class="on">
-				<a href="/myboard/sub3_3">
-											담당자안내									</a>
-							</li>					<li>
-				<a href="/bbs/sub3_2">
-											문의게시판									</a>
-							</li>			</ul>
-</div>    </div>
-    <div class="cont">
-      <h3>담당자안내</h3>
-      <p class="navi">
-        홈 &gt; 고객지원 &gt; 담당자안내      </p>
-      <style>
-	.st_mybd_m_show {display:none}
-
-	.st_cate_list_wrap {margin-bottom:15px}
-	.st_cate_list_wrap .btn_category {display:block;width:100%;height:40px;border:1px solid #555555;background:#fff;font-size:14px;color:#555555;cursor:pointer}
-	.st_cate_list_wrap .btn_category .icon {display:inline-block;position:relative;width:12px;height:10px;margin-right:8px;background:#555555}
-	.st_cate_list_wrap .btn_category .icon:before {content:'';position:absolute;top:2px;left:0;width:100%;height:2px;background:#fff}
-	.st_cate_list_wrap .btn_category .icon:after {content:'';position:absolute;top:6px;left:0;width:100%;height:2px;background:#fff}
-	.st_cate_list_wrap .btn_category.on {background:#555555;color:#fff}
-	.st_cate_list_wrap .btn_category.on .icon {background:#fff}
-	.st_cate_list_wrap .btn_category.on .icon:before {background:#555555}
-	.st_cate_list_wrap .btn_category.on .icon:after {background:#555555}
-	.st_cate_list_wrap .st_cate_list {display:none;margin:8px 0 0 -4px;padding:0}
-	.st_cate_list_wrap .st_cate_list.on {display:block}
-	.st_cate_list_wrap .st_cate_list:after {content:'';display:block;clear:both}
-	.st_cate_list_wrap .st_cate_list li {box-sizing:border-box;float:left;width:50%;margin:0;padding:0 0 4px 4px;list-style-type:none}
-	.st_cate_list_wrap .st_cate_list li:nth-child(2n+1) {clear:both}
-	.st_cate_list_wrap .st_cate_list li a {box-sizing:border-box;display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding:8px;border:1px solid #ccc;background:#fff;font-size:14px;color:#777;text-align:center}
-	.st_cate_list_wrap .st_cate_list li.on a, .st_cate_list_wrap .st_cate_list li:hover a {border-color:#555555;color:#555555}
-
-	.st_mybd_page {margin:0 0 10px;font-size:12px;text-align:right}
-	.st_mybd_list {width:100%;border-top:2px solid #a5a5a5;border-bottom:1px solid #a5a5a5;background:#fff;border-collapse:separate;border-spacing:0}
-	.st_mybd_list thead tr th {position:relative;height:40px;border-bottom:1px solid #a5a5a5;font-size:13px;color:#333333}
-	.st_mybd_list thead tr th:before {content:'';display:block;position:absolute;top:0;left:0;width:1px;height:12px;background:#a5a5a5}
-	.st_mybd_list thead tr th:first-child:before {display:none}
-	.st_mybd_list tbody tr td {height:20px;padding:10px 5px;border-top:1px solid #e4e4e4;font-size:13px;color:#666666;text-align:center;line-height:20px;letter-spacing:-.03em}
-	.st_mybd_list tbody tr:hover td {background:#fafafa}
-	.st_mybd_list tbody tr:first-child td {border-top:0}
-	.st_mybd_list tbody tr td.st_mybd_subject {padding-left:10px;text-align:center}
-	.st_mybd_list tbody tr td a {color:#666666}
-	.st_mybd_list tbody tr td a:hover {color:#444444}
-	.st_mybd_list tbody tr td.st_mybd_none_data {text-align:center;line-height:150px}
-	.st_mybd_list tbody tr td .secret_icon {margin-left:4px}
-
-	.st_mybd_paginate {margin:10px 0 0;text-align:center}
-	.st_mybd_paginate * {font-size:12px !important}
-
-	.st_mybd_list_btn {margin:15px 0 0;padding:0;text-align:center}
-	.st_mybd_list_btn a,
-	.st_mybd_list_btn button {margin:2px 0}
-	.st_mybd_list_btn * {vertical-align:top}
-
-	/* 버튼 */
-	.st_mybd_btn_type1 {box-sizing:border-box;display:inline-block;position:relative;height:28px;margin:0;padding:3px 15px;border:1px solid #dfdfdf;background:#dfdfdf;font-family:'Malgun Gothic', sans-serif;font-size:13px;font-weight:bold;color:#5f5f5f;line-height:20px;text-decoration:none;cursor:pointer}
-	.st_mybd_btn_type1:hover:before {content:'';display:block;position:absolute;top:0;bottom:0;left:0;right:0;background:rgba(0, 0, 0, .05)}
-	.st_mybd_btn_type1.st_mybd_small {height:25px;padding:1px 10px;font-size:11px}
-	.st_mybd_btn_type1.st_mybd_medium {height:35px;padding:6px 20px 8px}
-	.st_mybd_btn_type1.st_mybd_big {height:45px;padding:12px 30px}
-	.st_mybd_btn_type1.st_mybd_highlight {border:1px solid #4e4e4e;background:#4e4e4e;color:#ffffff}
-	.st_mybd_btn_type1.st_mybd_highlight:hover:before {background:rgba(255, 255, 255, .15)}
-
-	.st_mybd_search_form {margin-top:30px;padding:10px 0;background:#f5f5f5;text-align:center}
-	.st_mybd_search_form * {vertical-align:middle}
-	.st_mybd_search_form select {height:28px}
-	.st_mybd_search_form .search_input {display:inline-block}
-	.st_mybd_search_form .search_input input[type=text] {box-sizing:border-box;width:180px;max-width:100%;height:28px;padding:0 5px;border:1px solid #dddddd;font-size:13px}
-	.st_mybd_search_form .search_input .st_mybd_btn_search {box-sizing:border-box;display:inline-block;position:relative;height:28px;margin:0;padding:3px 15px;border:1px solid #4e4e4e;background:#4e4e4e;font-family:'Malgun Gothic', sans-serif;font-size:13px;font-weight:bold;color:#fff;line-height:20px;text-decoration:none;cursor:pointer}
-
-	@media all and (max-width:767px){
-		.st_mybd_m_hide {display:none}
-		.st_mybd_m_show {display:block}
-		.st_mybd_division_line {display:inline-block;position:relative;top:2px;width:1px;height:12px;margin:0 5px;background:#cccccc}
-
-		.st_mybd_list colgroup {display:none}
-		.st_mybd_list thead {display:none}
-		.st_mybd_list tbody tr td {display:none;padding:9px 10px 12px}
-		.st_mybd_list tbody tr td.st_mybd_m_show_td {display:table-cell;text-align:left;line-height:18px}
-		.st_mybd_list tbody tr td .st_mybd_m_title {display:block;padding:2px 0;font-weight:bold;color:#444444 !important}
-		.st_mybd_list tbody tr td .st_mybd_m_show {margin-top:3px;font-size:12px}
-		.st_mybd_list tbody tr td.st_mybd_none_data {display:table-cell}
-
-		.st_mybd_search_form .search_input {display:block;margin-top:5px}
-	}
-
-	@media all and (min-width:768px){
-		.st_cate_list_wrap {margin-bottom:30px;padding:15px 20px;border:1px solid #a5a5a5;border-radius:5px}
-		.st_cate_list_wrap .btn_category {display:none}
-		.st_cate_list_wrap .st_cate_list {display:block;margin:0;padding:0}
-		.st_cate_list_wrap .st_cate_list li {position:relative;width:auto;margin-right:15px;padding:0 15px 0 0}
-		.st_cate_list_wrap .st_cate_list li:nth-child(2n+1) {clear:none}
-		.st_cate_list_wrap .st_cate_list li:before {content:'';display:block;position:absolute;top:50%;right:0;width:1px;height:12px;margin-top:-6px;background:#ddd}
-		.st_cate_list_wrap .st_cate_list li a {padding:3px;border:none;background:none;color:#555555;letter-spacing:-.03em}
-		.st_cate_list_wrap .st_cate_list li.on a, .st_cate_list_wrap .st_cate_list li:hover a {color:#000;text-decoration:underline}
-	}
-
-	@media all and (min-width:1024px){
-		.st_cate_list_wrap {padding:20px 25px}
-		.st_cate_list_wrap .st_cate_list li {margin-right:20px;padding-right:20px}
-	}
-</style>
+			<div id="pm2-snb">
+				<h3>고객지원</h3>
+				<ul class="dep2">
+					<li><a href="/bbs/sub3_1">공지사항	</a></li>					
+					<li class="on"><a href="/myboard/sub3_3">담당자안내</a></li>					
+					<li><a href="/bbs/sub3_2">문의게시판</a></li>			
+				</ul>
+			</div>   
+		</div> <!-- snb end -->
+	
+		<div class="cont">
+			<h3>담당자안내</h3>
+      		<p class="navi">
+        		홈 &gt; 고객지원 &gt; 담당자안내      </p>
+			<style>
+			.st_mybd_m_show {display:none}
+			
+			.st_cate_list_wrap {margin-bottom:15px}
+			.st_cate_list_wrap .btn_category {display:block;width:100%;height:40px;border:1px solid #555555;background:#fff;font-size:14px;color:#555555;cursor:pointer}
+			.st_cate_list_wrap .btn_category .icon {display:inline-block;position:relative;width:12px;height:10px;margin-right:8px;background:#555555}
+			.st_cate_list_wrap .btn_category .icon:before {content:'';position:absolute;top:2px;left:0;width:100%;height:2px;background:#fff}
+			.st_cate_list_wrap .btn_category .icon:after {content:'';position:absolute;top:6px;left:0;width:100%;height:2px;background:#fff}
+			.st_cate_list_wrap .btn_category.on {background:#555555;color:#fff}
+			.st_cate_list_wrap .btn_category.on .icon {background:#fff}
+			.st_cate_list_wrap .btn_category.on .icon:before {background:#555555}
+			.st_cate_list_wrap .btn_category.on .icon:after {background:#555555}
+			.st_cate_list_wrap .st_cate_list {display:none;margin:8px 0 0 -4px;padding:0}
+			.st_cate_list_wrap .st_cate_list.on {display:block}
+			.st_cate_list_wrap .st_cate_list:after {content:'';display:block;clear:both}
+			.st_cate_list_wrap .st_cate_list li {box-sizing:border-box;float:left;width:50%;margin:0;padding:0 0 4px 4px;list-style-type:none}
+			.st_cate_list_wrap .st_cate_list li:nth-child(2n+1) {clear:both}
+			.st_cate_list_wrap .st_cate_list li a {box-sizing:border-box;display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding:8px;border:1px solid #ccc;background:#fff;font-size:14px;color:#777;text-align:center}
+			.st_cate_list_wrap .st_cate_list li.on a, .st_cate_list_wrap .st_cate_list li:hover a {border-color:#555555;color:#555555}
+			
+			.st_mybd_page {margin:0 0 10px;font-size:12px;text-align:right}
+			.st_mybd_list {width:100%;border-top:2px solid #a5a5a5;border-bottom:1px solid #a5a5a5;background:#fff;border-collapse:separate;border-spacing:0}
+			.st_mybd_list thead tr th {position:relative;height:40px;border-bottom:1px solid #a5a5a5;font-size:13px;color:#333333}
+			.st_mybd_list thead tr th:before {content:'';display:block;position:absolute;top:0;left:0;width:1px;height:12px;background:#a5a5a5}
+			.st_mybd_list thead tr th:first-child:before {display:none}
+			.st_mybd_list tbody tr td {height:20px;padding:10px 5px;border-top:1px solid #e4e4e4;font-size:13px;color:#666666;text-align:center;line-height:20px;letter-spacing:-.03em}
+			.st_mybd_list tbody tr:hover td {background:#fafafa}
+			.st_mybd_list tbody tr:first-child td {border-top:0}
+			.st_mybd_list tbody tr td.st_mybd_subject {padding-left:10px;text-align:center}
+			.st_mybd_list tbody tr td a {color:#666666}
+			.st_mybd_list tbody tr td a:hover {color:#444444}
+			.st_mybd_list tbody tr td.st_mybd_none_data {text-align:center;line-height:150px}
+			.st_mybd_list tbody tr td .secret_icon {margin-left:4px}
+			
+			.st_mybd_paginate {margin:10px 0 0;text-align:center}
+			.st_mybd_paginate * {font-size:12px !important}
+			
+			.st_mybd_list_btn {margin:15px 0 0;padding:0;text-align:center}
+			.st_mybd_list_btn a,
+			.st_mybd_list_btn button {margin:2px 0}
+			.st_mybd_list_btn * {vertical-align:top}
+			
+			/* 버튼 */
+			.st_mybd_btn_type1 {box-sizing:border-box;display:inline-block;position:relative;height:28px;margin:0;padding:3px 15px;border:1px solid #dfdfdf;background:#dfdfdf;font-family:'Malgun Gothic', sans-serif;font-size:13px;font-weight:bold;color:#5f5f5f;line-height:20px;text-decoration:none;cursor:pointer}
+			.st_mybd_btn_type1:hover:before {content:'';display:block;position:absolute;top:0;bottom:0;left:0;right:0;background:rgba(0, 0, 0, .05)}
+			.st_mybd_btn_type1.st_mybd_small {height:25px;padding:1px 10px;font-size:11px}
+			.st_mybd_btn_type1.st_mybd_medium {height:35px;padding:6px 20px 8px}
+			.st_mybd_btn_type1.st_mybd_big {height:45px;padding:12px 30px}
+			.st_mybd_btn_type1.st_mybd_highlight {border:1px solid #4e4e4e;background:#4e4e4e;color:#ffffff}
+			.st_mybd_btn_type1.st_mybd_highlight:hover:before {background:rgba(255, 255, 255, .15)}
+			
+			.st_mybd_search_form {margin-top:30px;padding:10px 0;background:#f5f5f5;text-align:center}
+			.st_mybd_search_form * {vertical-align:middle}
+			.st_mybd_search_form select {height:28px}
+			.st_mybd_search_form .search_input {display:inline-block}
+			.st_mybd_search_form .search_input input[type=text] {box-sizing:border-box;width:180px;max-width:100%;height:28px;padding:0 5px;border:1px solid #dddddd;font-size:13px}
+			.st_mybd_search_form .search_input .st_mybd_btn_search {box-sizing:border-box;display:inline-block;position:relative;height:28px;margin:0;padding:3px 15px;border:1px solid #4e4e4e;background:#4e4e4e;font-family:'Malgun Gothic', sans-serif;font-size:13px;font-weight:bold;color:#fff;line-height:20px;text-decoration:none;cursor:pointer}
+			
+			@media all and (max-width:767px){
+				.st_mybd_m_hide {display:none}
+				.st_mybd_m_show {display:block}
+				.st_mybd_division_line {display:inline-block;position:relative;top:2px;width:1px;height:12px;margin:0 5px;background:#cccccc}
+			
+				.st_mybd_list colgroup {display:none}
+				.st_mybd_list thead {display:none}
+				.st_mybd_list tbody tr td {display:none;padding:9px 10px 12px}
+				.st_mybd_list tbody tr td.st_mybd_m_show_td {display:table-cell;text-align:left;line-height:18px}
+				.st_mybd_list tbody tr td .st_mybd_m_title {display:block;padding:2px 0;font-weight:bold;color:#444444 !important}
+				.st_mybd_list tbody tr td .st_mybd_m_show {margin-top:3px;font-size:12px}
+				.st_mybd_list tbody tr td.st_mybd_none_data {display:table-cell}
+			
+				.st_mybd_search_form .search_input {display:block;margin-top:5px}
+			}
+			
+			@media all and (min-width:768px){
+				.st_cate_list_wrap {margin-bottom:30px;padding:15px 20px;border:1px solid #a5a5a5;border-radius:5px}
+				.st_cate_list_wrap .btn_category {display:none}
+				.st_cate_list_wrap .st_cate_list {display:block;margin:0;padding:0}
+				.st_cate_list_wrap .st_cate_list li {position:relative;width:auto;margin-right:15px;padding:0 15px 0 0}
+				.st_cate_list_wrap .st_cate_list li:nth-child(2n+1) {clear:none}
+				.st_cate_list_wrap .st_cate_list li:before {content:'';display:block;position:absolute;top:50%;right:0;width:1px;height:12px;margin-top:-6px;background:#ddd}
+				.st_cate_list_wrap .st_cate_list li a {padding:3px;border:none;background:none;color:#555555;letter-spacing:-.03em}
+				.st_cate_list_wrap .st_cate_list li.on a, .st_cate_list_wrap .st_cate_list li:hover a {color:#000;text-decoration:underline}
+			}
+			
+			@media all and (min-width:1024px){
+				.st_cate_list_wrap {padding:20px 25px}
+				.st_cate_list_wrap .st_cate_list li {margin-right:20px;padding-right:20px}
+			}
+			</style>
 
 
 <!--<div class="st_cate_list_wrap">
@@ -258,97 +257,54 @@ var isKitkat = window.navigator.userAgent.search( "AnybuildApp Android 4.4") > -
 
 
 
-<table class="st_mybd_list">
-	<colgroup>
-		<col style="width:200px;">
-		<col>
-		<col style="width:150px;">
-		<col style="width:200px;">
-		<col style="width:90px;">
-	</colgroup>
+			<table class="st_mybd_list">
+				<colgroup>
+					<col style="width:200px;">
+					<col>
+					<col style="width:150px;">
+					<col style="width:200px;">
+					<col style="width:90px;">
+				</colgroup>
+			
+				<thead>
+					<tr>
+						<th scope="col">부서명</th>
+						<th scope="col">담당 업무</th>
+						<th scope="col">내선 번호</th>
+						<th scope="col">메일</th>
+					</tr>
+				</thead>
+			
+				<tbody>
+					<c:forEach items="${ctList}" var="ctItem">
+						<tr>
+							<td>${ctItem.ctpart}</td>
+							<td>${ctItem.ctchr}</td>
+							<td>
+								<c:set var="ctphone" value="${ctItem.ctphone}" />
+									${fn:substring(ctphone, 0, 2)}-${fn:substring(ctphone, 2, 5)}-${fn:substring(ctphone, 5, 9)}
+							</td>
+							<td><a href="mailto:${ctItem.ctmail}" target="_blank">${ctItem.ctmail}</a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 
-	<thead>
-		<tr>
-			<th scope="col">부서명</th>
-			<th scope="col">담당 업무</th>
-			<th scope="col">내선 번호</th>
-			<th scope="col">메일</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<tr>
-			<td class="st_mybd_subject st_mybd_m_show_td">
-					<span class="st_mybd_m_title">전자경매사업부 </span>
-					<span class="st_mybd_m_show">담당 업무 : 전자경매시스템 구매 상담</span>					<span class="st_mybd_m_show">내선 번호 : 02-801-1931</span>					<span class="st_mybd_m_show">메일 : bigass1037@brain21c.co.kr</span>			</td>
-			<td>전자경매시스템 구매 상담</td>
-			<td>02-801-1931</td>
-			<td><a href="mailto:bigass1037@brain21c.co.kr" target="_blank">bigass1037@brain21c.co.kr</a></td>
-		</tr><tr>
-			<td class="st_mybd_subject st_mybd_m_show_td">
-					<span class="st_mybd_m_title">POS사업부 </span>
-					<span class="st_mybd_m_show">담당 업무 : POS시스템 영업관련 구매 상담</span>					<span class="st_mybd_m_show">내선 번호 : 02-801-1942</span>					<span class="st_mybd_m_show">메일 : jhosh0215@brain21c.co.kr</span>			</td>
-			<td>POS시스템 영업관련 구매 상담</td>
-			<td>02-801-1942</td>
-			<td><a href="mailto:jhosh0215@brain21c.co.kr" target="_blank">jhosh0215@brain21c.co.kr</a></td>
-		</tr><tr>
-			<td class="st_mybd_subject st_mybd_m_show_td">
-					<span class="st_mybd_m_title">ICT사업부 </span>
-					<span class="st_mybd_m_show">담당 업무 : ESL시스템 구매 상담</span>					<span class="st_mybd_m_show">내선 번호 : 02-801-1944</span>					<span class="st_mybd_m_show">메일 : msj715@brain21c.co.kr</span>			</td>
-			<td>ESL시스템 구매 상담</td>
-			<td>02-801-1944</td>
-			<td><a href="mailto:msj715@brain21c.co.kr" target="_blank">msj715@brain21c.co.kr</a></td>
-		</tr><tr>
-			<td class="st_mybd_subject st_mybd_m_show_td">
-					<span class="st_mybd_m_title">시너지유통사업팀 </span>
-					<span class="st_mybd_m_show">담당 업무 : EAS 도난방지기 구매 상담</span>					<span class="st_mybd_m_show">내선 번호 : 02-801-1920</span>					<span class="st_mybd_m_show">메일 : ann@brain21c.co.kr</span>			</td>
-			<td>EAS 도난방지기 구매 상담</td>
-			<td>02-801-1920</td>
-			<td><a href="mailto:ann@brain21c.co.kr" target="_blank">ann@brain21c.co.kr</a></td>
-		</tr><tr>
-			<td class="st_mybd_subject st_mybd_m_show_td">
-					<span class="st_mybd_m_title">SI사업팀 </span>
-					<span class="st_mybd_m_show">담당 업무 : SI시스템 통합 설계 및 견적 상담 </span>					<span class="st_mybd_m_show">내선 번호 : 02-801-1900</span>					<span class="st_mybd_m_show">메일 : jeyaimda@brain21c.co.kr</span>			</td>
-			<td>SI시스템 통합 설계 및 견적 상담 </td>
-			<td>02-801-1900</td>
-			<td><a href="mailto:jeyaimda@brain21c.co.kr" target="_blank">jeyaimda@brain21c.co.kr</a></td>
-		</tr><tr>
-			<td class="st_mybd_subject st_mybd_m_show_td">
-					<span class="st_mybd_m_title">SM사업팀 </span>
-					<span class="st_mybd_m_show">담당 업무 : SM시스템 운영 인력풀 상담</span>					<span class="st_mybd_m_show">내선 번호 : 02-801-1900</span>					<span class="st_mybd_m_show">메일 : jasonpk@brain21c.co.kr</span>			</td>
-			<td>SM시스템 운영 인력풀 상담</td>
-			<td>02-801-1900</td>
-			<td><a href="mailto:jasonpk@brain21c.co.kr" target="_blank">jasonpk@brain21c.co.kr</a></td>
-		</tr><tr>
-			<td class="st_mybd_subject st_mybd_m_show_td">
-					<span class="st_mybd_m_title">경영기획실 </span>
-					<span class="st_mybd_m_show">담당 업무 : 세금계산서 발행, 기타문의</span>					<span class="st_mybd_m_show">내선 번호 : 02-801-1900</span>					<span class="st_mybd_m_show">메일 : etax@brain21c.co.kr</span>			</td>
-			<td>세금계산서 발행, 기타문의</td>
-			<td>02-801-1900</td>
-			<td><a href="mailto:etax@brain21c.co.kr" target="_blank">etax@brain21c.co.kr</a></td>
-		</tr><tr>
-			<td class="st_mybd_subject st_mybd_m_show_td">
-					<span class="st_mybd_m_title">굿바이마켓 </span>
-					<span class="st_mybd_m_show">담당 업무 : 굿바이마켓 업무 담당</span>					<span class="st_mybd_m_show">내선 번호 : 02-801-1902</span>					<span class="st_mybd_m_show">메일 : mira5044@goodbuymarket.co.kr</span>			</td>
-			<td>굿바이마켓 업무 담당</td>
-			<td>02-801-1902</td>
-			<td><a href="mailto:mira5044@goodbuymarket.co.kr" target="_blank">mira5044@goodbuymarket.co.kr</a></td>
-		</tr>			</tbody>
-</table>
-
-<div class="st_mybd_paginate">
-	<div class='ui-pagenate'><strong>1</strong></div></div>
+			<div class="st_mybd_paginate">
+				<div class='ui-pagenate'><strong>1</strong></div>
+			</div>
   
-<script>
-	jQuery(function($){
-		$('.st_cate_list_wrap .btn_category').on('click', function(){
-			$(this).toggleClass('on');
-			$(this).parent().find('.st_cate_list').toggleClass('on');
-		});
-	});
-</script>    </div>
-       </div>
-</div>
+			<script>
+				jQuery(function($){
+					$('.st_cate_list_wrap .btn_category').on('click', function(){
+						$(this).toggleClass('on');
+						$(this).parent().find('.st_cate_list').toggleClass('on');
+					});
+				});
+			</script>    
+		</div> <!-- cont end -->
+	</div> <!-- inner end -->
+</div> <!-- sub end -->
 
 <jsp:include page="../views/comm/bottom.jsp"/>
 

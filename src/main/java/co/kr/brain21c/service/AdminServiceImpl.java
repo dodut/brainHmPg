@@ -20,6 +20,11 @@ public class AdminServiceImpl implements AdminService{
 	public ArrayList<history> getBoard() throws Exception{
 		return AdminDao.getBoard();
 	}
+
+	@Override
+	public ArrayList<contact> getContact() {
+		return AdminDao.getContact();
+	}
 	
 	/*
 	

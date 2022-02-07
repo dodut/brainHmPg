@@ -83,5 +83,22 @@ public class Comcontroller {
 		
 		return mv;
 	}
+	
+	@RequestMapping("/myboard/sub3_3") 
+	public ModelAndView contact(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		//ArrayList<contact> ctList   = new ArrayList<contact>();
+		ArrayList<contact> ctList  = new ArrayList<contact>();
+		
+		try {
+			ctList = AdminService.getContact();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		mv.addObject("ctList", ctList);
+		mv.setViewName("sub3_3");
+		
+		return mv;
+	}
 
 }

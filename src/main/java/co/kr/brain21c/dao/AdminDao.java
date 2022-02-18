@@ -1,11 +1,10 @@
 package co.kr.brain21c.dao;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import co.kr.brain21c.dto.*;
+import co.kr.brain21c.dto.board;
+import co.kr.brain21c.dto.contact;
+import co.kr.brain21c.dto.history;
 
 
 public interface AdminDao{
@@ -32,6 +31,8 @@ public interface AdminDao{
 */
 
 	ArrayList<contact> getContact();
+
+	ArrayList<board> getNoticeList();
 
 
 }

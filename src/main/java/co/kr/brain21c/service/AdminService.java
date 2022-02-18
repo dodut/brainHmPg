@@ -1,19 +1,19 @@
 package co.kr.brain21c.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import co.kr.brain21c.dto.*;
+import co.kr.brain21c.dto.board;
+import co.kr.brain21c.dto.contact;
+import co.kr.brain21c.dto.history;
 
 public interface AdminService{
 	
 	ArrayList<history> getBoard() throws Exception;
 
-	//ArrayList<contact> getContact() throws Exception;
-
 	ArrayList<contact> getContact();
+	
+
+	ArrayList<board> getNoticeList();
 	
 	/*
 	ArrayList<famFood> getStore() throws Exception;	

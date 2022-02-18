@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
@@ -188,213 +191,35 @@
 					<!-- // Notice -->
 			
 					<ul class="lst-board lst-body">
-						<li class="clr">
-							<div class="td col_no">41</div>
-							<div class="td col_subject">
-								<div style="padding-left:0px;">
-									<a href="/bbs_shop/read.htm?me_popup=&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=&idx=7953">
-										<span>21년 12월 무안농협 스마트III-DOUBLE 적용 </span>
-									</a>
+						<c:forEach items="${nList }" var="nItem">
+							<li class="clr">
+								<div class="td col_no">${nItem.seq}</div>
+								<div class="td col_subject">
+									<div style="padding-left:0px;">
+										<a href="#">
+											<span>${nItem.title}</span>
+										</a>
+									</div>
 								</div>
-							</div>
-							<div class="td inf col_date">2021-12-30</div>				
-							<div class="td inf col_hit"><span class="txt">조회수:</span>18</div>											
-						</li>
-						
-						<li class="clr">
-							<div class="td col_no">40</div>
-							<div class="td col_subject">
-								<div style="padding-left:0px;">
-									<a href="/bbs_shop/read.htm?me_popup=&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=&idx=7952">
-										<span>21년 12월 용현농협 전자경매시스템 신규 구축 </span>
-									</a>
-								</div>
-							</div>
-							<div class="td inf col_date">2021-12-30</div>				
-							<div class="td inf col_hit"><span class="txt">조회수:</span>10</div>											
-						</li>
-						
-						<li class="clr">
-							<div class="td col_no">39</div>
-							<div class="td col_subject">
-								<div style="padding-left:0px;">
-									<a href="/bbs_shop/read.htm?me_popup=&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=&idx=7875">
-										<span>21년 10월 홍성축산농협 스마트III-DOUBLE 적용</span>
-									</a>
-								</div>
-							</div>
-							<div class="td inf col_date">2021-11-23</div>				
-							<div class="td inf col_hit"><span class="txt">조회수:</span>213</div>											
-						</li>
-						
-						<li class="clr">
-							<div class="td col_no">38</div>
-							<div class="td col_subject">
-								<div style="padding-left:0px;">
-									<a href="/bbs_shop/read.htm?me_popup=&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=&idx=7410">
-										<span>21년 6월  남원원예농협 농산물 전자경매시스템 구축 </span>
-									</a>
-								</div>
-							</div>
-							<div class="td inf col_date">2021-06-15</div>				
-							<div class="td inf col_hit"><span class="txt">조회수:</span>1114</div>											
-						</li>
-						
-						<li class="clr">
-							<div class="td col_no">37</div>
-							<div class="td col_subject">
-								<div style="padding-left:0px;">
-									<a href="/bbs_shop/read.htm?me_popup=&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=&idx=7404">
-										<span>21년 4월 진주원예농협 스마트III-DOUBLE 적용 </span>
-									</a>
-								</div>
-							</div>
-							<div class="td inf col_date">2021-05-21</div>				
-							<div class="td inf col_hit"><span class="txt">조회수:</span>1234</div>											
-						</li>
-						
-						<li class="clr">
-							<div class="td col_no">36</div>
-							<div class="td col_subject">
-								<div style="padding-left:0px;">
-									<a href="/bbs_shop/read.htm?me_popup=&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=&idx=7386">
-										<span>21년 3월 농협경제지주 구리공판장 스마트III-DOUBLE 적용</span>
-									</a>
-								</div>
-							</div>
-							<div class="td inf col_date">2021-04-20</div>				
-							<div class="td inf col_hit"><span class="txt">조회수:</span>1607</div>											
-						</li>
-						
-						<li class="clr">
-							<div class="td col_no">35</div>
-							<div class="td col_subject">
-								<div style="padding-left:0px;">
-									<a href="/bbs_shop/read.htm?me_popup=&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=&idx=7375">
-										<span>21년 3월 농협경제지주 가락공판장 스마트III-DOUBLE 적용</span>
-									</a>
-								</div>
-							</div>
-							<div class="td inf col_date">2021-03-31</div>				
-							<div class="td inf col_hit"><span class="txt">조회수:</span>1617</div>											
-						</li>
-						
-						<li class="clr">
-							<div class="td col_no">34</div>
-							<div class="td col_subject">
-								<div style="padding-left:0px;">
-									<a href="/bbs_shop/read.htm?me_popup=&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=&idx=7374">
-										<span>21년 3월 파주축협 스마트III-DOUBLE 적용</span>
-									</a>
-								</div>
-							</div>
-							<div class="td inf col_date">2021-03-31</div>				
-							<div class="td inf col_hit"><span class="txt">조회수:</span>979</div>											
-						</li>
-						
-						<li class="clr">
-							<div class="td col_no">33</div>
-							<div class="td col_subject">
-								<div style="padding-left:0px;">
-									<a href="/bbs_shop/read.htm?me_popup=&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=&idx=7363">
-										<span>21년 3월 농협경제지주 강서공판장 스마트III-DOUBLE 적용</span>
-									</a>
-								</div>
-							</div>
-							<div class="td inf col_date">2021-03-19</div>				
-							<div class="td inf col_hit"><span class="txt">조회수:</span>884</div>											
-						</li>
-						
-						<li class="clr">
-							<div class="td col_no">32</div>
-							<div class="td col_subject">
-								<div style="padding-left:0px;">
-									<a href="/bbs_shop/read.htm?me_popup=&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=&idx=7362">
-										<span>20년 12월 수원축협 곡반정점 하나로마트 POS시스템 구축</span>
-									</a>
-								</div>
-							</div>
-							<div class="td inf col_date">2021-03-19</div>				
-							<div class="td inf col_hit"><span class="txt">조회수:</span>751</div>											
-						</li>
-						
-						<li class="clr">
-							<div class="td col_no">31</div>
-							<div class="td col_subject">
-								<div style="padding-left:0px;">
-									<a href="/bbs_shop/read.htm?me_popup=&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=&idx=7361">
-										<span>20년 7월 하남농협하나로마트 POS시스템 구축</span>
-									</a>
-								</div>
-							</div>
-							<div class="td inf col_date">2021-03-19</div>				
-							<div class="td inf col_hit"><span class="txt">조회수:</span>661</div>											
-						</li>
-						
-						<li class="clr">
-							<div class="td col_no">30</div>
-							<div class="td col_subject">
-								<div style="padding-left:0px;">
-									<a href="/bbs_shop/read.htm?me_popup=&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=&idx=7356">
-										<span>21년 3월 농협경제지주 부산공판장 스마트III-DOUBLE 적용</span>
-									</a>
-								</div>
-							</div>
-							<div class="td inf col_date">2021-03-08</div>				
-							<div class="td inf col_hit"><span class="txt">조회수:</span>843</div>											
-						</li>
-						
-						<li class="clr">
-							<div class="td col_no">29</div>
-							<div class="td col_subject">
-								<div style="padding-left:0px;">
-									<a href="/bbs_shop/read.htm?me_popup=&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=&idx=7355">
-										<span>21년 3월 농협경제지주 반여공판장 스마트III-DOUBLE 적용</span>
-									</a>
-								</div>
-							</div>
-							<div class="td inf col_date">2021-03-08</div>				
-							<div class="td inf col_hit"><span class="txt">조회수:</span>654</div>											
-						</li>
-						
-						<li class="clr">
-							<div class="td col_no">28</div>
-							<div class="td col_subject">
-								<div style="padding-left:0px;">
-									<a href="/bbs_shop/read.htm?me_popup=&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=&idx=7354">
-										<span>21년 2월 농협경제지주 대전공판장 스마트III-DOUBLE 적용</span>
-									</a>
-								</div>
-							</div>
-							<div class="td inf col_date">2021-03-08</div>				
-							<div class="td inf col_hit"><span class="txt">조회수:</span>691</div>											
-						</li>
-						
-						<li class="clr">
-							<div class="td col_no">27</div>
-							<div class="td col_subject">
-								<div style="padding-left:0px;">
-									<a href="/bbs_shop/read.htm?me_popup=&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=&idx=7353">
-										<span>21년 2월 농협경재지주 창원공판장 스마트III-DOUBLE 적용</span>
-									</a>
-								</div>
-							</div>
-							<div class="td inf col_date">2021-03-08</div>				
-							<div class="td inf col_hit"><span class="txt">조회수:</span>708</div>											
-						</li>		
+								<div class="td inf col_date">
+									<fmt:formatDate value="${nItem.rgdtm}" pattern="yyyy-mm-dd" />
+								</div>				
+								<div class="td inf col_hit"><span class="txt">조회수:</span>${nItem.hits}</div>											
+							</li>
+						</c:forEach>	
 					</ul>
 			
 				</div> <!-- list_board -->
-			
+
 				<!-- pagenate -->
-				<div class="paginate">
+ 				<div class="paginate">
 					<strong>1</strong>
 					<a href="/bbs_shop/list.htm?page=2&board_code=sub3_1">2</a>
 					<a href="/bbs_shop/list.htm?page=3&board_code=sub3_1">3</a>
 					<a href="/bbs_shop/list.htm?page=2&board_code=sub3_1" class="dir" title="다음"><span>›</span></a>			
 				</div>	
 				<!-- // pagenate -->
-				
+ 				
 			</div> <!-- scbd end -->   
 		</div> <!-- cont end -->
 	</div> <!-- inner end -->

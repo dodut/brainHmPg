@@ -1,19 +1,16 @@
 package co.kr.brain21c.dao;
 
-import java.io.FileInputStream;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import co.kr.brain21c.dto.*;
+import co.kr.brain21c.dto.board;
+import co.kr.brain21c.dto.contact;
+import co.kr.brain21c.dto.history;
 
 @Repository("AdminDao")
 public class AdminDaoImpl implements AdminDao{
@@ -42,14 +39,29 @@ public class AdminDaoImpl implements AdminDao{
 		String sql = "SELECT * FROM contact ORDER BY ctseq asc";
 		System.out.println(sql);
 		
-		List<contact> ctList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(contact.class));		
-		
-		System.out.println(ctList);
+		List<contact> ctList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(contact.class));				
+		//System.out.println(ctList);
 		
 		ctList.forEach(System.out :: println);
 		
 		return (ArrayList<contact>) ctList;
 	}
+
+
+	@Override
+	public ArrayList<board> getNoticeList() {
+		String sql = "SELECT * FROM board WHERE gnb = 'A01' ORDER BY seq DESC";
+		
+		List<board> nList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(board.class));
+		//System.out.println(nList);
+		
+		nList.forEach(System.out :: println);
+		
+		return (ArrayList<board>) nList;
+	}
+
+
+
 	
 	/*	
 	@Override
@@ -71,7 +83,7 @@ public class AdminDaoImpl implements AdminDao{
 				   + "     , B.FDNO     "
 			 	   + "     , B.FDNM     "
 		 		   + "     , Replace(Convert(Varchar, Convert(Money, B.FDPRICE),112),'.00','') AS FDPRICE  "
-	 			   + "     , CASE WHEN B.FDOP_YN = 1 THEN '�뜝�럩沅롥뜝�럥�깯' ELSE '亦껋꼶梨뤄옙沅롥뜝�럥�깯' END AS FDOP_YN   "
+	 			   + "     , CASE WHEN B.FDOP_YN = 1 THEN '�뜝�럥�맶�뜝�럥�쑅�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩紐앾옙�뜏�뜝�룞�삕�뤃�빢�삕�걹占쎌굲�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩紐쀥뜝�럥�맶�뜝�럥�쐾占쎈닱�뜝占�' ELSE '�뜝�럩�쐪占쎈쐻占쎈쑟占쎌뇢�뜝�럥�뿭�뜝�럡�맯�솾�꺂�뒱占쎌굲癲ル슢�뒦占쎈쳮�뜝�럡�렊占쎌뜏�뜝�룞�삕�뤃�빢�삕�걹占쎌굲�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩紐쀥뜝�럥�맶�뜝�럥�쐾占쎈닱�뜝占�' END AS FDOP_YN   "
  			       //+ "     , B.FDIMG    "
  			      + "     , B.TIMG    "
 				   + "  FROM TB_STORE A "
@@ -128,7 +140,7 @@ public class AdminDaoImpl implements AdminDao{
 				   + "     , B.FDNO     "
 			 	   + "     , B.FDNM     "
 		 		   + "     , Replace(Convert(Varchar, Convert(Money, B.FDPRICE),112),'.00','') AS FDPRICE  "
-	 			   + "     , CASE WHEN B.FDOP_YN = 1 THEN '�뜝�럩沅롥뜝�럥�깯' ELSE '亦껋꼶梨뤄옙沅롥뜝�럥�깯' END AS FDOP_YN   "
+	 			   + "     , CASE WHEN B.FDOP_YN = 1 THEN '�뜝�럥�맶�뜝�럥�쑅�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩紐앾옙�뜏�뜝�룞�삕�뤃�빢�삕�걹占쎌굲�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩紐쀥뜝�럥�맶�뜝�럥�쐾占쎈닱�뜝占�' ELSE '�뜝�럩�쐪占쎈쐻占쎈쑟占쎌뇢�뜝�럥�뿭�뜝�럡�맯�솾�꺂�뒱占쎌굲癲ル슢�뒦占쎈쳮�뜝�럡�렊占쎌뜏�뜝�룞�삕�뤃�빢�삕�걹占쎌굲�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩紐쀥뜝�럥�맶�뜝�럥�쐾占쎈닱�뜝占�' END AS FDOP_YN   "
  			       //+ "     , B.FDIMG    "
  			       + "     , B.TIMG    "
 				   + "  FROM TB_STORE A "

@@ -1,22 +1,29 @@
 package co.kr.brain21c.controller;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView; 
-import java.util.*;
+import org.springframework.web.servlet.ModelAndView;
 
-import co.kr.brain21c.dto.*;
-import co.kr.brain21c.service.*;
+import co.kr.brain21c.dto.board;
+import co.kr.brain21c.dto.contact;
+import co.kr.brain21c.dto.history;
+import co.kr.brain21c.service.AdminService;
 
 @Controller 
-public class Comcontroller { 
+public class Comcontroller {  
 	
 	@Autowired
 	private AdminService AdminService;
+	
+	private static final Logger logger = LoggerFactory.getLogger(Comcontroller.class);
+	
 	
 	@RequestMapping("/index") 
 	public String index() { 
@@ -87,7 +94,6 @@ public class Comcontroller {
 	@RequestMapping("/myboard/sub3_3") 
 	public ModelAndView contact(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		//ArrayList<contact> ctList   = new ArrayList<contact>();
 		ArrayList<contact> ctList  = new ArrayList<contact>();
 		
 		try {
@@ -96,7 +102,20 @@ public class Comcontroller {
 			e.printStackTrace();
 		}
 		mv.addObject("ctList", ctList);
-		mv.setViewName("sub3_3");
+		mv.setViewName("sub3_3"); 
+		
+		return mv;
+	}
+	
+	@RequestMapping("/bbs/sub3_1")
+	public ModelAndView noticeList(HttpServletRequest req) {
+		logger.info("### 공지사항 페이지 로드!!!!");
+		
+		ModelAndView mv = new ModelAndView();
+		ArrayList<board> nList = AdminService.getNoticeList();
+	
+		mv.addObject("nList", nList);
+		mv.setViewName("sub3_1");
 		
 		return mv;
 	}

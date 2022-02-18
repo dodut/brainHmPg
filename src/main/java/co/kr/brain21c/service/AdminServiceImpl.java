@@ -1,14 +1,14 @@
 package co.kr.brain21c.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.kr.brain21c.dao.*;
-import co.kr.brain21c.dto.*;
+import co.kr.brain21c.dao.AdminDao;
+import co.kr.brain21c.dto.board;
+import co.kr.brain21c.dto.contact;
+import co.kr.brain21c.dto.history;
 
 
 @Service("AdminService")
@@ -25,6 +25,14 @@ public class AdminServiceImpl implements AdminService{
 	public ArrayList<contact> getContact() {
 		return AdminDao.getContact();
 	}
+	
+
+	@Override
+	public ArrayList<board> getNoticeList() {
+		return AdminDao.getNoticeList();
+	}
+	
+	
 	
 	/*
 	

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import co.kr.brain21c.dto.board;
 import co.kr.brain21c.dto.contact;
 import co.kr.brain21c.dto.history;
+import co.kr.brain21c.paging.Criteria;
 
 
 public interface AdminDao{
@@ -32,7 +33,6 @@ public interface AdminDao{
 
 	ArrayList<contact> getContact();
 
-	ArrayList<board> getNoticeList();
 
 
 }

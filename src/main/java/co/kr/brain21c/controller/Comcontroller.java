@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import co.kr.brain21c.dto.board;
 import co.kr.brain21c.dto.contact;
 import co.kr.brain21c.dto.history;
+import co.kr.brain21c.paging.Criteria;
 import co.kr.brain21c.service.AdminService;
 
 @Controller 
@@ -107,17 +109,6 @@ public class Comcontroller {
 		return mv;
 	}
 	
-	@RequestMapping("/bbs/sub3_1")
-	public ModelAndView noticeList(HttpServletRequest req) {
-		logger.info("### 공지사항 페이지 로드!!!!");
-		
-		ModelAndView mv = new ModelAndView();
-		ArrayList<board> nList = AdminService.getNoticeList();
-	
-		mv.addObject("nList", nList);
-		mv.setViewName("sub3_1");
-		
-		return mv;
-	}
+
 
 }

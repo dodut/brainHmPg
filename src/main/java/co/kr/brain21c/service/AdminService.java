@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import co.kr.brain21c.dto.board;
 import co.kr.brain21c.dto.contact;
 import co.kr.brain21c.dto.history;
+import co.kr.brain21c.paging.Criteria;
 
 public interface AdminService{
 	
@@ -13,7 +14,7 @@ public interface AdminService{
 	ArrayList<contact> getContact();
 	
 
-	ArrayList<board> getNoticeList();
+
 	
 	/*
 	ArrayList<famFood> getStore() throws Exception;	

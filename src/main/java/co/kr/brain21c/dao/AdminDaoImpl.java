@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import co.kr.brain21c.dto.board;
 import co.kr.brain21c.dto.contact;
 import co.kr.brain21c.dto.history;
+import co.kr.brain21c.paging.Criteria;
 
 @Repository("AdminDao")
 public class AdminDaoImpl implements AdminDao{
@@ -47,18 +48,11 @@ public class AdminDaoImpl implements AdminDao{
 		return (ArrayList<contact>) ctList;
 	}
 
+	
 
-	@Override
-	public ArrayList<board> getNoticeList() {
-		String sql = "SELECT * FROM board WHERE gnb = 'A01' ORDER BY seq DESC";
-		
-		List<board> nList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(board.class));
-		//System.out.println(nList);
-		
-		nList.forEach(System.out :: println);
-		
-		return (ArrayList<board>) nList;
-	}
+
+
+
 
 
 

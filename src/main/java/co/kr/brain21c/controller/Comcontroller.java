@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,14 +14,17 @@ import org.springframework.web.servlet.ModelAndView;
 import co.kr.brain21c.dto.board;
 import co.kr.brain21c.dto.contact;
 import co.kr.brain21c.dto.history;
-import co.kr.brain21c.paging.Criteria;
 import co.kr.brain21c.service.AdminService;
+import co.kr.brain21c.service.EnquiryService;
 
 @Controller 
 public class Comcontroller {  
 	
 	@Autowired
 	private AdminService AdminService;
+	
+	@Autowired
+	private EnquiryService enquiryService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(Comcontroller.class);
 	
@@ -32,10 +34,10 @@ public class Comcontroller {
 		return "index"; 
 	}
 	
-	@RequestMapping("/main") 
-	public String main() { 
-		return "main"; 
-	}
+//	@RequestMapping("/main") 
+//	public String main() { 
+//		return "main"; 
+//	}
 	
 	@RequestMapping("/page/{subpage_path}") 
 	public String sub_page(@PathVariable("subpage_path") String subpage_path) { 
@@ -55,7 +57,24 @@ public class Comcontroller {
 	@RequestMapping("/shop_info/{subpage_path}") 
 	public String shop_info(@PathVariable("subpage_path") String subpage_path) { 
 		return subpage_path; 
-	} 
+	}
+	
+	@RequestMapping("/main") 
+	public ModelAndView notice(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		ArrayList<board> ntList  = new ArrayList<board>();
+		
+		try {
+			ntList = AdminService.getMainNotic();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		logger.debug(ntList.toString());
+		mv.addObject("ntList", ntList);
+		mv.setViewName("main");
+		
+		return mv;
+	}
 	
 	@RequestMapping("/myboard/sub1_2") 
 	public ModelAndView test(HttpServletRequest req) {
@@ -108,7 +127,5 @@ public class Comcontroller {
 		
 		return mv;
 	}
-	
-
 
 }

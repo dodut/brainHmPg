@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import co.kr.brain21c.dto.board;
 import co.kr.brain21c.dto.contact;
 import co.kr.brain21c.dto.history;
-import co.kr.brain21c.paging.Criteria;
 
 @Repository("AdminDao")
 public class AdminDaoImpl implements AdminDao{
@@ -48,7 +47,19 @@ public class AdminDaoImpl implements AdminDao{
 		return (ArrayList<contact>) ctList;
 	}
 
-	
+	@Override
+	public ArrayList<board> getMainNotic() {
+		String sql = "SELECT LPAD(@num:=@num+1, '2', '0') as num, DATE_FORMAT(B.rgdtm, '%Y-%m-%d') AS subDate, B.* FROM (SELECT @num:=0) A, board B WHERE gnb = 'A01' ORDER BY rgdtm DESC LIMIT 4";
+		System.out.println(sql);
+		
+		List<board> ntList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(board.class));		
+		
+		System.out.println(ntList);
+		
+		ntList.forEach(System.out :: println);
+		
+		return (ArrayList<board>) ntList;
+	}
 
 
 
@@ -77,7 +88,7 @@ public class AdminDaoImpl implements AdminDao{
 				   + "     , B.FDNO     "
 			 	   + "     , B.FDNM     "
 		 		   + "     , Replace(Convert(Varchar, Convert(Money, B.FDPRICE),112),'.00','') AS FDPRICE  "
-	 			   + "     , CASE WHEN B.FDOP_YN = 1 THEN '�뜝�럥�맶�뜝�럥�쑅�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩紐앾옙�뜏�뜝�룞�삕�뤃�빢�삕�걹占쎌굲�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩紐쀥뜝�럥�맶�뜝�럥�쐾占쎈닱�뜝占�' ELSE '�뜝�럩�쐪占쎈쐻占쎈쑟占쎌뇢�뜝�럥�뿭�뜝�럡�맯�솾�꺂�뒱占쎌굲癲ル슢�뒦占쎈쳮�뜝�럡�렊占쎌뜏�뜝�룞�삕�뤃�빢�삕�걹占쎌굲�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩紐쀥뜝�럥�맶�뜝�럥�쐾占쎈닱�뜝占�' END AS FDOP_YN   "
+	 			   + "     , CASE WHEN B.FDOP_YN = 1 THEN '占쎈쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌몗占쎈쐻占쎈윥占쎈윫占쎈쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌몗占쎈쐻占쎈윪筌륁빢�삕占쎈쐪占쎈쐻占쎈짗占쎌굲占쎈쨨占쎈묄占쎌굲占쎄국�뜝�럩援뀐옙�쐻占쎈윥占쎈윫占쎈쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌몗占쎈쐻占쎈윪筌륁�λ쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌맽�뜝�럥�떛占쎈쐻�뜝占�' ELSE '占쎈쐻占쎈윪占쎌맚�뜝�럥�맶�뜝�럥�몷�뜝�럩�눁占쎈쐻占쎈윥占쎈열占쎈쐻占쎈윞占쎈㎝占쎌녇占쎄틓占쎈뮦�뜝�럩援꿰솾�꺂�뒧占쎈뮚�뜝�럥爾�占쎈쐻占쎈윞占쎈젇�뜝�럩�쐪占쎈쐻占쎈짗占쎌굲占쎈쨨占쎈묄占쎌굲占쎄국�뜝�럩援뀐옙�쐻占쎈윥占쎈윫占쎈쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌몗占쎈쐻占쎈윪筌륁�λ쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌맽�뜝�럥�떛占쎈쐻�뜝占�' END AS FDOP_YN   "
  			       //+ "     , B.FDIMG    "
  			      + "     , B.TIMG    "
 				   + "  FROM TB_STORE A "
@@ -134,7 +145,7 @@ public class AdminDaoImpl implements AdminDao{
 				   + "     , B.FDNO     "
 			 	   + "     , B.FDNM     "
 		 		   + "     , Replace(Convert(Varchar, Convert(Money, B.FDPRICE),112),'.00','') AS FDPRICE  "
-	 			   + "     , CASE WHEN B.FDOP_YN = 1 THEN '�뜝�럥�맶�뜝�럥�쑅�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩紐앾옙�뜏�뜝�룞�삕�뤃�빢�삕�걹占쎌굲�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩紐쀥뜝�럥�맶�뜝�럥�쐾占쎈닱�뜝占�' ELSE '�뜝�럩�쐪占쎈쐻占쎈쑟占쎌뇢�뜝�럥�뿭�뜝�럡�맯�솾�꺂�뒱占쎌굲癲ル슢�뒦占쎈쳮�뜝�럡�렊占쎌뜏�뜝�룞�삕�뤃�빢�삕�걹占쎌굲�뜝�럥�럪�뜝�럥�맶�뜝�럥�쑅�뜝�럩紐쀥뜝�럥�맶�뜝�럥�쐾占쎈닱�뜝占�' END AS FDOP_YN   "
+	 			   + "     , CASE WHEN B.FDOP_YN = 1 THEN '占쎈쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌몗占쎈쐻占쎈윥占쎈윫占쎈쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌몗占쎈쐻占쎈윪筌륁빢�삕占쎈쐪占쎈쐻占쎈짗占쎌굲占쎈쨨占쎈묄占쎌굲占쎄국�뜝�럩援뀐옙�쐻占쎈윥占쎈윫占쎈쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌몗占쎈쐻占쎈윪筌륁�λ쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌맽�뜝�럥�떛占쎈쐻�뜝占�' ELSE '占쎈쐻占쎈윪占쎌맚�뜝�럥�맶�뜝�럥�몷�뜝�럩�눁占쎈쐻占쎈윥占쎈열占쎈쐻占쎈윞占쎈㎝占쎌녇占쎄틓占쎈뮦�뜝�럩援꿰솾�꺂�뒧占쎈뮚�뜝�럥爾�占쎈쐻占쎈윞占쎈젇�뜝�럩�쐪占쎈쐻占쎈짗占쎌굲占쎈쨨占쎈묄占쎌굲占쎄국�뜝�럩援뀐옙�쐻占쎈윥占쎈윫占쎈쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌몗占쎈쐻占쎈윪筌륁�λ쐻占쎈윥占쎈㎍占쎈쐻占쎈윥占쎌맽�뜝�럥�떛占쎈쐻�뜝占�' END AS FDOP_YN   "
  			       //+ "     , B.FDIMG    "
  			       + "     , B.TIMG    "
 				   + "  FROM TB_STORE A "

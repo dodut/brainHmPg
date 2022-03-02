@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
@@ -204,194 +206,30 @@ var ai_log_event_sale_price = ""; // ai_log_event_mode가 sale 일때  매출 �
 		<!-- // Notice -->
 
 		<ul class="lst-board lst-body">
-			<li class="clr">
-								<div class="td col_no">16</div>
-				<div class="td col_subject">
-					<div style="padding-left:0px;">
-						<a href="Javascript:secret_read2('7837')">
-																												<span>전자경매시스템 견적 문의드립니다.</span>
-							
-														<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret">																																		</a>
+			<c:forEach items="${ntList}" var="ntItem">
+				<li class="clr">
+					<div class="td col_no">${ntItem.num}</div>
+					<div class="td col_subject">
+						<div style="padding-left:0px;">
+							<a href="Javascript:secret_read2('7837')">
+								<script type="text/javascript">
+									if(${ntItem.grpord} != 1) {
+										document.write('<span class="ui-ico reply" title="reply"></span>');
+									}
+								</script>
+								<span>${ntItem.title}</span>
+								<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret">
+							</a>
+						</div>
 					</div>
-				</div>
-								<div class="td inf col_name">
-					
-										전창민 									</div>				<div class="td inf col_date">2021-10-14</div>				<div class="td inf col_hit"><span class="txt">조회수:</span>3</div>											</li><li class="clr">
-								<div class="td col_no">15</div>
-				<div class="td col_subject">
-					<div style="padding-left:15px;">
-						<a href="Javascript:secret_read2('7838')">
-																								<span class="ui-ico reply" title="reply"></span>
-																																				<span>전자경매시스템 견적 문의드립니다.</span>
-							
-														<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret">																																		</a>
+					<div class="td inf col_name">${ntItem.rgwriter}</div>
+					<div class="td inf col_date">${ntItem.subDate}</div>
+					<div class="td inf col_hit">
+						<span class="txt">조회수:</span>${ntItem.hits}
 					</div>
-				</div>
-								<div class="td inf col_name">
-					
-										(주)브레인컨설팅 									</div>				<div class="td inf col_date">2021-10-15</div>				<div class="td inf col_hit"><span class="txt">조회수:</span>4</div>											</li><li class="clr">
-								<div class="td col_no">14</div>
-				<div class="td col_subject">
-					<div style="padding-left:0px;">
-						<a href="Javascript:secret_read2('7496')">
-																												<span>수산물 전자 경매 시스템 견적 문의 (방수) 여부 필</span>
-							
-														<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret">																																		</a>
-					</div>
-				</div>
-								<div class="td inf col_name">
-					
-										수협 									</div>				<div class="td inf col_date">2021-08-09</div>				<div class="td inf col_hit"><span class="txt">조회수:</span>9</div>											</li><li class="clr">
-								<div class="td col_no">13</div>
-				<div class="td col_subject">
-					<div style="padding-left:15px;">
-						<a href="Javascript:secret_read2('7816')">
-																								<span class="ui-ico reply" title="reply"></span>
-																																				<span>수산물 전자 경매 시스템 견적 문의 (방수) 여부 필</span>
-							
-														<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret">																																		</a>
-					</div>
-				</div>
-								<div class="td inf col_name">
-					
-										(주)브레인컨설팅 									</div>				<div class="td inf col_date">2021-08-17</div>				<div class="td inf col_hit"><span class="txt">조회수:</span>2</div>											</li><li class="clr">
-								<div class="td col_no">12</div>
-				<div class="td col_subject">
-					<div style="padding-left:0px;">
-						<a href="Javascript:secret_read2('7370')">
-																												<span>전자잉크가격표시기 문의</span>
-							
-														<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret">																																		</a>
-					</div>
-				</div>
-								<div class="td inf col_name">
-					
-										문의자 									</div>				<div class="td inf col_date">2021-03-25</div>				<div class="td inf col_hit"><span class="txt">조회수:</span>5</div>											</li><li class="clr">
-								<div class="td col_no">11</div>
-				<div class="td col_subject">
-					<div style="padding-left:15px;">
-						<a href="Javascript:secret_read2('7372')">
-																								<span class="ui-ico reply" title="reply"></span>
-																																				<span>전자잉크가격표시기 문의</span>
-							
-														<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret">																																		</a>
-					</div>
-				</div>
-								<div class="td inf col_name">
-					
-										(주)브레인컨설팅 									</div>				<div class="td inf col_date">2021-03-26</div>				<div class="td inf col_hit"><span class="txt">조회수:</span>4</div>											</li><li class="clr">
-								<div class="td col_no">10</div>
-				<div class="td col_subject">
-					<div style="padding-left:0px;">
-						<a href="Javascript:secret_read2('7368')">
-																												<span>전자경매 관련 문의</span>
-							
-														<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret">																																		</a>
-					</div>
-				</div>
-								<div class="td inf col_name">
-					
-										권민아 									</div>				<div class="td inf col_date">2021-03-22</div>				<div class="td inf col_hit"><span class="txt">조회수:</span>11</div>											</li><li class="clr">
-								<div class="td col_no">9</div>
-				<div class="td col_subject">
-					<div style="padding-left:15px;">
-						<a href="Javascript:secret_read2('7369')">
-																								<span class="ui-ico reply" title="reply"></span>
-																																				<span>전자경매 관련 문의</span>
-							
-														<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret">																																		</a>
-					</div>
-				</div>
-								<div class="td inf col_name">
-					
-										(주)브레인컨설팅 									</div>				<div class="td inf col_date">2021-03-24</div>				<div class="td inf col_hit"><span class="txt">조회수:</span>8</div>											</li><li class="clr">
-								<div class="td col_no">8</div>
-				<div class="td col_subject">
-					<div style="padding-left:0px;">
-						<a href="Javascript:secret_read2('7037')">
-																												<span>응찰기 기능 문의</span>
-							
-														<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret">							<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_image.gif" height="12" alt="image">																											</a>
-					</div>
-				</div>
-								<div class="td inf col_name">
-					
-										제제 									</div>				<div class="td inf col_date">2020-08-12</div>				<div class="td inf col_hit"><span class="txt">조회수:</span>14</div>											</li><li class="clr">
-								<div class="td col_no">7</div>
-				<div class="td col_subject">
-					<div style="padding-left:15px;">
-						<a href="Javascript:secret_read2('7038')">
-																								<span class="ui-ico reply" title="reply"></span>
-																																				<span>응찰기 기능 문의</span>
-							
-														<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret">																																		</a>
-					</div>
-				</div>
-								<div class="td inf col_name">
-					
-										(주)브레인컨설팅 									</div>				<div class="td inf col_date">2020-08-14</div>				<div class="td inf col_hit"><span class="txt">조회수:</span>12</div>											</li><li class="clr">
-								<div class="td col_no">6</div>
-				<div class="td col_subject">
-					<div style="padding-left:0px;">
-						<a href="Javascript:secret_read2('7034')">
-																												<span>전자가격표시기 문의드립니다</span>
-							
-														<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret">																																		</a>
-					</div>
-				</div>
-								<div class="td inf col_name">
-					
-										천둥번개 									</div>				<div class="td inf col_date">2020-08-11</div>				<div class="td inf col_hit"><span class="txt">조회수:</span>8</div>											</li><li class="clr">
-								<div class="td col_no">5</div>
-				<div class="td col_subject">
-					<div style="padding-left:15px;">
-						<a href="Javascript:secret_read2('7036')">
-																								<span class="ui-ico reply" title="reply"></span>
-																																				<span>전자가격표시기 문의드립니다</span>
-							
-														<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret">																																		</a>
-					</div>
-				</div>
-								<div class="td inf col_name">
-					
-										(주)브레인컨설팅 									</div>				<div class="td inf col_date">2020-08-12</div>				<div class="td inf col_hit"><span class="txt">조회수:</span>7</div>											</li><li class="clr">
-								<div class="td col_no">4</div>
-				<div class="td col_subject">
-					<div style="padding-left:0px;">
-						<a href="Javascript:secret_read2('6996')">
-																												<span>전자경매시스템  견적문의</span>
-							
-														<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret">																																		</a>
-					</div>
-				</div>
-								<div class="td inf col_name">
-					
-										부여부여 									</div>				<div class="td inf col_date">2020-06-08</div>				<div class="td inf col_hit"><span class="txt">조회수:</span>8</div>											</li><li class="clr">
-								<div class="td col_no">3</div>
-				<div class="td col_subject">
-					<div style="padding-left:15px;">
-						<a href="Javascript:secret_read2('6998')">
-																								<span class="ui-ico reply" title="reply"></span>
-																																				<span>전자경매시스템  견적문의</span>
-							
-														<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret">																																		</a>
-					</div>
-				</div>
-								<div class="td inf col_name">
-					
-										(주)브레인컨설팅 									</div>				<div class="td inf col_date">2020-06-10</div>				<div class="td inf col_hit"><span class="txt">조회수:</span>11</div>											</li><li class="clr">
-								<div class="td col_no">2</div>
-				<div class="td col_subject">
-					<div style="padding-left:0px;">
-						<a href="Javascript:secret_read2('6270')">
-																												<span>전자경매 시스템 견적</span>
-							
-														<img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret">																																		</a>
-					</div>
-				</div>
-								<div class="td inf col_name">
-					
-										하진홍 									</div>				<div class="td inf col_date">2020-02-18</div>				<div class="td inf col_hit"><span class="txt">조회수:</span>10</div>											</li>		</ul>
+				</li>
+			</c:forEach>
+		</ul>
 
 			</div>
 

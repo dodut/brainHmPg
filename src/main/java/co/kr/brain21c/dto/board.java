@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class board {
 	
+	private String num;
+	private String subDate;
 	private String gnb;
 	private int seq;
 	private int grpno;
@@ -16,11 +18,12 @@ public class board {
 	private Date eddtm;
 	private String edwriter;
 	private String bdpw;
-	
 
 	@Override
 	public String toString() {
-		return "board [gnb=" + gnb + ""
+		return "board [num=" + num + ""
+				+ ", subDate=" + subDate + ""
+				+ ", gnb=" + gnb + ""
 				+ ", seq=" + seq + ""
 				+ ", grpno=" + grpno + ""
 				+ ", grpord=" + grpord + ""
@@ -34,6 +37,18 @@ public class board {
 				+ ", bdpw=" + bdpw + "]";
 	}
 
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
+		this.num = num;
+	}
+	public String getSubDate() {
+		return subDate;
+	}
+	public void setSubDate(String subDate) {
+		this.subDate = subDate;
+	}
 	public String getGnb() {
 		return gnb;
 	}

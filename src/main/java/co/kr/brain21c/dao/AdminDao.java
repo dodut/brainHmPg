@@ -32,7 +32,6 @@ public interface AdminDao{
 */
 
 	ArrayList<contact> getContact();
-
-
+	ArrayList<board> getMainNotic();
 
 }

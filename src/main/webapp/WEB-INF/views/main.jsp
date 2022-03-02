@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
@@ -42,17 +43,9 @@ var isKitkat = window.navigator.userAgent.search( "AnybuildApp Android 4.4") > -
 <script type="text/javascript" id='naver_map_js' ></script>
 <script type="text/javascript" id='dynamic_js' ></script>
 
-
-
-
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css">
 
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-
-
-
-
-
 
 <!--[if lt IE 9]>
  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -123,66 +116,24 @@ var ai_log_event_sale_price = ""; // ai_log_event_mode가 sale 일때  매출 �
 
 <div class="pm-board_list_notice">
 	<ul>
-		<li>
-			<a href="/bbs_shop/read.htm?board_code=sub3_1&idx=7953&cate_sub_idx=0">
-				<dl>
-					<dt>
-                      <span class="num">01</span>
-                      <b>21년 12월 무안농협 스마트III-DOUBLE 적용 </b>
-                      <p>
-                        21년 12월 무안농협 스마트III-DOUBLE 적용 완료하였습니다.                      </p>
-					</dt>
-					<dd>2021-12-30</dd>
-				</dl>
-			</a>
-		</li><li>
-			<a href="/bbs_shop/read.htm?board_code=sub3_1&idx=7952&cate_sub_idx=0">
-				<dl>
-					<dt>
-                      <span class="num">02</span>
-                      <b>21년 12월 용현농협 전자경매시스템 신규 구축 </b>
-                      <p>
-                        21년 12월 용현농협 전자경매시스템 신규 구축 완료하였습니다.                      </p>
-					</dt>
-					<dd>2021-12-30</dd>
-				</dl>
-			</a>
-		</li><li>
-			<a href="/bbs_shop/read.htm?board_code=sub3_1&idx=7875&cate_sub_idx=0">
-				<dl>
-					<dt>
-                      <span class="num">03</span>
-                      <b>21년 10월 홍성축산농협 스마트III-DOUBLE 적용</b>
-                      <p>
-                        21년 10월 홍성축산농협 스마트III-DOUBLE 적용 완료하였습니다.                      </p>
-					</dt>
-					<dd>2021-11-23</dd>
-				</dl>
-			</a>
-		</li><li>
-			<a href="/bbs_shop/read.htm?board_code=sub3_1&idx=7410&cate_sub_idx=0">
-				<dl>
-					<dt>
-                      <span class="num">04</span>
-                      <b>21년 6월  남원원예농협 농산물 전자경매시스템 구축 </b>
-                      <p>
-                        21년 6월 남원원예농협 농산물 전자경매시스템 구축 완료하였습니다.                      </p>
-					</dt>
-					<dd>2021-06-15</dd>
-				</dl>
-			</a>
-		</li>			</ul>
+		<c:forEach items="${ntList}" var="ntItem">
+			<li>
+				<a href="/bbs_shop/read.htm?board_code=sub3_1&idx=7953&cate_sub_idx=0">
+					<dl>
+						<dt>
+							<span class="num">${ntItem.num}</span>
+							<b>${ntItem.title}</b>
+							<p>${ntItem.cntn}</p>
+						</dt>
+						<dd>${ntItem.subDate}</dd>
+					</dl>
+				</a>
+			</li>
+		</c:forEach>
+	</ul>
 </div>  <a href="/bbs/sub3_1" class="more">More</a>
 </section>
 </div>
-<!--<section class="business">
-  <h3>Business</h3>
-  <ul>
-    <li><a href="/page/sub2_1">시스템사업본부</a></li>
-    <li class="its"><a href="/page/sub2_4">ITS사업본부</a></li>
-    <li class="history"><a href="/myboard/sub1_2">연혁 &amp; 실적</a></li>
-  </ul>
-</section>-->
 <section class="business2">
   <h3>Business</h3>
   <style>

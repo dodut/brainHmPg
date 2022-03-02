@@ -8,32 +8,32 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.kr.brain21c.dto.board;
-import co.kr.brain21c.paging.Criteria;
-import co.kr.brain21c.service.NoticeService;
+import co.kr.brain21c.service.EnquiryService;
 
 @Controller
-public class Noticecontroller {
+public class EnquiryController {
 	
-
 	@Autowired
-	private NoticeService NoticeService;
+	private EnquiryService enquiryService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(Comcontroller.class);
-
 	
-	@RequestMapping("/bbs/sub3_1")
-	public ModelAndView noticeList(@ModelAttribute("criteria") Criteria criteria, HttpServletRequest req) {
-		
+	@RequestMapping("/bbs/sub3_2") 
+	public ModelAndView enquiry(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		ArrayList<board> nList = NoticeService.getNoticeList(criteria);
-	
-		mv.addObject("nList", nList);
-		mv.setViewName("sub3_1");
+		ArrayList<board> ntList  = new ArrayList<board>();
+		
+		try {
+			ntList = enquiryService.getEnquiry();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		mv.addObject("ntList", ntList);
+		mv.setViewName("sub3_2");
 		
 		return mv;
 	}

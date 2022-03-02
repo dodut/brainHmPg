@@ -1,7 +1,6 @@
 package co.kr.brain21c.service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +9,6 @@ import co.kr.brain21c.dao.AdminDao;
 import co.kr.brain21c.dto.board;
 import co.kr.brain21c.dto.contact;
 import co.kr.brain21c.dto.history;
-import co.kr.brain21c.paging.Criteria;
 
 
 @Service("AdminService")
@@ -29,7 +27,13 @@ public class AdminServiceImpl implements AdminService{
 	}
 	
 
-	
+	@Override
+	public ArrayList<board> getMainNotic() {
+		ArrayList<board> noticList = new ArrayList<board>();
+		noticList = AdminDao.getMainNotic();
+		return noticList;
+		
+	}
 	
 	
 	

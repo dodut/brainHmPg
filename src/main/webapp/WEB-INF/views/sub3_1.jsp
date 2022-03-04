@@ -125,18 +125,18 @@
 		
 			#pm2-snb .dep3 {padding:0px 0;background:#f8f8f8; border-top:1px solid #c6c6c6; }
 			#pm2-snb .dep3 > li > a {padding:10px 20px;font-size:14px;color:#333; border-top:1px dashed #c6c6c6}
-		  #pm2-snb .dep3 > li:first-child >a {border-top:0;}
+		  	#pm2-snb .dep3 > li:first-child >a {border-top:0;}
 			#pm2-snb .dep3 > li > a.bt_img {padding:0}
 			#pm2-snb .dep3 > li.on > a,
 			#pm2-snb .dep3 > li:hover > a {font-weight:bold;color:#1479c1}
-		  
-		  #pm2-snb h3 {height:80px; line-height:80px; background:#1479c0; color:#fff; font-size:20px; text-align:center;}
+			
+		  	#pm2-snb h3 {height:80px; line-height:80px; background:#1479c0; color:#fff; font-size:20px; text-align:center;}
 		</style>
 
 			<div id="pm2-snb">
 			  <h3>고객지원</h3>
 				<ul class="dep2">
-					<li class="on"><a href="/bbs/sub3_1">공지사항	</a></li>
+					<li class="on"><a href="/bbs/sub3_1">공지사항</a></li>
 					<li><a href="/myboard/sub3_3">담당자안내</a></li>					
 					<li><a href="/bbs/sub3_2">문의게시판</a></li>			
 				</ul>
@@ -150,7 +150,7 @@
 			<div id="scbd" class="scbd co-basic-simple">
 				<div id="lay_hd" class="lay_hd">
 					<div class="hgroup">
-						<h1><a href="/bbs_shop/list.htm?me_popup=&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&keyfield=&key=&page=&y=&m=">공지사항</a></h1>
+						<h1><a href="/bbs/sub3_1">공지사항</a></h1>
 						<ul>
 							<li>
 								<a href="#" id="btnToggleSearch">검색<i class="ui-ico search"></i></a>
@@ -158,17 +158,26 @@
 						</ul>
 					</div>
 					<div id="toggleSearch" class="toggleSearch">
-						<form name='search_form' method='get' action='/bbs_shop/list.htm'>
+						<form name='search_form' method='get' action='/bbs/sub3_1'>
 							<input type='hidden' name='list_mode' value='board'>
 							<input type='hidden' name='cate_sub_idx' value='0'>
 							<input type='hidden' name='search_first_subject' value=''>
 							<input type='hidden' name='board_code' value='sub3_1'>
 							<input type='hidden' name='me_popup' value='0'>
-							<input type='hidden' name='auto_frame' value=''>				
+							<input type='hidden' name='auto_frame' value=''>
+							
+
+							<c:if test ="${criteria.currentPageNo == null}">
+							<input type='hidden' name='page' value='1'>			
+							</c:if>		
+							<c:if test ="${criteria.currentPageNo != null}">
+							<input type='hidden' name='page' value='${criteria.currentPageNo}'>			
+							</c:if>							
+								
 							<fieldset>
 								<legend class="blind">게시글 검색</legend>
 								<div>
-									<input type="text" name="search_key" id="search_key" maxlength="30" value="" placeholder="검색어">
+									<input type="text" name="search_key" id="search_key" maxlength="30" value="${search_key}" placeholder="검색어">
 									<button class="ui-ico">검색</button>
 								</div>
 							</fieldset>
@@ -191,21 +200,23 @@
 					<!-- // Notice -->
 			
 					<ul class="lst-board lst-body">
-						<c:forEach items="${nList }" var="nItem">
+					<c:set var="boardNo" value="${listNo}"/>
+						<c:forEach items="${nList}" var="nItem">
 							<li class="clr">
-								<div class="td col_no">${nItem.seq}</div>
+								<div class="td col_no"><c:out value="${boardNo }"/></div>
 								<div class="td col_subject">
 									<div style="padding-left:0px;">
-										<a href="#">
+										<a href="/bbs/sub3_1_view?seq=${nItem.seq}">
 											<span>${nItem.title}</span>
 										</a>
 									</div>
 								</div>
 								<div class="td inf col_date">
-									<fmt:formatDate value="${nItem.rgdtm}" pattern="yyyy-mm-dd" />
+									<fmt:formatDate value="${nItem.rgdtm}" pattern="yyyy-MM-dd" />
 								</div>				
 								<div class="td inf col_hit"><span class="txt">조회수:</span>${nItem.hits}</div>											
 							</li>
+							<c:set var="boardNo" value="${boardNo - 1 }"/>
 						</c:forEach>	
 					</ul>
 			
@@ -213,10 +224,26 @@
 
 				<!-- pagenate -->
  				<div class="paginate">
-					<strong>1</strong>
-					<a href="/bbs_shop/list.htm?page=2&board_code=sub3_1">2</a>
-					<a href="/bbs_shop/list.htm?page=3&board_code=sub3_1">3</a>
-					<a href="/bbs_shop/list.htm?page=2&board_code=sub3_1" class="dir" title="다음"><span>›</span></a>			
+ 					
+ 					<c:if test="${criteria2.currentPageNo > 1 }">
+ 						<a href="/bbs/sub3_1?page=${criteria2.currentPageNo - 1}&board_code=sub3_1&search_key=${search_key}" class="dir" title="이전"><span>‹</span></a>	
+ 					</c:if>
+
+ 					<c:forEach var="num" begin="${criteria2.blockBegin}" end="${criteria2.blockEnd}">
+ 						<c:choose>
+							<c:when test="${num == criteria2.currentPageNo}">
+								<strong>${num}</strong>
+							</c:when>
+							<c:otherwise>
+								<a href='/bbs/sub3_1?page=${num}&board_code=sub3_1&search_key=${search_key}'>${num}</a>
+							</c:otherwise>
+						</c:choose>
+ 					</c:forEach>
+ 					
+ 					<c:if test="${criteria2.currentPageNo < criteria2.totalPageNo }">
+						<a href="/bbs/sub3_1?page=${criteria2.currentPageNo + 1}&board_code=sub3_1&search_key=${search_key}" class="dir" title="다음"><span>›</span></a>	
+ 					</c:if>
+		
 				</div>	
 				<!-- // pagenate -->
  				
@@ -391,15 +418,16 @@
 	}
 	
 	function writeArticle(){
-											alert("본 게시판은 로그인을 해야만 글을 쓸 수 있습니다.");
-							}
-	function readArticle(idx){
+		alert("본 게시판은 로그인을 해야만 글을 쓸 수 있습니다.");
+	}
 	
-				location.href="/bbs_shop/read.htm?me_popup=0&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=1&y=&m=&idx="+idx;
-		}
+	function readArticle(idx){
+		location.href="/bbs_shop/read.htm?me_popup=0&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=1&y=&m=&idx="+idx;
+	}
+	
 	function reply_readArticle(idx){
-				location.href="/bbs_shop/read.htm?me_popup=0&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=1&idx="+idx;
-		}
+			location.href="/bbs_shop/read.htm?me_popup=0&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_1&search_key=&key=&page=1&idx="+idx;
+	}
 	
 	function no_write(){
 		alert("본 게시판은 회원 전용 게시판입니다.\n\n로그인하신후 다시 이용하시기 바랍니다.");

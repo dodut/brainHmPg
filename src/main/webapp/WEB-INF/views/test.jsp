@@ -3,11 +3,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>(주)브레인컨설팅</title>
+<title></title>
 </head>
 <body>
-	<script type="text/javascript">   
-		location.href="/main";
-	</script>
+test.jsp
+test.jsp
+test.jsp
+
 </body>
 </html>

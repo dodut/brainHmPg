@@ -26,8 +26,6 @@ public class NoticeDaoImpl implements NoticeDao {
 			sql += "AND title LIKE '%" + search_key + "%' ";
 		}
 
-		System.out.println("selectNoticeTotalCount 쿼리 : " + sql.toString());
-
 		int count = jdbcTemplate.queryForObject(sql, Integer.class);
 
 		return count;
@@ -52,7 +50,7 @@ public class NoticeDaoImpl implements NoticeDao {
 
 		List<board> nList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(board.class));
 
-		nList.forEach(System.out::println);
+		//nList.forEach(System.out::println);
 
 		return (ArrayList<board>) nList;
 	}
@@ -60,22 +58,13 @@ public class NoticeDaoImpl implements NoticeDao {
 	@Override
 	public board getNoticeView(int seq) throws Exception {
 		String sql = "SELECT * FROM board WHERE gnb = 'A01' and seq='" + seq + "'";
-		 
+
 		List<board> nList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(board.class));
-		
-		System.out.println("===============");
-		System.out.println(nList.get(0));
-		
-		
-		
-		
+
+		//System.out.println("===============");
+		//System.out.println(nList.get(0));
+
 		return nList.get(0);
 	}
-	
-	
-	
-	
-	
-	
 
 }

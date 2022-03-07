@@ -1,71 +1,85 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<div id="header">
     <div class="lnb_bg"></div>
     <div class="mnb_bg"></div>
     <div class="inner">
     <h1><a href="/main"><img src="/img_up/shop_pds/brin/design/img/logo_t.png" alt="(주)브레인컨설팅"></a></h1>
     <nav>
-      <h2 class="hidden">카테고리</h2>
+    <h2 class="hidden">카테고리</h2>
       
-<style>
-#pm2-lnb {position:relative;z-index:10;}
-#pm2-lnb * {box-sizing:border-box}
-#pm2-lnb ul {margin:0;padding:0;list-style:none}
-#pm2-lnb a {display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-#pm2-lnb a > img {vertical-align:top}
+	<style>
+		#pm2-lnb {position:relative;z-index:10;}
+		#pm2-lnb * {box-sizing:border-box}
+		#pm2-lnb ul {margin:0;padding:0;list-style:none}
+		#pm2-lnb a {display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+		#pm2-lnb a > img {vertical-align:top}
+		
+		#pm2-lnb .dep1 {position:relative}
+		#pm2-lnb .dep1:after {content:'';display:block;clear:both}
+		#pm2-lnb .dep1 > li {float:left}
+		#pm2-lnb .dep1 > li > a {padding:34px 50px 32px;font-size:17px; font-weight:bold;color:#393939}
+		#pm2-lnb .dep1 > li > a.bt_img {padding:0}
+		#pm2-lnb .dep1 > li.on > a,
+		#pm2-lnb .dep1 > li:hover > a {color:#1479c0;}
+		 #pm2-lnb .dep1 > li:hover > a {background:url('/img_up/shop_pds/brin/design/img/lnb_ov.png') no-repeat center bottom;}
+		#pm2-lnb .dep1 > li > div {display:none;overflow:hidden;position:absolute;text-align:left}
+		#pm2-lnb .dep1 > li:hover > div {display:block;background:red}
+		
+		#pm2-lnb .dep2 {display:inline-block;padding:1px 20px 0;background:#1479c0;vertical-align:top;white-space:nowrap}
+		#pm2-lnb .dep2 > li {display:inline-block;font-size:0}
+		#pm2-lnb .dep2 > li > a {display:block;padding:10px 20px;font-size:14px;color:#fff;}
+		#pm2-lnb .dep2 > li > a.bt_img {padding:0}
+		#pm2-lnb .dep2 > li.on > a,
+		#pm2-lnb .dep2 > li:hover > a {color:#f6ff6a; font-weight:bold; text-decoration:underline}
+	</style>
 
-#pm2-lnb .dep1 {position:relative}
-#pm2-lnb .dep1:after {content:'';display:block;clear:both}
-#pm2-lnb .dep1 > li {float:left}
-#pm2-lnb .dep1 > li > a {padding:34px 50px 32px;font-size:17px; font-weight:bold;color:#393939}
-#pm2-lnb .dep1 > li > a.bt_img {padding:0}
-#pm2-lnb .dep1 > li.on > a,
-#pm2-lnb .dep1 > li:hover > a {color:#1479c0;}
- #pm2-lnb .dep1 > li:hover > a {background:url('/img_up/shop_pds/brin/design/img/lnb_ov.png') no-repeat center bottom;}
-#pm2-lnb .dep1 > li > div {display:none;overflow:hidden;position:absolute;text-align:left}
-#pm2-lnb .dep1 > li:hover > div {display:block;background:red}
-
-#pm2-lnb .dep2 {display:inline-block;padding:1px 20px 0;background:#1479c0;vertical-align:top;white-space:nowrap}
-#pm2-lnb .dep2 > li {display:inline-block;font-size:0}
-#pm2-lnb .dep2 > li > a {display:block;padding:10px 20px;font-size:14px;color:#fff;}
-#pm2-lnb .dep2 > li > a.bt_img {padding:0}
-#pm2-lnb .dep2 > li.on > a,
-#pm2-lnb .dep2 > li:hover > a {color:#f6ff6a; font-weight:bold; text-decoration:underline}
-</style>
-
-<div id="pm2-lnb">
-	<ul class="dep1">
-		<li>
-			<a href="/page/sub1_1">회사소개</a>
+	<div id="pm2-lnb"> <!-- PC 메뉴 -->
+		<ul class="dep1">
+			<li>
+				<a href="/page/sub1_1">회사소개</a>
 				<div>
 					<ul class="dep2">
-						<li><a href="/page/sub1_1">CEO인사말</a></li><li><a href="/myboard/sub1_2">연혁&실적</li><li><a href="/page/sub1_3">조직도</a></li><li><a href="/page/sub1_4">찾아오시는 길</a></li>
+						<li><a href="/page/sub1_1">CEO인사말</a></li>
+						<li><a href="/myboard/sub1_2">연혁&실적</a></li>
+						<li><a href="/page/sub1_3">조직도</a></li>
+						<li><a href="/page/sub1_4">찾아오시는 길</a></li>
 					</ul>
 				</div>
-		</li><li>
-			<a href="/page/sub2_1">사업부문</a>
+			</li>
+			<li>
+				<a href="/page/sub2_1">사업부문</a>
 				<div>
 					<ul class="dep2">
-						<li><a href="/page/sub2_1">전자경매사업부</li><li><a href="/page/sub2_2">POS사업부</a></li><li><a href="/page/sub2_3">ICT사업부</a></li><li><a href="/page/sub2_6">시너지유통사업팀</a></li><li><a href="/page/sub2_4">SI사업부</a></li>
+						<li><a href="/page/sub2_1">전자경매사업부</a></li>
+						<li><a href="/page/sub2_2">POS사업부</a></li>
+						<li><a href="/page/sub2_3">ICT사업부</a></li>
+						<li><a href="/page/sub2_6">시너지유통사업팀</a></li>
+						<li><a href="/page/sub2_4">SI사업부</a></li>
 					</ul>
 				</div>
-		</li><li>
-			<a href="/bbs/sub3_1">고객지원</a>
+			</li>
+			<li <c:if test ="${ board_code eq 'sub3_1' || board_code eq 'sub3_3' || board_code eq 'sub3_2' }">class="on"</c:if> >  
+				<a href="/bbs/sub3_1">고객지원</a>
+				<div>
+					<ul class="dep2"> 
+						<li <c:if test ="${board_code eq 'sub3_1'}">class="on"</c:if> ><a href="/bbs/sub3_1">공지사항</a></li>
+						<li <c:if test ="${board_code eq 'sub3_3'}">class="on"</c:if>><a href="/myboard/sub3_3">담당자안내</a></li>
+						<li <c:if test ="${board_code eq 'sub3_2'}">class="on"</c:if>><a href="/bbs/sub3_2">문의게시판</a></li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<a href="/page/sub4_1">인재채용</a>
 				<div>
 					<ul class="dep2">
-						<li><a href="/bbs/sub3_1">공지사항	</a></li><li><a href="/myboard/sub3_3">담당자안내</li><li><a href="/bbs/sub3_2">문의게시판</a></li>
+						<li><a href="/page/sub4_1">채용절차</a></li>
+						<li><a href="/page/sub4_2">복리후생</a></li>
 					</ul>
 				</div>
-		</li><li>
-			<a href="/page/sub4_1">인재채용</a>
-				<div>
-					<ul class="dep2">
-						<li><a href="/page/sub4_1">채용절차</a></li><li><a href="/page/sub4_2">복리후생</a></li>
-					</ul>
-				</div>
-		</li>
-	</ul>
-</div>
+			</li>
+		</ul>
+	</div>
 
 <script>
 var navigationHorizon = new NavigationHorizon($('#pm2-lnb'));
@@ -152,7 +166,7 @@ function NavigationHorizon($this){
  
 </style>
 
-<div id="pm2-mnb">
+<div id="pm2-mnb">	<!-- Mobile 메뉴 -->
 	<div class="toggle">
       <div class="menu">
         <span class="line"></span>
@@ -166,28 +180,38 @@ function NavigationHorizon($this){
 				<a href="/page/sub1_1">회사소개</a>
 					<div>
 						<ul class="dep2">
-							<li><a href="/page/sub1_1">CEO인사말</li><li><a href="/myboard/sub1_2">연혁&실적</li><li><a href="/page/sub1_3">조직도</li><li><a href="/page/sub1_4">찾아오시는 길</li>
+							<li><a href="/page/sub1_1">CEO인사말</a></li>
+							<li><a href="/myboard/sub1_2">연혁&실적</a></li>
+							<li><a href="/page/sub1_3">조직도</a></li>
+							<li><a href="/page/sub1_4">찾아오시는 길</a></li>
 						</ul>
 					</div>
 			</li><li>
 				<a href="/page/sub2_1">사업부문</a>
 					<div>
 						<ul class="dep2">
-							<li><a href="/page/sub2_1">전자경매사업부</li><li><a href="/page/sub2_2">POS사업부</li><li><a href="/page/sub2_3">ICT사업부</li><li><a href="/page/sub2_6">시너지유통사업팀</li><li><a href="/page/sub2_4">SI사업부</a></li>
+							<li><a href="/page/sub2_1">전자경매사업부</a></li>
+							<li><a href="/page/sub2_2">POS사업부</a></li>
+							<li><a href="/page/sub2_3">ICT사업부</a></li>
+							<li><a href="/page/sub2_6">시너지유통사업팀</a></li>
+							<li><a href="/page/sub2_4">SI사업부</a></li>
 						</ul>
 					</div>
 			</li><li>
 				<a href="/bbs/sub3_1">고객지원</a>
 					<div>
 						<ul class="dep2">
-							<li><a href="/bbs/sub3_1">공지사항	</li><li><a href="/myboard/sub3_3">담당자안내</li><li><a href="/bbs/sub3_2">문의게시판</a></li>
+							<li <c:if test ="${board_code eq 'sub3_1'}">class="on"</c:if> ><a href="/bbs/sub3_1">공지사항</a></li>
+							<li><a href="/myboard/sub3_3">담당자안내</a></li>
+							<li><a href="/bbs/sub3_2">문의게시판</a></li>
 						</ul>
 					</div>
 			</li><li>
 				<a href="/page/sub4_1">인재채용</a>
 					<div>
 						<ul class="dep2">
-							<li><a href="/page/sub4_1">채용절차</li><li><a href="/page/sub4_2">복리후생</li>
+							<li><a href="/page/sub4_1">채용절차</a></li>
+							<li><a href="/page/sub4_2">복리후생</a></li>
 						</ul>
 					</div>
 			</li>

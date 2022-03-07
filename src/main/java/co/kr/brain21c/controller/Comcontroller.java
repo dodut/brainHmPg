@@ -16,6 +16,7 @@ import co.kr.brain21c.dto.contact;
 import co.kr.brain21c.dto.history;
 import co.kr.brain21c.service.AdminService;
 import co.kr.brain21c.service.EnquiryService;
+import co.kr.brain21c.service.NoticeService;
 
 @Controller 
 public class Comcontroller {  
@@ -123,6 +124,7 @@ public class Comcontroller {
 			e.printStackTrace();
 		}
 		mv.addObject("ctList", ctList);
+		mv.addObject("board_code", "sub3_3");
 		mv.setViewName("sub3_3"); 
 		
 		return mv;

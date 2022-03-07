@@ -99,50 +99,15 @@
 <script type="text/javascript" id="ai_log_default_script" src="https://chk101.ai-log.biz/etc/connect_ai_set.js?ver=2"></script>
 </head>
 
-
 <body>
-<jsp:include page="../views/comm/gnb.jsp"/>	
+<jsp:include page="../views/comm/gnb.jsp"/>
 
 <div id="sub">
 	<div class="sub_visual"></div>
 	<div class="inner">
-		<div class="snb">
-  
-		<style>
-			#pm2-snb {position:relative;z-index:10}
-			#pm2-snb * {box-sizing:border-box}
-			#pm2-snb ul {margin:0;padding:0;list-style:none}
-			#pm2-snb a {display:block;overflow:hidden;white-space:normal;text-overflow:ellipsis}
-			#pm2-snb a > img {vertical-align:top}
 		
-			#pm2-snb .dep2 {position:relative; border:1px solid #c6c6c6; border-bottom:0;}
-			#pm2-snb .dep2 > li {border-bottom:1px solid #c6c6c6;}
-			#pm2-snb .dep2 > li:first-child {border-top:none}
-			#pm2-snb .dep2 > li > a {padding:27px 20px; font-size:15px;color:#3f3f3f;}
-			#pm2-snb .dep2 > li > a.bt_img {padding:0}
-			#pm2-snb .dep2 > li.on > a,
-			#pm2-snb .dep2 > li:hover > a {background:#f0f0f0; font-weight:bold; color:#1e3d75; }
-		
-			#pm2-snb .dep3 {padding:0px 0;background:#f8f8f8; border-top:1px solid #c6c6c6; }
-			#pm2-snb .dep3 > li > a {padding:10px 20px;font-size:14px;color:#333; border-top:1px dashed #c6c6c6}
-		  	#pm2-snb .dep3 > li:first-child >a {border-top:0;}
-			#pm2-snb .dep3 > li > a.bt_img {padding:0}
-			#pm2-snb .dep3 > li.on > a,
-			#pm2-snb .dep3 > li:hover > a {font-weight:bold;color:#1479c1}
-			
-		  	#pm2-snb h3 {height:80px; line-height:80px; background:#1479c0; color:#fff; font-size:20px; text-align:center;}
-		</style>
-
-			<div id="pm2-snb">
-			  <h3>고객지원</h3>
-				<ul class="dep2">
-					<li class="on"><a href="/bbs/sub3_1">공지사항</a></li>
-					<li><a href="/myboard/sub3_3">담당자안내</a></li>					
-					<li><a href="/bbs/sub3_2">문의게시판</a></li>			
-				</ul>
-			</div>    
-		</div><!-- snb end -->
-		
+  		<jsp:include page="../views/comm/snb.jsp"/>
+  		
 	    <div class="cont">
 			<h3>공지사항</h3>
 			<p class="navi">홈 &gt; 고객지원 &gt; 공지사항</p>
@@ -203,10 +168,10 @@
 					<c:set var="boardNo" value="${listNo}"/>
 						<c:forEach items="${nList}" var="nItem">
 							<li class="clr">
-								<div class="td col_no"><c:out value="${boardNo }"/></div>
+								<div class="td col_no"><c:out value="${boardNo}"/></div>
 								<div class="td col_subject">
 									<div style="padding-left:0px;">
-										<a href="/bbs/sub3_1_view?seq=${nItem.seq}">
+										<a href="/bbs/sub3_1_view?seq=${nItem.seq}&page=${currentPageNo}&board_code=sub3_1&search_key=${search_key}">
 											<span>${nItem.title}</span>
 										</a>
 									</div>
@@ -249,6 +214,7 @@
  				
 			</div> <!-- scbd end -->   
 		</div> <!-- cont end -->
+		
 	</div> <!-- inner end -->
 </div> <!-- sub end -->
 
@@ -329,21 +295,20 @@
 	function tab_open2(no){
 		obj_arr = new Array();
 		obj_arr[0] = document.getElementById("tab_content_41");
-	obj_arr[1] = document.getElementById("tab_content_40");
-	obj_arr[2] = document.getElementById("tab_content_39");
-	obj_arr[3] = document.getElementById("tab_content_38");
-	obj_arr[4] = document.getElementById("tab_content_37");
-	obj_arr[5] = document.getElementById("tab_content_36");
-	obj_arr[6] = document.getElementById("tab_content_35");
-	obj_arr[7] = document.getElementById("tab_content_34");
-	obj_arr[8] = document.getElementById("tab_content_33");
-	obj_arr[9] = document.getElementById("tab_content_32");
-	obj_arr[10] = document.getElementById("tab_content_31");
-	obj_arr[11] = document.getElementById("tab_content_30");
-	obj_arr[12] = document.getElementById("tab_content_29");
-	obj_arr[13] = document.getElementById("tab_content_28");
-	obj_arr[14] = document.getElementById("tab_content_27");
-	;
+		obj_arr[1] = document.getElementById("tab_content_40");
+		obj_arr[2] = document.getElementById("tab_content_39");
+		obj_arr[3] = document.getElementById("tab_content_38");
+		obj_arr[4] = document.getElementById("tab_content_37");
+		obj_arr[5] = document.getElementById("tab_content_36");
+		obj_arr[6] = document.getElementById("tab_content_35");
+		obj_arr[7] = document.getElementById("tab_content_34");
+		obj_arr[8] = document.getElementById("tab_content_33");
+		obj_arr[9] = document.getElementById("tab_content_32");
+		obj_arr[10] = document.getElementById("tab_content_31");
+		obj_arr[11] = document.getElementById("tab_content_30");
+		obj_arr[12] = document.getElementById("tab_content_29");
+		obj_arr[13] = document.getElementById("tab_content_28");
+		obj_arr[14] = document.getElementById("tab_content_27");	
 	
 		var obj = document.getElementById("tab_content_"+no);
 	

@@ -51,7 +51,10 @@ public class Noticecontroller {
 		}
 
 		int listNo = totalCount - criteria2.getRecordsPerPage() * (currentPageNo - 1);
-
+		
+		
+	 
+		mv.addObject("board_code", "sub3_1");
 		mv.addObject("listNo", listNo);
 		mv.addObject("search_key", search_key);
 		mv.addObject("currentPageNo", currentPageNo);
@@ -70,11 +73,36 @@ public class Noticecontroller {
 		int seq = Integer.parseInt(req.getParameter("seq"));
 
 		board board = NoticeService.getNoticeView(seq);
+		
+		System.out.println("board_code : " + req.getParameter("board_code"));
+		//System.out.println("currentPageNo : " + currentPageNo);
+		//System.out.println("search_key : " + search_key);
 
+		mv.addObject("board_code", "sub3_1");
 		mv.addObject("dto", board);
+		mv.addObject("search_key", search_key);
+		mv.addObject("currentPageNo", currentPageNo);
 		mv.setViewName("sub3_1_view");
 
 		return mv;
 	}
+	
+	@RequestMapping(value = "/bbs/sub3_1_print", method = RequestMethod.GET)
+	public ModelAndView noticeViewPrint(@RequestParam("seq") int seq, HttpServletRequest req) throws Exception {
+		ModelAndView mv = new ModelAndView();
+
+		board board = NoticeService.getNoticeView(seq);
+		
+		System.out.println("board_code : " + req.getParameter("board_code"));
+		//System.out.println("currentPageNo : " + currentPageNo);
+		//System.out.println("search_key : " + search_key);
+
+		mv.addObject("board_code", "sub3_1");
+		mv.addObject("dto", board);
+		mv.setViewName("sub3_1_print");
+
+		return mv;
+	}	
+	
 
 }

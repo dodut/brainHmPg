@@ -211,7 +211,7 @@ var ai_log_event_sale_price = ""; // ai_log_event_mode가 sale 일때  매출 �
 					<div class="td col_no">${ntItem.num}</div>
 					<div class="td col_subject">
 						<div style="padding-left:0px;">
-							<a href="Javascript:secret_read2('7837')">
+							<a href="Javascript:secret_read2('${ntItem.seq}')">
 								<script type="text/javascript">
 									if(${ntItem.grpord} != 1) {
 										document.write('<span class="ui-ico reply" title="reply"></span>');
@@ -442,18 +442,19 @@ function ToggleAll1(){
 }
 
 function mem_secret_no_read(){
-						alert("본 게시글은 로그인을 해야만 볼수 있습니다.");
-			}
+	alert("본 게시글은 로그인을 해야만 볼수 있습니다.");
+}
 
 function secret_no_read2(idx){
 	secret_read2(idx);
 	//alert("본 게시글은 [회원 전용 비밀글]로 설정되어 있습니다.\n\n [회원 전용 비밀글]은 관리자 또는 작성자만 볼수 있습니다.");
 }
 
+// 비번 체크
 function secret_read2(idx){
-			var secret_read2_win = window.open('/bbs_shop/popup/pwd_chk_form.htm?pwd_mode=board_secret&me_popup=0&auto_frame=&cate_sub_idx=0&search_first_subject=&list_mode=board&board_code=sub3_2&search_key=&key=&page=1&idx='+idx,'secret_read2_win','top=150,left=300,width=330,height=200,scrollbars=no');
-		secret_read2_win.focus();
-	}
+	var secret_read2_win = window.open('/bbs/popup/pwd_chk_form?pwd_mode=board_secret&list_mode=board&board_code=sub3_2&search_key=&key=&page=1&seq='+idx,'secret_read2_win','top=150,left=300,width=330,height=200,scrollbars=no');
+	secret_read2_win.focus();
+}
 
 function tmp_div2_close(){
 	tmp_div2.style.display = 'none';

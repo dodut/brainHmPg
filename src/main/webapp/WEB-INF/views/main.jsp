@@ -82,7 +82,7 @@ var isKitkat = window.navigator.userAgent.search( "AnybuildApp Android 4.4") > -
 	<ul>
 		<c:forEach items="${ntList}" var="ntItem">
 			<li>
-				<a href="/bbs_shop/read.htm?board_code=sub3_1&idx=7953&cate_sub_idx=0">
+				<a href="/bbs/sub3_1_view?seq=${ntItem.seq}&page=1&board_code=sub3_1&search_key=">
 					<dl>
 						<dt>
 							<span class="num">${ntItem.num}</span>

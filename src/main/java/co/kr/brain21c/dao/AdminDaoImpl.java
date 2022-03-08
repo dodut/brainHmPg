@@ -49,7 +49,7 @@ public class AdminDaoImpl implements AdminDao{
 
 	@Override
 	public ArrayList<board> getMainNotic() {
-		String sql = "SELECT LPAD(@num:=@num+1, '2', '0') as num, DATE_FORMAT(B.rgdtm, '%Y-%m-%d') AS subDate, B.* FROM (SELECT @num:=0) A, board B WHERE gnb = 'A01' ORDER BY rgdtm DESC LIMIT 4";
+		String sql = "SELECT LPAD(@num:=@num+1, '2', '0') as num, b.* FROM (SELECT @num:=0) A, (SELECT *, DATE_FORMAT(rgdtm, '%Y-%m-%d') AS subDate FROM board WHERE gnb = 'A01' ORDER BY rgdtm DESC LIMIT 4) B";
 		System.out.println(sql);
 		
 		List<board> ntList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(board.class));		

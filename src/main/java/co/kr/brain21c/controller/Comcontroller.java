@@ -35,10 +35,10 @@ public class Comcontroller {
 		return "index"; 
 	}
 	
-//	@RequestMapping("/main") 
-//	public String main() { 
-//		return "main"; 
-//	}
+	@RequestMapping("/sub_login") 
+	public String main() { 
+		return "sub_login"; 
+	}
 	
 	@RequestMapping("/page/{subpage_path}") 
 	public String sub_page(@PathVariable("subpage_path") String subpage_path) { 

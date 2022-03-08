@@ -43,9 +43,17 @@ var isKitkat = window.navigator.userAgent.search( "AnybuildApp Android 4.4") > -
 <script type="text/javascript" id='naver_map_js' ></script>
 <script type="text/javascript" id='dynamic_js' ></script>
 
+
+
+
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css">
 
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+
+
+
+
 
 <!--[if lt IE 9]>
  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -118,7 +126,7 @@ var ai_log_event_sale_price = ""; // ai_log_event_mode가 sale 일때  매출 �
 	<ul>
 		<c:forEach items="${ntList}" var="ntItem">
 			<li>
-				<a href="/bbs_shop/read.htm?board_code=sub3_1&idx=7953&cate_sub_idx=0">
+				<a href="/bbs/sub3_1_view?seq=${ntItem.seq}&page=1&board_code=sub3_1&search_key=">
 					<dl>
 						<dt>
 							<span class="num">${ntItem.num}</span>

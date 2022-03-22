@@ -33,13 +33,9 @@ public class NoticeDaoImpl implements NoticeDao {
 
 	@Override
 	public ArrayList<board> getNoticeList(Criteria criteria, String search_key) throws Exception {
-
+		String sql = "";
 		int startPage = (criteria.getCurrentPageNo() - 1) * criteria.getRecordsPerPage();
 
-		// String sql = "SELECT * FROM board WHERE gnb = 'A01' ORDER BY seq DESC LIMIT "
-		// + startPage + ", " + criteria.getRecordsPerPage();
-
-		String sql = "";
 		if (search_key != null) {
 			sql = "SELECT * FROM board WHERE gnb = 'A01' AND title LIKE '%" + search_key + "%' ORDER BY seq DESC LIMIT "
 					+ startPage + ", " + criteria.getRecordsPerPage();
@@ -50,8 +46,6 @@ public class NoticeDaoImpl implements NoticeDao {
 
 		List<board> nList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(board.class));
 
-		//nList.forEach(System.out::println);
-
 		return (ArrayList<board>) nList;
 	}
 
@@ -61,10 +55,15 @@ public class NoticeDaoImpl implements NoticeDao {
 
 		List<board> nList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(board.class));
 
-		//System.out.println("===============");
-		//System.out.println(nList.get(0));
-
 		return nList.get(0);
+	}
+
+	@Override
+	public void updateHitCount(int seq) throws Exception { // 조회수 증가
+		String sql = "UPDATE board SET hits = hits + 1 WHERE seq='" + seq + "'";
+
+		int result = jdbcTemplate.update(sql);
+		// System.out.println("조회수 update 결과 : " + result);
 	}
 
 }

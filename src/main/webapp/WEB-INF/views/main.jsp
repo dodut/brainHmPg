@@ -118,7 +118,7 @@ var ai_log_event_sale_price = ""; // ai_log_event_mode가 sale 일때  매출 �
 	<ul>
 		<c:forEach items="${ntList}" var="ntItem">
 			<li>
-				<a href="/bbs_shop/read.htm?board_code=sub3_1&idx=7953&cate_sub_idx=0">
+				<a href="/bbs/sub3_1_view?seq=${ntItem.seq}">
 					<dl>
 						<dt>
 							<span class="num">${ntItem.num}</span>

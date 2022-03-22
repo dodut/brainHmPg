@@ -22,7 +22,7 @@ import co.kr.brain21c.service.NoticeService;
 public class Noticecontroller {
 
 	@Autowired
-	private NoticeService NoticeService;
+	private NoticeService noticeService;
 
 	private static final Logger logger = LoggerFactory.getLogger(Comcontroller.class);
 
@@ -30,7 +30,7 @@ public class Noticecontroller {
 	public ModelAndView noticeList(@ModelAttribute("criteria") Criteria criteria, HttpServletRequest req,
 			@RequestParam(defaultValue = "") String search_key) throws Exception {
 
-		int totalCount = NoticeService.getNoticeTotalCount(search_key);
+		int totalCount = noticeService.getNoticeTotalCount(search_key);
 
 		int currentPageNo;
 		if (req.getParameter("page") != null) {
@@ -45,15 +45,13 @@ public class Noticecontroller {
 		ArrayList<board> nList = new ArrayList<board>();
 
 		try {
-			nList = NoticeService.getNoticeList(criteria2, search_key);
+			nList = noticeService.getNoticeList(criteria2, search_key);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		int listNo = totalCount - criteria2.getRecordsPerPage() * (currentPageNo - 1);
-		
-		
-	 
+
 		mv.addObject("board_code", "sub3_1");
 		mv.addObject("listNo", listNo);
 		mv.addObject("search_key", search_key);
@@ -72,11 +70,8 @@ public class Noticecontroller {
 
 		int seq = Integer.parseInt(req.getParameter("seq"));
 
-		board board = NoticeService.getNoticeView(seq);
-		
-		System.out.println("board_code : " + req.getParameter("board_code"));
-		//System.out.println("currentPageNo : " + currentPageNo);
-		//System.out.println("search_key : " + search_key);
+		noticeService.updateHitCount(seq);
+		board board = noticeService.getNoticeView(seq);
 
 		mv.addObject("board_code", "sub3_1");
 		mv.addObject("dto", board);
@@ -86,23 +81,21 @@ public class Noticecontroller {
 
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/bbs/sub3_1_print", method = RequestMethod.GET)
 	public ModelAndView noticeViewPrint(@RequestParam("seq") int seq, HttpServletRequest req) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
-		board board = NoticeService.getNoticeView(seq);
-		
-		System.out.println("board_code : " + req.getParameter("board_code"));
-		//System.out.println("currentPageNo : " + currentPageNo);
-		//System.out.println("search_key : " + search_key);
+		board board = noticeService.getNoticeView(seq);
+		//System.out.println("board_code : " + req.getParameter("board_code"));
+		// System.out.println("currentPageNo : " + currentPageNo);
+		// System.out.println("search_key : " + search_key);
 
 		mv.addObject("board_code", "sub3_1");
 		mv.addObject("dto", board);
 		mv.setViewName("sub3_1_print");
 
 		return mv;
-	}	
-	
+	}
 
 }

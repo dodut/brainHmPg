@@ -15,22 +15,29 @@
 		<div id="admin_login">
 			<fieldset>
 				<legend>
-					<strong>관리자 로그인</strong>
-					<em>웹 관리자모드 로그인하세요.</em>
+					<strong>관리자 회원가입</strong>
 				</legend>
 				<p>
 					<label for="userid">아이디</label>
 					<span><input type="text" name="userid" id="userid" placeholder="아이디" value=""></span>
 				</p>
 				<p>
+					<label for="username">이름</label>
+					<span><input type="text" name="username" id="username" placeholder="이름" value=""></span>
+				</p>
+				<p>
+					<label for="email">이메일</label>
+					<span><input type="email" name="email" id="email" placeholder="name@example.com" value=""></span>
+				</p>
+				<p>
 					<label for="password">비밀번호</label>
 					<span><input type="password" name="password" id="password" placeholder="패스워드" value=""></span>
 				</p>
 				<nav>
-					<button type="submit">로그인</button>
+					<button type="submit">회원가입</button>
 				</nav>
 				<p style="text-align:center">
-					<button type="button" onclick="location.href='sign_up'">회원가입 페이지</button>
+					<button type="button" onclick="location.href='sub_login'">로그인 페이지</button>
 				</p>
 			</fieldset>
 		</div>
@@ -46,7 +53,21 @@ function login_form_chk(){
 	if(!form.userid.value)
 	{
 		alert("아이디를 입력하세요.");
-		form.userId.focus();
+		form.userid.focus();
+		return false;
+	}
+	
+	if(!form.username.value)
+	{
+		alert("이름을 입력하세요.");
+		form.username.focus();
+		return false;
+	}
+	
+	if(!form.email.value)
+	{
+		alert("E-Mail을 입력하세요.");
+		form.email.focus();
 		return false;
 	}
 
@@ -58,12 +79,13 @@ function login_form_chk(){
 	}
 
 
-	var default_action = '/login';
+	var default_action = '/admin_sign_up';
 	
 	form.action = default_action;
 	return true;
 	
 }
+
 
 setTimeout("create_iframe(0,'ok_frame');",100);
 </script>

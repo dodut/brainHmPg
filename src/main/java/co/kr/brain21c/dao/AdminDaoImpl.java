@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import co.kr.brain21c.dto.admin;
 import co.kr.brain21c.dto.board;
 import co.kr.brain21c.dto.contact;
 import co.kr.brain21c.dto.history;
@@ -61,10 +62,38 @@ public class AdminDaoImpl implements AdminDao{
 		return (ArrayList<board>) ntList;
 	}
 
-
-
-
-
+	@Override
+	public int insSignUp(admin member) {
+		
+		String sql = "INSERT INTO member VALUES("
+		+ "'" + member.getUserid() + "', "
+		+ "'" + member.getUsername() + "', "
+		+ "'" + member.getEmail() + "', "
+		+ "'" + member.getPassword() + "', "
+		+ "now(), now(), now())"
+		;
+		
+		System.out.println(sql);
+		
+		int result = jdbcTemplate.update(sql);
+		
+		return result;
+	}
+	
+	@Override
+	public ArrayList<admin> getLogin(admin member) {
+		String sql = "SELECT * FROM member WHERE "
+				   + "userid = '" + member.getUserid() + "'";
+		System.out.println(sql);
+		
+		List<admin> loginList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(admin.class));		
+		
+		System.out.println(loginList);
+		
+		loginList.forEach(System.out :: println);
+		
+		return (ArrayList<admin>) loginList;
+	}
 
 
 	

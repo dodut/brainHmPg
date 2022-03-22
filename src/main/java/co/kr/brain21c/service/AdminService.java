@@ -2,6 +2,7 @@ package co.kr.brain21c.service;
 
 import java.util.ArrayList;
 
+import co.kr.brain21c.dto.admin;
 import co.kr.brain21c.dto.board;
 import co.kr.brain21c.dto.contact;
 import co.kr.brain21c.dto.history;
@@ -9,10 +10,11 @@ import co.kr.brain21c.dto.history;
 public interface AdminService{
 	
 	ArrayList<history> getBoard() throws Exception;
-
 	ArrayList<contact> getContact();
-	
 	ArrayList<board> getMainNotic();
+	ArrayList<admin> getLogin(admin member);
+	
+	int insSignUp(admin member);
 
 	
 	/*

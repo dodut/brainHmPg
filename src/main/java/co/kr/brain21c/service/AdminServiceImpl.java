@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.kr.brain21c.dao.AdminDao;
+import co.kr.brain21c.dto.admin;
 import co.kr.brain21c.dto.board;
 import co.kr.brain21c.dto.contact;
 import co.kr.brain21c.dto.history;
@@ -35,7 +36,19 @@ public class AdminServiceImpl implements AdminService{
 		
 	}
 	
+	@Override
+	public ArrayList<admin> getLogin(admin member) {
+		ArrayList<admin> loginList = new ArrayList<admin>();
+		loginList = AdminDao.getLogin(member);
+		return loginList;
+		
+	}
 	
+	@Override
+	public int insSignUp(admin member) {
+		int result = AdminDao.insSignUp(member);
+		return result;
+	}
 	
 	/*
 	

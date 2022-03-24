@@ -49,6 +49,9 @@ public class AdminServiceImpl implements AdminService{
 		int result = AdminDao.insSignUp(member);
 		return result;
 	}
+
+
+
 	
 	/*
 	

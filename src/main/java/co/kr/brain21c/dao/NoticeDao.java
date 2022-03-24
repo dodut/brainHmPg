@@ -10,7 +10,9 @@ public interface NoticeDao {
 	public int selectNoticeTotalCount(String search_key) throws Exception;
 
 	public ArrayList<board> getNoticeList(Criteria criteria, String search_key) throws Exception;
-	
+
 	public board getNoticeView(int seq) throws Exception;
+
+	public void updateHitCount(int seq) throws Exception;
 
 }

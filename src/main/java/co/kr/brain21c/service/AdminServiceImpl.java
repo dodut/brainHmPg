@@ -71,7 +71,6 @@ public class AdminServiceImpl implements AdminService{
 	public ArrayList<famFood> getFood(Map menuMap) throws Exception{
 		return AdminDao.getFood(menuMap);
 	}	
-
 	@Override
 	public ArrayList<famFood> get_ResFood(Map menuMap) throws Exception{
 		return AdminDao.get_ResFood(menuMap);
@@ -94,7 +93,6 @@ public class AdminServiceImpl implements AdminService{
 		// TODO Auto-generated method stub
 		return AdminDao.get_FoodList_Search(menuMap);   
 	}	
-
 	public int setStore_Ins(Map storeMap) throws Exception{
 		// TODO Auto-generated method stub
 		int result = AdminDao.setStore_Ins(storeMap);

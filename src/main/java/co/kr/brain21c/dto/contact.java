@@ -3,7 +3,6 @@ package co.kr.brain21c.dto;
 public class contact {
 	
 	private int ctseq;
-	private int ctord;
 	private String ctpart;
 	private String ctchr;
 	private String ctphone;
@@ -12,7 +11,6 @@ public class contact {
 	@Override
 	public String toString() {
 		return "contact [ctseq=" + ctseq + ""
-					+ ", ctord=" + ctord + ""
 					+ ", ctpart=" + ctpart + ""
 					+ ", ctchr=" + ctchr + ""
 					+ ", ctphone=" + ctphone
@@ -25,14 +23,6 @@ public class contact {
 
 	public void setCtseq(int ctseq) {
 		this.ctseq = ctseq;
-	}
-	
-	public int getCtord() {
-		return ctord;
-	}
-
-	public void setCtord(int ctord) {
-		this.ctord = ctord;
 	}
 
 	public String getCtpart() {

@@ -143,6 +143,7 @@
 							<strong>${dto.title}</strong>
 						</div>
 						<dl>
+							<dt><span>(주)브레인컨설팅 (brin)</span></dt>
 							<dt><span>조회수: ${dto.hits}</span></dt>
 							<dd><span><fmt:formatDate value="${dto.rgdtm}" pattern="yyyy-MM-dd" /></span></dd>
 						</dl>
@@ -469,8 +470,8 @@ function vote_Poll(){
 <script type="text/javascript" src="/img_up/tmp_img/service/board_tpl/8/pc/js/default.js"></script>
 
 <script type="text/javascript">
-setTimeout("create_iframe(0,'ok_frame');",100);
-setTimeout("create_iframe(0,'ok_frame2');",100);
+	setTimeout("create_iframe(0,'ok_frame');",100);
+	setTimeout("create_iframe(0,'ok_frame2');",100);
 </script>
 		
 </body>

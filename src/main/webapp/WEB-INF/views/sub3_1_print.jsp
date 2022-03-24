@@ -101,7 +101,7 @@ var isKitkat = window.navigator.userAgent.search( "AnybuildApp Android 4.4") > -
 <script type="text/javascript" id="ai_log_default_script" src="https://chk101.ai-log.biz/etc/connect_ai_set.js?ver=2"></script>
 </head>
 
-<body >
+<body>
 
 
 <div id="scbd" class="scbd co-basic-simple">

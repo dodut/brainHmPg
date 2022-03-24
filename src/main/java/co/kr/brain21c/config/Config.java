@@ -13,15 +13,17 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class Config extends WebSecurityConfigurerAdapter {
-	
-	@Override
-    protected void configure(HttpSecurity http) throws Exception {
-       http.csrf().disable();	// csrf ÅäÅ«À» ºñÈ°¼ºÈ­
-       	
-    }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable(); // csrf ï¿½ï¿½Å«ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­
+
+		// X-Frame-Options
+		http.headers().frameOptions().sameOrigin();
+	}
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 }

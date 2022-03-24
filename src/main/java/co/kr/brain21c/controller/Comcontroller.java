@@ -48,7 +48,7 @@ public class Comcontroller {
 	public String sub_main(@SessionAttribute(name = "loginMember", required = false) admin loginMember, Model model) { 
 		
 		if (loginMember == null) {
-            return "sub_login";
+            return "redirect:/sub_login";
         }
 		
         model.addAttribute("member", loginMember);
@@ -59,11 +59,6 @@ public class Comcontroller {
 	@RequestMapping("/message") 
 	public String message() { 
 		return "message"; 
-	}
-	
-	@RequestMapping("/sub_login") 
-	public String sub_login() {
-		return "sub_login"; 
 	}
 	
 	@RequestMapping("/login") 
@@ -87,9 +82,8 @@ public class Comcontroller {
 		} else {
 			
 			if(passwordEncoder.matches(member.getPassword(), loginList.get(0).getPassword().toString())) {
-				
-				
-				msg = "환영합니다.";
+
+				msg = "";
 				href = "sub_main";
 			    
 				HttpSession session = request.getSession();
@@ -108,14 +102,14 @@ public class Comcontroller {
 		return mv; 
 	}
 	
-	@RequestMapping("/logout")
-	public String logout(HttpServletRequest request) {
+	@RequestMapping("/sub_login")
+	public String sub_login(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 	    if (session != null) {
 	        session.invalidate();
 	    }
 		
-		return "redirect:/sub_login";
+		return "sub_login";
 	}
 	
 	@RequestMapping("/admin_sign_up")
@@ -181,7 +175,7 @@ public class Comcontroller {
 		}
 		logger.debug(ntList.toString());
 		mv.addObject("ntList", ntList);
-		mv.setViewName("/main");
+		mv.setViewName("main");
 		
 		return mv;
 	}

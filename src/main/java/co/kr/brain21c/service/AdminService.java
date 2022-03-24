@@ -15,6 +15,7 @@ public interface AdminService{
 	ArrayList<admin> getLogin(admin member);
 	
 	int insSignUp(admin member);
+	
 
 	
 	/*

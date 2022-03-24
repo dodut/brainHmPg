@@ -208,9 +208,9 @@
 											<!-- editor 추가 -->
 											<script>
 												 var ckeditor_config = {
-												   resize_enaleb : false,
+												   /* resize_enaleb : false,
 												   enterMode : CKEDITOR.ENTER_BR,
-												   shiftEnterMode : CKEDITOR.ENTER_P,
+												   shiftEnterMode : CKEDITOR.ENTER_P, */
 												   filebrowserUploadUrl : "/bbs/ckUpload"
 												 };
 												 
@@ -383,101 +383,17 @@ function submitForm(){
 		return;
 	}
     
- 	// content*     
- 	if (!checkNull(frm.cntn , "내용을 입력하세요", true)){
+    
+ 	// content
+ 	if (!CKEDITOR.instances.cntn.getData()){
+ 		alert("내용을 입력하세요");
 		bbs_submit_lock = false;
-		return;
-	} 
-	console.log("-------");
-	console.log(document.getElementById('content_editor_mode'));
-	 
-	/* 	if(CKEDITOR.instances.cntnt.value == '' || CKEDITOR.instances.cntnt.value.length == 0){
-	    alert("내용을 입력해주세요.");
-	    $("#cntnt").focus();
-	    return false;
-	} */
-	
-/* 	if(document.getElementById('content_editor_mode')){
-		if(document.getElementById('content_editor_mode').value == 'ckeditor'){
-			
-			alert("ckEditor당!!");
-			console.log(CKEDITOR.instances.content);
-			var oEditor = CKEDITOR.instances.content;
-			frm.ok_content.value = oEditor.getData();
-		}else{
-			frm.ok_content.value = frm.cntn.value;
-		}
-	}else{
-		frm.ok_content.value = frm.cntn.value;
-	}
-	
-	if (!checkNull(frm.ok_content, "내용을 입력하세요", false)){
-		if(document.getElementById('content_editor_mode') && document.getElementById('content_editor_mode').value == 'ckeditor'){
-			CKEDITOR.instances.content.focus();
-		}else{
-			frm.cntn.focus();
-		}
-		bbs_submit_lock = false;
-		return;
-	}	 */
- 
-/* 		if(document.getElementById('aram_editor_content_json')){
-		// 2022-02-08 ljw: 에디터3.0은 값이 없을 경우 그냥 작성된다. 아무 내용없으면 막기
-		var ae_json_str = ae_save(document.getElementById('aram_editor_content_json'));
-		var ae_json_arr = JSON.parse(ae_json_str);
-
-		var ae_json_chk = false;
-		ae_json_arr.forEach(function(node){
-			if(ae_json_chk) return;	// 이미 공백이 없다면 패스
-
-			if(node['p_type'] == 'text'){
-				// text 일 때만 공백을 확인한다. 
-				node['obj'].forEach(function(obj){
-					if(obj['p_textarea']){
-						// 텍스트에 값이 있다면 내용 입력을 받은 것이다.
-						ae_json_chk = true;
-					}
-				});
-			}else{
-				// image,line,s_text,file 은 무조건 기본 데이터가 있다.
-				ae_json_chk = true;
-			}
-		});
-
-		if(!ae_json_chk){
-			// 내용 검증이 안되었다면 막는다.
-			bbs_submit_lock = false;
-			alert("내용을 입력해주세요.");
-
-			return;
-		}
-
-	}
-	 
-	else{
-
-		if(document.getElementById('content_editor_mode')){
-			if(document.getElementById('content_editor_mode').value == 'ckeditor'){
-				var oEditor = CKEDITOR.instances.content;
-				frm.ok_content.value = oEditor.getData();
-			}else{
-				frm.ok_content.value = frm.cntn.value;
-			}
-		}else{
-			frm.ok_content.value = frm.cntn.value;
-		}
-					if (!checkNull(frm.ok_content, "내용을 입력하세요", false)){
-				if(document.getElementById('content_editor_mode') && document.getElementById('content_editor_mode').value == 'ckeditor'){
-					CKEDITOR.instances.content.focus();
-				}else{
-					frm.cntn.focus();
-				}
-				bbs_submit_lock = false;
-				return;
-			}
 		
+		CKEDITOR.instances.cntn.focus();
+		
+		return;
 	}
- */
+ 	
  
  	// 첨부파일
 	if(document.getElementById('attachfilelist')){
@@ -486,12 +402,14 @@ function submitForm(){
 		
 		
 		
-/* 		for(i=0;i<frm.attachfilelist.length;i++){
+	
+	/* 		
+		for(i=0;i<frm.attachfilelist.length;i++){
 			if(frm.attachfilelist[i].value){
 				frm.file_list.value += frm.attachfilelist[i].value +"&&";
-				
 			}
-		} */
+		} 
+	*/
 		
 	
 		
@@ -525,7 +443,6 @@ function resizeImage(num,stop){
 <iframe src = "iframe_view"   name="main_frame" id="main_frame" style="display:none;"></iframe> 
  
 
-<!-- <iframe src="https://ssl.anybuild.com/ssl/ssl_possible_form.htm?host=www.brain21c.co.kr" width=0 height=0 frameborder=0 style='display:none'></iframe> -->
 <script type="text/javascript" src="/img_up/tmp_img/service/board_tpl/8/pc/js/default.js"></script>
 
 <script type="text/javascript">

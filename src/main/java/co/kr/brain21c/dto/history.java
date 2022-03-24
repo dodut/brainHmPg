@@ -1,7 +1,5 @@
 package co.kr.brain21c.dto;
 
-import org.apache.tomcat.util.codec.binary.Base64;
-
 public class history {
 	
 	private int seq		    ;

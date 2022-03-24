@@ -68,7 +68,7 @@
 <!--[if lt IE 8]><link rel="stylesheet" type="text/css" href="/img_up/tmp_img/service/board_tpl/8/pc/css/ie7.css" media="all"><![endif]-->
 <script type="text/javascript">
 	
-	var ssl_host = "ssl.anybuild.com";
+/* 	var ssl_host = "ssl.anybuild.com";
 	var mall_id = "brin";
 	var ssl_possible = 'on';
 	var category = "";
@@ -78,7 +78,7 @@
 	}
 	function bookmark(){
 		window.external.AddFavorite('http://www.brain21c.co.kr', "") ;
-	}
+	} */
 	var page_title = "(주)브레인컨설팅";
 </script>
 <script>
@@ -196,12 +196,11 @@
 									<dt><label for="content">내용</label></dt>
 									<dd>
 										<div>
-											<a href="javascript:editor_img_pop('content','ENC_EnkefMFdCFUtO2o9pWoUDoJX3yRt6V4WcdTe8QP4v7E=','')" class="ui-btn btn-sml">이미지첨부</a>
-											<a href="javascript:editor_m_img_pop('content','ENC_EnkefMFdCFUtO2o9pWoUDoJX3yRt6V4WcdTe8QP4v7E=','')" class="ui-btn btn-sml">다중이미지첨부</a>
+											<!-- <a href="javascript:editor_img_pop('content','ENC_EnkefMFdCFUtO2o9pWoUDoJX3yRt6V4WcdTe8QP4v7E=','')" class="ui-btn btn-sml">이미지첨부</a>
+											<a href="javascript:editor_m_img_pop('content','ENC_EnkefMFdCFUtO2o9pWoUDoJX3yRt6V4WcdTe8QP4v7E=','')" class="ui-btn btn-sml">다중이미지첨부</a> -->
 											<a href="javascript:bbs_add_file()" class="ui-btn btn-sml">파일첨부</a>																					
 										</div>
 										<span class="editor">
- 
 				 							<!-- content -->
 											<textarea name='cntn' id='cntn' STYLE='width:100%;height:490px' title='본문내용' ></TEXTAREA>
 											<input type='hidden' name='content_editor_mode' id='content_editor_mode' value='ckeditor'>
@@ -383,10 +382,46 @@ function submitForm(){
 		bbs_submit_lock = false;
 		return;
 	}
-
-
-	 // content
-	if(document.getElementById('aram_editor_content_json')){
+    
+ 	// content*     
+ 	if (!checkNull(frm.cntn , "내용을 입력하세요", true)){
+		bbs_submit_lock = false;
+		return;
+	} 
+	console.log("-------");
+	console.log(document.getElementById('content_editor_mode'));
+	 
+	/* 	if(CKEDITOR.instances.cntnt.value == '' || CKEDITOR.instances.cntnt.value.length == 0){
+	    alert("내용을 입력해주세요.");
+	    $("#cntnt").focus();
+	    return false;
+	} */
+	
+/* 	if(document.getElementById('content_editor_mode')){
+		if(document.getElementById('content_editor_mode').value == 'ckeditor'){
+			
+			alert("ckEditor당!!");
+			console.log(CKEDITOR.instances.content);
+			var oEditor = CKEDITOR.instances.content;
+			frm.ok_content.value = oEditor.getData();
+		}else{
+			frm.ok_content.value = frm.cntn.value;
+		}
+	}else{
+		frm.ok_content.value = frm.cntn.value;
+	}
+	
+	if (!checkNull(frm.ok_content, "내용을 입력하세요", false)){
+		if(document.getElementById('content_editor_mode') && document.getElementById('content_editor_mode').value == 'ckeditor'){
+			CKEDITOR.instances.content.focus();
+		}else{
+			frm.cntn.focus();
+		}
+		bbs_submit_lock = false;
+		return;
+	}	 */
+ 
+/* 		if(document.getElementById('aram_editor_content_json')){
 		// 2022-02-08 ljw: 에디터3.0은 값이 없을 경우 그냥 작성된다. 아무 내용없으면 막기
 		var ae_json_str = ae_save(document.getElementById('aram_editor_content_json'));
 		var ae_json_arr = JSON.parse(ae_json_str);
@@ -418,7 +453,7 @@ function submitForm(){
 		}
 
 	}
-/* 	
+	 
 	else{
 
 		if(document.getElementById('content_editor_mode')){
@@ -443,6 +478,8 @@ function submitForm(){
 		
 	}
  */
+ 
+ 	// 첨부파일
 	if(document.getElementById('attachfilelist')){
 		var i;
 		frm.file_list.value='';
@@ -456,23 +493,17 @@ function submitForm(){
 			}
 		} */
 		
-		
-		for(i=0;i<3;i++){
-			 
-				frm.file_list.value += "test.png" +"&&";
-				
-			 
-		}		
-		
-		
+	
 		
 	}
 
 	var default_action = '/bbs/enquiry_write_proc';
 	frm.action = default_action;
-	frm.target=create_iframe();
+	frm.target = "main_frame";
+	//frm.target=create_iframe();
 
-/* 	if(ssl_possible == 'on' && document.getElementsByName('post_action').length && document.getElementsByName('this_domain').length){
+	/* 
+		if(ssl_possible == 'on' && document.getElementsByName('post_action').length && document.getElementsByName('this_domain').length){
 		frm.post_action.value = default_action;
 		frm.action = "https://"+ssl_host+"/ssl/post_all_reg.php";
 		frm.this_domain.value = "www.brain21c.co.kr";
@@ -490,12 +521,16 @@ function resizeImage(num,stop){
 }
 
 </script>
-<iframe src="https://ssl.anybuild.com/ssl/ssl_possible_form.htm?host=www.brain21c.co.kr" width=0 height=0 frameborder=0 style='display:none'></iframe>
+
+<iframe src = "iframe_view"   name="main_frame" id="main_frame" style="display:none;"></iframe> 
+ 
+
+<!-- <iframe src="https://ssl.anybuild.com/ssl/ssl_possible_form.htm?host=www.brain21c.co.kr" width=0 height=0 frameborder=0 style='display:none'></iframe> -->
 <script type="text/javascript" src="/img_up/tmp_img/service/board_tpl/8/pc/js/default.js"></script>
 
 <script type="text/javascript">
-	setTimeout("create_iframe(0,'ok_frame');",100);
-	setTimeout("create_iframe(0,'ok_frame2');",100);
+	//setTimeout("create_iframe(0,'ok_frame');",100);
+	//setTimeout("create_iframe(0,'ok_frame2');",100);
 </script>
 
 </body>

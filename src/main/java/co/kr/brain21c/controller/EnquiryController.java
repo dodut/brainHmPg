@@ -132,12 +132,9 @@ public class EnquiryController {
 		if (view_code == "Q") {
 			int a_article_seq = enquiryService.getArticleSeq(board.getGrpno(), 2);
 
-			System.out.println("====== a_article_seq : " + a_article_seq);
-			
-			if(a_article_seq != 0) {
+			if (a_article_seq != 0) {
 				ref_board = enquiryService.getEnquiryView(a_article_seq);
 			}
-			
 
 		} else if (view_code == "A") {
 			int q_article_seq = enquiryService.getArticleSeq(board.getGrpno(), 1);
@@ -182,15 +179,18 @@ public class EnquiryController {
 	}
 
 	@RequestMapping(value = "/bbs/enquiry_write_proc", method = RequestMethod.POST)
-	public String writeProc(@ModelAttribute board board, HttpServletRequest request) throws Exception {
+	public ModelAndView writeProc(@ModelAttribute board board, HttpServletRequest request) throws Exception {
 
 		System.out.println("writeProc 실행  board.toString() : " + board.toString());
 		int result = enquiryService.writeProc(board);
 
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("result", result);
+		mv.setViewName("iframe_view");
 
-		mv.setViewName("sub3_2");
-		return "redirect:/bbs/sub3_2";
+		return mv;
+		// return "redirect:/bbs/sub3_2";
+
 	}
 
 	// File Upload관련
@@ -239,11 +239,12 @@ public class EnquiryController {
 			byte[] bytes = upload.getBytes();
 
 			// 이미지 경로 생성
-			String path ="C:\\upload/";
-			// String path = request.getSession().getServletContext().getRealPath("/").concat("resources/ckupload/");
+			String path = "C:\\upload/";
+			// String path =
+			// request.getSession().getServletContext().getRealPath("/").concat("resources/ckupload/");
 			System.out.println("upload path: " + path);
 
-			String ckUploadPath = path + uid + "_" + fileName;   
+			String ckUploadPath = path + uid + "_" + fileName;
 			File folder = new File(path);
 
 			// 해당 디렉토리 확인
@@ -289,8 +290,9 @@ public class EnquiryController {
 	public void ckSubmit(@RequestParam(value = "uid") String uid, @RequestParam(value = "fileName") String fileName,
 			HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 서버에 저장된 이미지 경로
-		String path ="C:\\upload/";
-		//String path = request.getSession().getServletContext().getRealPath("/").concat("resources/ckupload/");
+		String path = "C:\\upload/";
+		// String path =
+		// request.getSession().getServletContext().getRealPath("/").concat("resources/ckupload/");
 
 		String sDirPath = path + uid + "_" + fileName;
 		File imgFile = new File(sDirPath);

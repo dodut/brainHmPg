@@ -38,10 +38,11 @@ public class AdminDaoImpl implements AdminDao {
 		String sql = "SELECT * FROM contact ORDER BY ctord, ctseq asc";
 		System.out.println(sql);
 
-		List<contact> ctList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(contact.class));
-		// System.out.println(ctList);
-
-		// ctList.forEach(System.out :: println);
+		List<contact> ctList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(contact.class));				
+		//System.out.println(ctList);
+		
+		//ctList.forEach(System.out :: println);
+	
 
 		return (ArrayList<contact>) ctList;
 	}
@@ -86,6 +87,8 @@ public class AdminDaoImpl implements AdminDao {
 
 		return (ArrayList<admin>) loginList;
 	}
+	
+
 
 	/*
 	 * @Override public ArrayList<famFood> get_ResStore(Map menuMap) throws

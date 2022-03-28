@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +26,6 @@
     </style>
     
     <script type="text/javascript">
-    
     function ct_form_chk(){
     	var form = document.ct_form;
 
@@ -67,13 +65,12 @@
     
     
     </script>
-    
 </head>
 
 <body onbeforeunload="opener.location.reload();">
+
 	<div>
-		<form name='ct_form' onSubmit='return ct_form_chk()' action="/bbs/popup/ct_update_form" method="post">
-		
+		<form name='ct_form' onSubmit='return ct_form_chk()' action="/bbs/popup/ct_insert_form" method="post">
 			<table class="rg-table rg-form rg-responsive">
 				<colgroup>
 					<col style="width:130px;">
@@ -81,44 +78,42 @@
 				</colgroup>
 			
 				<tbody>
-					<c:forEach items="${ctData}" var="ctItem">
 					<tr>
 						<th>부서명</th>
 						<td>
-							<input type="hidden" name="seq" value="${ctItem.ctseq }" />
-							<input type="text" name="ctpart" id="part" value="${ctItem.ctpart}" style="width:100%;" />
+							<input type="text" name="ctpart" id="ctpart" style="width:100%;">
 						</td>
 					</tr>
 					<tr>
 						<th>담당 업무</th>
 						<td>
-							<input type="text" name="ctchr" id="chr" value="${ctItem.ctchr}" style="width:100%;" />
+							<input type="text" name="ctchr" id="ctchr" style="width:100%;">
 						</td>
 					</tr>
 					<tr>
 						<th>내선 번호</th>
 						<td>
-							<input type="text" name="ctphone" id="phone" value="${ctItem.ctphone}" style="width:100%;" />
+							<input type="text" name="ctphone" id="ctphone" style="width:100%;">
 						</td>
 					</tr>
 					<tr>
 						<th>메일</th>
 						<td>
-							<input type="text" name="ctmail" id="mail" value="${ctItem.ctmail}" style="width:100%;" />
+							<input type="text" name="ctmail" id="ctmail" style="width:100%;">
 						</td>
 					</tr>
-					</c:forEach>
 				</tbody>
 			</table>
 			
-			<p>※ 모든 정보를 입력해야 정상적으로 수정 완료 됩니다!</p>
+			<p>※ 모든 정보를 입력해야 정상적으로 등록 완료 됩니다!</p>
 			<p>※ 팝업을 닫으면 추가 사항이 반영됩니다.</p>
 
 			<div class="btn_content">	
-				<button type="submit" id="submitBtn" class="st_mybd_btn st_mybd_medium">수정</button>
-				<button type="button" id="deleteBtn" class="st_mybd_btn st_mybd_medium" onclick="javascript:opener.location.reload();window.close();">취소</button>
+				<button type="submit" id="submitBtn" class="st_mybd_btn st_mybd_medium">등록</button>
+				<button type="button" id="" class="st_mybd_btn st_mybd_medium" onclick="javascript:opener.location.reload();window.close();">취소</button>
 			</div>
 		</form>
+		
 		
 		
 	</div>

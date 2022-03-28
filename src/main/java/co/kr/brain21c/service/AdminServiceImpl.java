@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import co.kr.brain21c.dao.AdminDao;
 import co.kr.brain21c.dto.admin;
 import co.kr.brain21c.dto.board;
-import co.kr.brain21c.dto.contact;
 import co.kr.brain21c.dto.history;
 
 
@@ -23,17 +22,10 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public ArrayList<contact> getContact() {
-		return AdminDao.getContact();
-	}
-	
-
-	@Override
 	public ArrayList<board> getMainNotic() {
 		ArrayList<board> noticList = new ArrayList<board>();
 		noticList = AdminDao.getMainNotic();
 		return noticList;
-		
 	}
 	
 	@Override
@@ -41,7 +33,6 @@ public class AdminServiceImpl implements AdminService{
 		ArrayList<admin> loginList = new ArrayList<admin>();
 		loginList = AdminDao.getLogin(member);
 		return loginList;
-		
 	}
 	
 	@Override
@@ -50,7 +41,7 @@ public class AdminServiceImpl implements AdminService{
 		return result;
 	}
 
-
+	
 
 	
 	/*

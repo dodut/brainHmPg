@@ -1,6 +1,5 @@
 package co.kr.brain21c.controller;
 import java.util.ArrayList;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,20 +13,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.kr.brain21c.dto.admin;
 import co.kr.brain21c.dto.board;
-import co.kr.brain21c.dto.contact;
 import co.kr.brain21c.dto.history;
 import co.kr.brain21c.dto.message;
 import co.kr.brain21c.service.AdminService;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Controller 
 public class Comcontroller {  
 	
@@ -43,6 +37,47 @@ public class Comcontroller {
 //	public String GetMainPage() {
 //		return "main";
 //	}
+	
+	@RequestMapping("/page/{subpage_path}") 
+	public String sub_page(@PathVariable("subpage_path") String subpage_path) { 
+		return subpage_path; 
+	} 
+	
+	@RequestMapping("/myboard/{subpage_path}") 
+	public String sub_board(@PathVariable("subpage_path") String subpage_path) { 
+		return subpage_path;
+	} 
+	
+	@RequestMapping("/bbs/{subpage_path}") 
+	public String sub_bbs(@PathVariable("subpage_path") String subpage_path) { 
+		return subpage_path;
+	} 
+	
+	@RequestMapping("/shop_info/{subpage_path}") 
+	public String shop_info(@PathVariable("subpage_path") String subpage_path) { 
+		return subpage_path; 
+	}
+	
+	@RequestMapping(value = {"/main", "/"})
+	public ModelAndView notice(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		ArrayList<board> ntList  = new ArrayList<board>();
+		
+		try {
+			ntList = AdminService.getMainNotic();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		logger.debug(ntList.toString());
+		mv.addObject("ntList", ntList);
+		mv.setViewName("/main");
+		
+		return mv;
+	}
+	
+	//===========================================================
+	
+	// 관리자 페이지 - 로그인
 	
 	@RequestMapping("/sign_up") 
 	public String index() { 
@@ -154,42 +189,9 @@ public class Comcontroller {
 		return mv; 
 	}
 	
-	@RequestMapping("/page/{subpage_path}") 
-	public String sub_page(@PathVariable("subpage_path") String subpage_path) { 
-		return subpage_path; 
-	} 
-	
-	@RequestMapping("/myboard/{subpage_path}") 
-	public String sub_board(@PathVariable("subpage_path") String subpage_path) { 
-		return subpage_path;
-	} 
-	
-	@RequestMapping("/bbs/{subpage_path}") 
-	public String sub_bbs(@PathVariable("subpage_path") String subpage_path) { 
-		return subpage_path;
-	} 
-	
-	@RequestMapping("/shop_info/{subpage_path}") 
-	public String shop_info(@PathVariable("subpage_path") String subpage_path) { 
-		return subpage_path; 
-	}
-	
-	@RequestMapping(value = {"/main", "/"})
-	public ModelAndView notice(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		ArrayList<board> ntList  = new ArrayList<board>();
-		
-		try {
-			ntList = AdminService.getMainNotic();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		logger.debug(ntList.toString());
-		mv.addObject("ntList", ntList);
-		mv.setViewName("/main");
-		
-		return mv;
-	}
+	//===========================================================
+
+	// 연혁 & 실적
 	
 	@RequestMapping("/myboard/sub1_2") 
 	public ModelAndView test(HttpServletRequest req) {
@@ -222,56 +224,6 @@ public class Comcontroller {
 		mv.addObject("list1984",list1984);
 		
 		mv.setViewName("sub1_2");
-		
-		return mv;
-	}
-	
-	@RequestMapping("/myboard/sub3_3") 
-	public ModelAndView contact(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		ArrayList<contact> ctList  = new ArrayList<contact>();
-		
-		try {
-			ctList = AdminService.getContact();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		mv.addObject("ctList", ctList);
-		mv.addObject("board_code", "sub3_3");
-		mv.setViewName("sub3_3"); 
-		
-		return mv;
-	}
-	
-	@RequestMapping(value = "/admin3_3", method = RequestMethod.GET)
-	public ModelAndView adminContact(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		ArrayList<contact> adminContactList  = new ArrayList<contact>();
-		
-		//int seq = Integer.parseInt(req.getParameter("seq"));
-		adminContactList = AdminService.getContact();
-		
-		mv.addObject("ctList", adminContactList);
-		mv.setViewName("/admin3_3"); 
-		
-		return mv;
-	}
-	
-	@RequestMapping(value = "/admin3_3", method = RequestMethod.POST)
-	public void orderUpdate(@RequestParam Map<String, Object> param, HttpServletRequest req) {
-		//ModelAndView mv = new ModelAndView();
-
-		log.info("param {} ", param);
-		
-		//return null;
-	}
-	
-	@RequestMapping(value = "/bbs/popup/ct_update_form", method = RequestMethod.GET)
-	public ModelAndView updateCt(@RequestParam("seq") int seq, HttpServletRequest req) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.addObject("board_code", "admin3_3");
-		mv.setViewName("/bbs/popup/ct_update_form");
 		
 		return mv;
 	}

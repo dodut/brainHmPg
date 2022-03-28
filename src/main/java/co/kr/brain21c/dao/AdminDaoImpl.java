@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import co.kr.brain21c.dto.admin;
 import co.kr.brain21c.dto.board;
-import co.kr.brain21c.dto.contact;
 import co.kr.brain21c.dto.history;
 
 @Repository("AdminDao")
@@ -27,26 +26,13 @@ public class AdminDaoImpl implements AdminDao{
 		
 		List<history> testList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(history.class));		
 		
-		System.out.println(testList);
+//		System.out.println(testList);
 		
-		testList.forEach(System.out :: println);
+//		testList.forEach(System.out :: println);
 		
 		return (ArrayList<history>) testList;
 	}
 
-
-	@Override
-	public ArrayList<contact> getContact() {
-		String sql = "SELECT * FROM contact ORDER BY ctord, ctseq asc";
-		System.out.println(sql);
-		
-		List<contact> ctList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(contact.class));				
-		//System.out.println(ctList);
-		
-		//ctList.forEach(System.out :: println);
-		
-		return (ArrayList<contact>) ctList;
-	}
 
 	@Override
 	public ArrayList<board> getMainNotic() {
@@ -94,8 +80,9 @@ public class AdminDaoImpl implements AdminDao{
 		
 		return (ArrayList<admin>) loginList;
 	}
-	
 
+
+	
 
 
 	

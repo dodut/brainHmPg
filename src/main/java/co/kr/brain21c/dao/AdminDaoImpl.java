@@ -10,30 +10,13 @@ import org.springframework.stereotype.Repository;
 
 import co.kr.brain21c.dto.admin;
 import co.kr.brain21c.dto.board;
-import co.kr.brain21c.dto.history;
 
 @Repository("AdminDao")
 public class AdminDaoImpl implements AdminDao{
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-
 	
-	@Override
-	public ArrayList<history> getBoard() throws Exception{				
-		String sql = "SELECT * FROM history ORDER BY hisyear desc, hismonth desc";
-		System.out.println(sql);
-		
-		List<history> testList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(history.class));		
-		
-//		System.out.println(testList);
-		
-//		testList.forEach(System.out :: println);
-		
-		return (ArrayList<history>) testList;
-	}
-
-
 	@Override
 	public ArrayList<board> getMainNotic() {
 		String sql = "SELECT LPAD(@num:=@num+1, '2', '0') as num, b.* FROM (SELECT @num:=0) A, (SELECT *, DATE_FORMAT(rgdtm, '%Y-%m-%d') AS subDate FROM board WHERE gnb = 'A01' ORDER BY rgdtm DESC LIMIT 4) B";

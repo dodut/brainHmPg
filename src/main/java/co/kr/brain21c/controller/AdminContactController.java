@@ -26,7 +26,7 @@ public class AdminContactController {
 	private AdminContactService AdminContactService;
 
 	
-	// ´ã´çÀÚ ¾È³»
+	// ë‹´ë‹¹ì ì•ˆë‚´
 	@RequestMapping("/myboard/sub3_3") 
 	public ModelAndView contact(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
@@ -46,7 +46,7 @@ public class AdminContactController {
 
 	//===========================================================
 
-	// °ü¸®ÀÚ ÆäÀÌÁö - ´ã´çÀÚ ¾È³»
+	// ê´€ë¦¬ì í˜ì´ì§€ - ë‹´ë‹¹ì ì•ˆë‚´
 	@RequestMapping(value = "/admin3_3", method = RequestMethod.GET)
 	public ModelAndView adminContact(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
@@ -98,9 +98,9 @@ public class AdminContactController {
 		result = AdminContactService.insertContact(insertData);
 		
 		if(result == 1) {
-			msg = "Á¤»óÀûÀ¸·Î µî·ÏÀÌ µÇ¾ú½À´Ï´Ù.";
+			msg = "ì •ìƒì ìœ¼ë¡œ ë“±ë¡ì´ ë˜ì—ˆìŠµë‹ˆë‹¤.";
 		} else {
-			msg = "µî·Ï¿¡ ½ÇÆĞÇß½À´Ï´Ù.";
+			msg = "ë“±ë¡ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.";
 		}
 		
 		mv.addObject("data", new message(msg, href));
@@ -142,10 +142,10 @@ public class AdminContactController {
 		result = AdminContactService.updateContact(ctseq, updateData);
 		
 		if (result == 1) {
-			msg = "Á¤»óÀûÀ¸·Î ¼öÁ¤µÇ¾ú½À´Ï´Ù.";
+			msg = "ì •ìƒì ìœ¼ë¡œ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.";
 			href = "ct_update_form?seq=" + ctseq;
 		} else {
-			msg = "¼öÁ¤¿¡ ½ÇÆĞÇß½À´Ï´Ù.";
+			msg = "ìˆ˜ì •ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.";
 			href = "ct_update_form?seq=" + ctseq;
 		}
 		

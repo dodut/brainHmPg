@@ -18,7 +18,7 @@ public class AdminContactDaoImpl implements AdminContactDao{
 
 	@Override
 	public ArrayList<contact> getContact() {
-		String sql = "SELECT * FROM contact ORDER BY ctord, ctseq asc";
+		String sql = "SELECT * FROM contact ORDER BY ctord DESC, ctseq ASC";
 		System.out.println(sql);
 		
 		List<contact> ctList = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(contact.class));				

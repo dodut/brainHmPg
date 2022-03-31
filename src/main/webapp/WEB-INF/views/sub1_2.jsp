@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
@@ -211,27 +213,48 @@ var isKitkat = window.navigator.userAgent.search( "AnybuildApp Android 4.4") > -
 <div class="glores-A-customize-board">
   
   	<div class="wrap wrap03">
-		<div><p>2011~현재 <span>미래를 향한 발돋움</span></p></div>
+	<div><p>2011~현재 <span>미래를 향한 발돋움</span></p></div>
 		<ul>
-		<c:forEach items="${list2011}" var="item" varStatus="stsc">
-	   		<li><b>${item.hisyear}. ${item.hismonth}</b>${item.hiscntn}</li>
-	    </c:forEach>
+			<c:forEach items="${list2011}" var="item" varStatus="stsc">
+				<c:choose>
+					<c:when test="${fn:length(item.hismonth) eq 1 }">
+			   			<li><b>${item.hisyear}. 0${item.hismonth}</b>${item.hiscntn}</li>
+			    	</c:when>
+			    	<c:otherwise>
+			   			<li><b>${item.hisyear}. ${item.hismonth}</b>${item.hiscntn}</li>
+			    	</c:otherwise>
+			    </c:choose>
+		    </c:forEach>
 	    </ul>
 	</div>
 	<div class="wrap wrap02">
     	<div><p>2001~2010 <span>도전과 개척</span></p></div>
     	<ul>
-	    <c:forEach items="${list2001}" var="item" varStatus="stsc">
-	    	<li><b>${item.hisyear}. ${item.hismonth}</b>${item.hiscntn}</li>
-    	</c:forEach>
+	    	<c:forEach items="${list2001}" var="item" varStatus="stsc">
+	    		<c:choose>
+					<c:when test="${fn:length(item.hismonth) eq 1 }">
+			   			<li><b>${item.hisyear}. 0${item.hismonth}</b>${item.hiscntn}</li>
+			    	</c:when>
+			    	<c:otherwise>
+			   			<li><b>${item.hisyear}. ${item.hismonth}</b>${item.hiscntn}</li>
+			    	</c:otherwise>
+			    </c:choose>
+    		</c:forEach>
     	</ul>
     </div>
     <div class="wrap wrap01">
   		<div><p>~2000 <span>시작과 도약</span></p></div>
   		<ul>
-    	<c:forEach items="${list1984}" var="item" varStatus="stsc">
-  			<li><b>${item.hisyear}. ${item.hismonth}</b>${item.hiscntn}</li>
-	    </c:forEach>
+	    	<c:forEach items="${list1984}" var="item" varStatus="stsc">
+				<c:choose>
+					<c:when test="${fn:length(item.hismonth) eq 1 }">
+			   			<li><b>${item.hisyear}. 0${item.hismonth}</b>${item.hiscntn}</li>
+			    	</c:when>
+			    	<c:otherwise>
+			   			<li><b>${item.hisyear}. ${item.hismonth}</b>${item.hiscntn}</li>
+			    	</c:otherwise>
+			    </c:choose>
+		    </c:forEach>
 	    </ul>
 	</div>
 

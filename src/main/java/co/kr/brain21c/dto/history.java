@@ -8,6 +8,7 @@ public class history {
 	
 	private String hiscntn  ;		
 	private String rgdtm    ;
+	private int hisord		;
 	
 
 	@Override
@@ -16,7 +17,8 @@ public class history {
 		return "{seq=" + seq + ""
 			 + ", hisyear=" + hisyear + ""
 			 + ", hismonth=" + hismonth + ""
-			 + ", hiscntn=" + hiscntn + "}"; 
+			 + ", hiscntn=" + hiscntn + ""
+			 + ", hisord=" + hisord + "}"; 
 	}
 
 
@@ -65,6 +67,16 @@ public class history {
 
 	public void setRgdtm(String rgdtm) {
 		this.rgdtm = rgdtm;
+	}
+	
+	
+	public int getHisord() {
+		return hisord;
+	}
+
+
+	public void setHisord(int hisord) {
+		this.hisord = hisord;
 	}
 
 }

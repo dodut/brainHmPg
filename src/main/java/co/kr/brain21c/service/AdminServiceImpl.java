@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import co.kr.brain21c.dao.AdminDao;
 import co.kr.brain21c.dto.admin;
 import co.kr.brain21c.dto.board;
-import co.kr.brain21c.dto.history;
 
 
 @Service("AdminService")
@@ -16,10 +15,6 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Autowired
 	private AdminDao AdminDao;
-
-	public ArrayList<history> getBoard() throws Exception{
-		return AdminDao.getBoard();
-	}
 
 	@Override
 	public ArrayList<board> getMainNotic() {

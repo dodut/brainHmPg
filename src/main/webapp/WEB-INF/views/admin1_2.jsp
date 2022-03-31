@@ -14,8 +14,9 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        
         <style type="text/css">
-        	.btnDiv {margin:10px;}
+       		.btnDiv {margin:10px;}
         	.st_mybd_list {width:1100px;border-top:2px solid #a5a5a5;border-bottom:1px solid #a5a5a5;background:#fff;border-collapse:separate;border-spacing:0}
         	.st_mybd_list thead tr {text-align: center;}
 			.st_mybd_list thead tr th {position:relative;height:40px;border-bottom:1px solid #a5a5a5;font-size:13px;color:#333333}
@@ -38,29 +39,41 @@
 			.st_mybd_btn.st_mybd_big {height:45px;padding:12px 30px}
 			.st_mybd_btn.st_mybd_highlight {border:1px solid #4e4e4e;background:#4e4e4e;color:#ffffff}
 			.st_mybd_btn.st_mybd_highlight:hover:before {background:rgba(255, 255, 255, .15)}
+			
+			/* pagenate */
+			.paginate strong {border:1px solid #aaa;background:white;color:#83878a;}
+			.paginate{margin:0;padding:1em 0;text-align:center;}
+			.paginate a,.paginate strong{display:inline-block;width:36px;height:36px;line-height:36px;vertical-align:middle;font-size:.875em;font-family:Arial,sans-serif;margin:0 .2em}
+			.paginate strong{font-weight:normal;}
+			.paginate .dir{font-family:Tahoma,sans-serif;font-size:1em}
+			
         </style>
         
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript">
-        	function insertPop() {
-        		window.open('/bbs/popup/ct_insert_form', '담당자 안내 추가', 'width=600, height=330, top=200, left=500');
-        	}
-        	
-        	function updatePop(idx) {
-        		window.open('/bbs/popup/ct_update_form?seq='+idx, '담당자 안내 수정', 'width=600, height=330, top=200, left=500');
-        	}
-        	
-        	function deletePop(idx) {
-        		if(confirm("정말 삭제하시겠습니까?") == true) {
-	        		location.href='/admin3_3/delete?seq='+idx;
+	        function insertPop() {
+	    		window.open('/bbs/popup/his_insert_form', '연혁 & 실적 추가', 'width=600, height=300, top=200, left=500');
+	    	}
+	    	
+	    	function updatePop(idx) {
+	    		window.open('/bbs/popup/his_update_form?seq='+idx, '연혁 & 실적 수정', 'width=600, height=330, top=200, left=500');
+	    	}
+	    	
+	    	function deletePop(idx) {
+	    		if(confirm("정말 삭제하시겠습니까?") == true) {
+	        		location.href='/admin1_2/delete?seq='+idx;
 	        		alert("삭제가 완료되었습니다.");
 	        		
-        		} else {
-        			return false;
-        		}
-        	}
-        	
-        	$(document).ready(function() {
+	    		} else {
+	    			return false;
+	    		}
+	    	}
+	    	
+// 	    	function apiPop() {
+// 	    		window.open('/bbs/popup/map', '지도', 'width=700, height=500, top=200, left=500');
+// 	    	}
+	    	
+	    	$(document).ready(function() {
         		var rows = $("#table_body >tr").length;
         		var prevVal1 = new Array(); //seq
         		var prevVal2 = new Array(); //ord 초기값
@@ -107,7 +120,7 @@
 	        		
         			
 	        		$.ajax({
-	        			url: "/admin3_3",
+	        			url: "/admin1_2",
 	        			type: "POST",
 	        			data: {"seq": seqData, "ord": ordData},
 	        			dataType: "",
@@ -115,7 +128,7 @@
 	        			success: function(data) {
 	        				console.log("전달 완료");
 	        				alert("순서가 정상적으로 수정되었습니다.");
-	        				window.location.href = "admin3_3";
+	        				window.location.href = "admin1_2";
 	        				console.log(seqData);
 	        				console.log(ordData);
 	        			},
@@ -130,7 +143,8 @@
 	        	}); //#updateBtn click end
 	        	
         	}); //jquery end
-        	
+	    	
+	    	
         </script>
     </head>
     
@@ -165,57 +179,99 @@
                 <div class="container-fluid">
                 	<div class="btnDiv">
 	           			<input type="button" id="updateBtn" class="st_mybd_btn st_mybd_highlight" value = "순서 수정" />	
-	           			<input type="button" id="createBtn" class="st_mybd_btn st_mybd_highlight" value = "추가" onclick="insertPop();"/>	
+	           			<input type="button" id="createBtn" class="st_mybd_btn st_mybd_highlight" value = "추가" onclick="insertPop();"/>
+<!-- 	           			<input type="button" id="apiBtn" class="st_mybd_btn st_mybd_highlight" value = "지도" onclick="apiPop();"/> -->
                 	</div>
-           			
-                
+                	
                     <table class="st_mybd_list">
 						<colgroup>
-							<col style="width:220px;">
+							<col style="width:130px;">
+							<col style="width:130px;">
 							<col style="width:*;">
 							<col style="width:130px;">
-							<col style="width:220px;">
 							<col style="width:90px;">
 							<col style="width:130px;">
 						</colgroup>
 					
 						<thead>
 							<tr>
-								<th scope="col">부서명</th>
-								<th scope="col">담당 업무</th>
-								<th scope="col">내선 번호</th>
-								<th scope="col">메일</th>
+								<th scope="col">카테고리</th>
+								<th scope="col">날짜</th>
+								<th scope="col">내용</th>
+								<th scope="col">작성일</th>
 								<th scope="col">순서</th>
 								<th scope="col"></th>
 							</tr>
 						</thead>
 					
 						<tbody id="table_body">
-							<c:forEach items="${ctList}" var="ctItem">
+							<c:forEach items="${hList}" var="hItem">
 								<tr>
 									<td>
-										<input type="hidden" id="seq" value="${ctItem.ctseq }" />
-<%-- 										<input type="hidden" id="ord" value="${ctItem.ctord }" /> --%>
-										${ctItem.ctpart}
+										<c:choose>
+											<c:when test="${hItem.hisyear lt 2000}">
+												2000년 이전
+											</c:when>
+											<c:when test="${hItem.hisyear le 2010}">
+												2001~2010년
+											</c:when>
+											<c:otherwise>
+												2011년~현재
+											</c:otherwise>
+										</c:choose>
 									</td>
-									<td>${ctItem.ctchr}</td>
 									<td>
-										<c:set var="ctphone" value="${ctItem.ctphone}" />
-											${fn:substring(ctphone, 0, 2)}-${fn:substring(ctphone, 2, 5)}-${fn:substring(ctphone, 5, 9)}
+										<c:choose>
+											<c:when test="${fn:length(hItem.hismonth) eq 1 }">
+									   			${hItem.hisyear}. 0${hItem.hismonth}
+									    	</c:when>
+									    	<c:otherwise>
+									   			${hItem.hisyear}. ${hItem.hismonth}
+									    	</c:otherwise>
+									    </c:choose>
 									</td>
-									<td><a href="mailto:${ctItem.ctmail}" target="_blank">${ctItem.ctmail}</a></td>
-									<td><input type="text" id="ord" value="${ctItem.ctord}" style="width:60px;" /></td>
+									<td>${hItem.hiscntn}</td>
+									<td>${hItem.rgdtm }</td>
 									<td>
-										<input type="button" value="수정" class="st_mybd_btn st_mybd_small" onclick="updatePop('${ctItem.ctseq}')">
-										<input type="button" value="삭제" class="st_mybd_btn st_mybd_small" onclick="deletePop('${ctItem.ctseq}');">
+										<input type="hidden" id="seq" value="${hItem.seq }" />
+										<input type="text" id="ord" value="${hItem.hisord}" style="width:60px;" />
+									</td>
+									<td>
+										<input type="button" value="수정" class="st_mybd_btn st_mybd_small" onclick="updatePop('${hItem.seq}')">
+										<input type="button" value="삭제" class="st_mybd_btn st_mybd_small" onclick="deletePop('${hItem.seq}');">
 									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
-                </div>
-            </div>
+					
+                </div> <!-- .container-fluid end -->
+                
+                <!-- pagenate -->
+				<div class="paginate">
+					<c:if test="${criteria2.currentPageNo > 1 }">
+						<a href="/admin1_2?page=${criteria2.currentPageNo - 1}" class="dir" title="이전"><span>‹</span></a>	
+					</c:if>
+
+					<c:forEach var="num" begin="${criteria2.blockBegin}" end="${criteria2.blockEnd}">
+						<c:choose>
+						<c:when test="${num == criteria2.currentPageNo}">
+							<strong>${num}</strong>
+						</c:when>
+						<c:otherwise>
+							<a href='/admin1_2?page=${num}'>${num}</a>
+						</c:otherwise>
+					</c:choose>
+					</c:forEach>
+					
+					<c:if test="${criteria2.currentPageNo < criteria2.totalPageNo }">
+					<a href="/admin1_2?page=${criteria2.currentPageNo + 1}" class="dir" title="다음"><span>›</span></a>	
+					</c:if>
+				</div>
+				
+            </div> <!-- #page-content-wrapper end -->
         </div>
+        
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

@@ -20,11 +20,11 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">관리자페이지</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">연역&실적관리</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/admin1_2">연혁&실적관리</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">조직도 관리</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">담당자 안내 관리</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/admin3_3">담당자 안내 관리</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">공지사항 관리</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">문의계시판 관리</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">문의게시판 관리</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">로그인 사용자 관리</a>
                 </div>
             </div>
@@ -35,8 +35,8 @@
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                                <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#!">로그아웃</a></li>
+                                <li class="nav-item active"><a class="nav-link" href="/sub_main">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
                             </ul>
                         </div>
                     </div>

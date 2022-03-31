@@ -21,28 +21,28 @@ function popview2(tar){
 
 function bbs_add_file(){
 	if(MOBILE_CONN_YN == true){
-		x_popup("/bbs_shop/popup/flash_fileup_form.htm?board_code="+document.getElementsByName('board_code')[0].value);
+		x_popup("/bbs/popup/flash_fileup_form?board_code="+document.getElementsByName('board_code')[0].value);
 
 	}else{		
 		var w = 420;
 		var h = 350;
 		var window_left = (screen.width-w)/2;
 		var window_top = (screen.height-h)/2;	
-		var addfile = window.open("/bbs_shop/popup/flash_fileup_form.htm?board_code="+document.getElementsByName('board_code')[0].value,'','top='+window_top+',left='+window_left+',width='+w+',height='+h+',toolbar=no,scrollbars=yes,resizable=yes,status=yes,menubar=no,location=no');
+		var addfile = window.open("/bbs/popup/flash_fileup_form?board_code="+document.getElementsByName('board_code')[0].value,'','top='+window_top+',left='+window_left+',width='+w+',height='+h+',toolbar=no,scrollbars=yes,resizable=yes,status=yes,menubar=no,location=no');
 		addfile.focus();
 	}
 }
 
 function bbs_add_file_mobile(){
 	if(MOBILE_CONN_YN == true){
-		x_popup("/bbs_shop/popup/fileup_form.htm?board_code="+document.getElementsByName('board_code')[0].value);
+		x_popup("/bbs/popup/fileup_form?board_code="+document.getElementsByName('board_code')[0].value);
 
 	}else{
 		var w = 330;
 		var h = 270;
 		var window_left = (screen.width-w)/2;
 		var window_top = (screen.height-h)/2;	
-		var addfile = window.open("/bbs_shop/popup/fileup_form.htm?board_code="+document.getElementsByName('board_code')[0].value,'','top='+window_top+',left='+window_left+',width='+w+',height='+h+',toolbar=no,scrollbars=yes,resizable=yes,status=yes,menubar=no,location=no');
+		var addfile = window.open("/bbs/popup/fileup_form?board_code="+document.getElementsByName('board_code')[0].value,'','top='+window_top+',left='+window_left+',width='+w+',height='+h+',toolbar=no,scrollbars=yes,resizable=yes,status=yes,menubar=no,location=no');
 		addfile.focus();
 	}
 }

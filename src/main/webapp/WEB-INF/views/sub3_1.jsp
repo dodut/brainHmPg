@@ -163,7 +163,8 @@
 					<!-- Notice -->
 					<ul class="lst-board lst-body lay-notice"></ul>
 					<!-- // Notice -->
-			
+					
+					<c:if test="${listNo > 0}">
 					<ul class="lst-board lst-body">
 					<c:set var="boardNo" value="${listNo}"/>
 						<c:forEach items="${nList}" var="nItem">
@@ -184,9 +185,17 @@
 							<c:set var="boardNo" value="${boardNo - 1 }"/>
 						</c:forEach>	
 					</ul>
-			
+					</c:if>
+					
+					<!-- 게시물 없을때 -->
+					<c:if test="${listNo == 0}">
+					<ul class="noneLst">
+						<li class="empty">등록된 게시글이 없습니다.</li>
+					</ul> 
+					</c:if>
 				</div> <!-- list_board -->
 
+		
 				<!-- pagenate -->
  				<div class="paginate">
  					

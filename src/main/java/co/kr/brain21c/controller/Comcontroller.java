@@ -76,7 +76,7 @@ public class Comcontroller {
 	
 	//===========================================================
 	
-	// °ü¸®ÀÚ ÆäÀÌÁö - ·Î±×ÀÎ
+	// ê´€ë¦¬ì í˜ì´ì§€ - ë¡œê·¸ì¸
 	
 	@RequestMapping("/sign_up") 
 	public String index() { 
@@ -121,21 +121,21 @@ public class Comcontroller {
 		}
 		
 		if(loginList.size() == 0) {
-			msg = "¾ÆÀÌµğ ¶Ç´Â ÆĞ½º¿öµå¸¦ È®ÀÎÇØÁÖ¼¼¿ä.";
+			msg = "ì•„ì´ë”” ë˜ëŠ” íŒ¨ìŠ¤ì›Œë“œë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”.";
 			href = "sub_login";
 		} else {
 			
 			if(passwordEncoder.matches(member.getPassword(), loginList.get(0).getPassword().toString())) {
 				
 				
-				msg = "È¯¿µÇÕ´Ï´Ù.";
+				msg = "í™˜ì˜í•©ë‹ˆë‹¤.";
 				href = "sub_main";
 			    
 				HttpSession session = request.getSession();
 			    session.setAttribute("loginMember", loginList);
 
 			} else {
-				msg = "¾ÆÀÌµğ ¶Ç´Â ÆĞ½º¿öµå¸¦ È®ÀÎÇØÁÖ¼¼¿ä.";
+				msg = "ì•„ì´ë”” ë˜ëŠ” íŒ¨ìŠ¤ì›Œë“œë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”.";
 				href = "sub_login";
 			}
 			
@@ -175,10 +175,10 @@ public class Comcontroller {
 		}
 		
 		if(result == 1) {
-			msg = "Á¤»óÀûÀ¸·Î µî·ÏÀÌ µÇ¾ú½À´Ï´Ù.";
+			msg = "ì •ìƒì ìœ¼ë¡œ ë“±ë¡ì´ ë˜ì—ˆìŠµë‹ˆë‹¤.";
 			href = "sub_login";
 		} else {
-			msg = "È¸¿ø°¡ÀÔ¿¡ ½ÇÆĞÇß½À´Ï´Ù.";
+			msg = "íšŒì›ê°€ì…ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.";
 			href = "sign_up";
 		}
 		

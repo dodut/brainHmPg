@@ -141,10 +141,6 @@ public class EnquiryController {
 			ref_board = enquiryService.getEnquiryView(q_article_seq);
 		}
 
-		System.out.println("view_code : " + view_code);
-		System.out.println("원글 :" + board.toString());
-		System.out.println("참고글 : " + ref_board.toString());
-
 		mv.addObject("board_code", "sub3_2");
 		mv.addObject("view_code", view_code); // Q & A view 화면영역 구분
 
@@ -181,7 +177,7 @@ public class EnquiryController {
 	@RequestMapping(value = "/bbs/enquiry_write_proc", method = RequestMethod.POST)
 	public ModelAndView writeProc(@ModelAttribute board board, HttpServletRequest request) throws Exception {
 
-		System.out.println("writeProc 실행  board.toString() : " + board.toString());
+		// System.out.println("writeProc 실행 board.toString() : " + board.toString());
 		int result = enquiryService.writeProc(board);
 
 		ModelAndView mv = new ModelAndView();
@@ -189,33 +185,38 @@ public class EnquiryController {
 		mv.setViewName("iframe_view");
 
 		return mv;
-		// return "redirect:/bbs/sub3_2";
 
 	}
 
 	// File Upload관련
 	@RequestMapping(value = "/bbs/fileUploadProc", method = RequestMethod.POST)
-	public String fileUploadProc(@RequestParam MultipartFile[] add_file, Model model, HttpServletRequest request)
+	public String fileUploadProc(@RequestParam MultipartFile add_file, Model model, HttpServletRequest request)
 			throws IllegalStateException, IOException {
+		
+		System.out.println("add_file : " + add_file.getOriginalFilename());
+		System.out.println("add_file : " + add_file.getSize());
+		System.out.println("add_file : " + add_file.getContentType());
+		System.out.println("add_file : " + add_file.getBytes().toString());
+		
 
 		// System.out.println("fileUploadProc 실행");
 
-		List<FileDto> list = new ArrayList<>();
-		for (MultipartFile file : add_file) {
-			if (!file.isEmpty()) {
-				// UUID를 이용해 unique한 파일 이름을 만들어준다.
-				FileDto dto = new FileDto(UUID.randomUUID().toString(), file.getOriginalFilename(),
-						file.getContentType());
-				list.add(dto);
-
-				File newFileName = new File(dto.getUuid() + "_" + dto.getFileName());
-				// 전달된 내용을 실제 물리적인 파일로 저장해준다.
-				file.transferTo(newFileName);
-			}
-		}
-		model.addAttribute("files", list);
-
-		System.out.println("fileUploadProc 결과 : " + list.toString());
+//		List<FileDto> list = new ArrayList<>();
+//		for (MultipartFile file : add_file) {
+//			if (!file.isEmpty()) {
+//				// UUID를 이용해 unique한 파일 이름을 만들어준다.
+//				FileDto dto = new FileDto(UUID.randomUUID().toString(), file.getOriginalFilename(),
+//						file.getContentType());
+//				list.add(dto);
+//
+//				File newFileName = new File(dto.getUuid() + "_" + dto.getFileName());
+//				// 전달된 내용을 실제 물리적인 파일로 저장해준다.
+//				file.transferTo(newFileName);
+//			}
+//		}
+//		model.addAttribute("files", list);
+//
+//		System.out.println("fileUploadProc 결과 : " + list.toString());
 
 		return "result";
 	}

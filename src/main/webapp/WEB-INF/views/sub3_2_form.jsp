@@ -63,36 +63,7 @@
 <link rel="stylesheet" type="text/css" href="/img_up/tmp_img/service/board_tpl/8/pc/css/default_mobile.css" media="all">
 <link rel="stylesheet" type="text/css" href="/img_up/tmp_img/service/board_tpl/8/pc/css/default_tablet.css" media="only all and (min-width:768px)">
 <link rel="stylesheet" type="text/css" href="/img_up/tmp_img/service/board_tpl/8/pc/css/co-basic-simple.css" media="screen">
-<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="/img_up/tmp_img/service/board_tpl/8/pc/css/default_tablet.css" media="all"><![endif]-->
-<!--[if IE]><link rel="stylesheet" type="text/css" href="/img_up/tmp_img/service/board_tpl/8/pc/css/ie.css" media="all"><![endif]-->
-<!--[if lt IE 8]><link rel="stylesheet" type="text/css" href="/img_up/tmp_img/service/board_tpl/8/pc/css/ie7.css" media="all"><![endif]-->
-<script type="text/javascript">
-	
-/* 	var ssl_host = "ssl.anybuild.com";
-	var mall_id = "brin";
-	var ssl_possible = 'on';
-	var category = "";
-	function start_page_set(){
-		advertise_tmp.style.behavior='url(#default#HomePage)';
-		advertise_tmp.setHomePage('http://www.brain21c.co.kr');
-	}
-	function bookmark(){
-		window.external.AddFavorite('http://www.brain21c.co.kr', "") ;
-	} */
-	var page_title = "(주)브레인컨설팅";
-</script>
-<script>
-	// AI-LOG 기본 스크립트
-	var ai_log_user_key = "";  // 최초접속자 설정 키값 (default:null)
-	var ai_log_account_id = "brin"; // AI-LOG 계정 아이디
-	var ai_log_mem_id = ""; // 고객 아이디
-	var ai_log_mobile_web_yn = "0"; // 모바일웹 이라면 1, 데스크탑 홈페이지라면 0
-	var ai_log_app_conn_yn = "0"; // 하이브리드 앱이라면 1, 아닌경우 0
-	var ai_log_page_title = "(주)브레인컨설팅"; // 페이지 제목
-	var ai_log_page_url = ""; // 페이지 url, 빈값 입력시 브라우져 url 자동 입력 입니다.
-	var ai_log_event_mode = ""; // board_reg:게시글 작성, mem_reg:회원가입, sale:매출발생  (default:빈칸)
-	var ai_log_event_sale_price = ""; // ai_log_event_mode가 sale 일때  매출 금액
-</script>
+
 <script type="text/javascript" id="ai_log_chk_script"></script>
 <script type="text/javascript" id="ai_log_default_script" src="https://chk101.ai-log.biz/etc/connect_ai_set.js?ver=2"></script>
 

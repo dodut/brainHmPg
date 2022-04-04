@@ -1,26 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<<<<<<< HEAD
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>관리자 페이지</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-    
-    <script>
-    </script>
-</head>
-
-<body>
-<h1>hihihi!</h1>
-=======
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -52,7 +30,6 @@
     
     function ct_form_chk(){
     	var form = document.ct_form;
-
     	if(!form.ctpart.value) {
     		alert("부서명을 입력하세요.");
     		form.ctpart.focus();
@@ -64,7 +41,6 @@
     		form.ctchr.focus();
     		return false;
     	}
-
     	if(!form.ctphone.value) {
     		alert("내선 번호를 입력하세요.");
     		form.ctphone.focus();
@@ -83,7 +59,6 @@
     		form.ctmail.focus();
     		return false;
     	}
-
     	return true;
     }
     
@@ -145,6 +120,5 @@
 		
 	</div>
 
->>>>>>> branch 'master' of https://github.com/dodut/brainHmpg.git
 </body>
 </html>

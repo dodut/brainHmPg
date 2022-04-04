@@ -200,7 +200,7 @@
 												<a onclick="removeAttach('w')" class="ui-btn">삭제</a>
 											</div>
 											<p>
-												<span class="ui-input ipt-sml"><input type="text" name="totsize_k" value="" size="8" readonly="readonly"></span>
+												<span class="ui-input ipt-sml"><input type="text" name="totsize_k" id="totsize_k" value="" size="8" readonly="readonly"></span>
 												<span>KB / 10,000KB</span>
 											</p>
 										</div>
@@ -370,19 +370,13 @@ function submitForm(){
 	if(document.getElementById('attachfilelist')){
 		var i;
 		frm.file_list.value='';
-		
-		
-		
-	
-	/* 		
+			
 		for(i=0;i<frm.attachfilelist.length;i++){
 			if(frm.attachfilelist[i].value){
 				frm.file_list.value += frm.attachfilelist[i].value +"&&";
 			}
 		} 
-	*/
-		
-	
+
 		
 	}
 
@@ -409,9 +403,53 @@ function resizeImage(num,stop){
 	// 에디터에서 작동 안되므로 pass 처리
 }
 
+// 첨부파일 list append 처리
+function update_attachFileList(file_info){
+	var attachfilelist = document.getElementById('attachfilelist');
+	
+	var totsize_k = document.getElementById('totsize_k');
+	var k = parseInt(document.getElementById('totsize_k').value);
+	
+	if(k == null){
+		k = 0;
+	}
+	
+
+	console.log("k  : " + k);
+	console.log("filename : " + file_info.filename);
+	console.log("file_info : " + file_info.url);
+	console.log("file Size  : " + file_info.fileSize);
+	
+	
+	var fileName = file_info.filename;
+	var fileUrl = file_info.url;
+	var fileSize = parseInt(file_info.fileSize);
+	
+	
+	
+	console.log("typeof totsize_k  : " + typeof totsize_k);
+	console.log("typeof k  : " + typeof k);
+	console.log("typeof fileName : " + typeof fileSize);
+ 	// 첨부파일
+	if(fileName){
+		var opt = document.createElement('option');
+		opt.setAttribute('value', fileName);
+		opt.innerText = fileName;
+ 
+		attachfilelist.appendChild(opt);	// option list 추가
+		
+		
+		//$('input[name=totsize_k]').attr('value', k  + fileSize );
+		totsize_k.value = k  + fileSize ; //String(k + fileSize);
+		//totsize_k.innerText = fileSize;
+		//totsize_k += fileSize;
+		
+	}
+}
+
 </script>
 
-<iframe src = "iframe_view"   name="main_frame" id="main_frame" style="display:none;"></iframe> 
+<iframe src = "iframe_view" name="main_frame" id="main_frame" style="display:none;"></iframe> 
  
 
 <script type="text/javascript" src="/img_up/tmp_img/service/board_tpl/8/pc/js/default.js"></script>

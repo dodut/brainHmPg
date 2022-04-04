@@ -20,7 +20,11 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">관리자페이지</div>
                 <div class="list-group list-group-flush">
+<<<<<<< HEAD
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">연혁&실적관리</a>
+=======
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/admin1_2">연혁&실적관리</a>
+>>>>>>> branch 'master' of https://github.com/dodut/brainHmpg.git
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">조직도 관리</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/admin3_3">담당자 안내 관리</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">공지사항 관리</a>

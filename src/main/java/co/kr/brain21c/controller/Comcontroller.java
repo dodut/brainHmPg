@@ -21,9 +21,10 @@ import co.kr.brain21c.dto.board;
 import co.kr.brain21c.dto.message;
 import co.kr.brain21c.service.AdminService;
 
+
 @Controller 
 public class Comcontroller {  
-	
+
 	@Autowired
 	private AdminService AdminService;
 	
@@ -187,6 +188,7 @@ public class Comcontroller {
 		
 		return mv; 
 	}
+
 	
 
 }

@@ -81,7 +81,6 @@
         			$("input[id=ord]").each(function(index, item) {
         				nextVal.push($(item).val());
         			});
-
 	        		
        				var sendVal = new Array(); //ajax로 보낼 값 (변경된 값)
 	        		for(i = 0; i < rows; i++) {
@@ -123,7 +122,6 @@
 	        				console.log("실패");
 	        				alert("일시적인 에러이거나 수정된 순서가 없습니다.");
 	        				console.log("code:"+request.status+"\n"+"error:"+error);
-
 	        			}
 	        		}); //ajax end
 	        		
@@ -222,4 +220,3 @@
         <script src="js/scripts.js"></script>
     </body>
 </html>
-

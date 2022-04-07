@@ -93,12 +93,6 @@ public class EnquiryDaoImpl implements EnquiryDao {
 	public int getArticleSeq(int grpno, int grpord) throws Exception {
 		String sql = "SELECT seq FROM board WHERE gnb = 'A02' and grpno =" + grpno + " and grpord =" + grpord;
 
-		System.out.println("========================");
-		System.out.println("getQuestionArticle Query : " + sql);
-
-		// int result = jdbcTemplate.queryForObject(sql, Integer.class);
-		// System.out.println("Q seq : " + result);
-
 		try {
 			return jdbcTemplate.queryForObject(sql, Integer.class);
 
@@ -106,15 +100,14 @@ public class EnquiryDaoImpl implements EnquiryDao {
 			// EmptyResultDataAccessException 예외 발생시 null 리턴
 			return 0;
 		}
-		// return result;
 	}
 
 	@Override
 	public int writeProc(board board) throws Exception {
 
 		String board_code = "A02";
-		int grpord = 1; // 1로 고정
-		int grpno = this.getMaxGrpno() + 1; // 얘가 문제야
+		int grpord = 1; 	// 1로 고정
+		int grpno = this.getMaxGrpno() + 1;
 
 		System.out.println("EnquiryDao board : " + board.toString());
 
@@ -133,7 +126,6 @@ public class EnquiryDaoImpl implements EnquiryDao {
 		String max_select_sql = "SELECT max(grpno) FROM board WHERE gnb = 'A02' ";
 
 		int maxGrpno = jdbcTemplate.queryForObject(max_select_sql, Integer.class);
-		System.out.println(" *** maxGrpno : " + maxGrpno);
 
 		return maxGrpno;
 	}

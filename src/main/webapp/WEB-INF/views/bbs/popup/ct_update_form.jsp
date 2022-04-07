@@ -30,7 +30,6 @@
     
     function ct_form_chk(){
     	var form = document.ct_form;
-
     	if(!form.ctpart.value) {
     		alert("부서명을 입력하세요.");
     		form.ctpart.focus();
@@ -42,7 +41,6 @@
     		form.ctchr.focus();
     		return false;
     	}
-
     	if(!form.ctphone.value) {
     		alert("내선 번호를 입력하세요.");
     		form.ctphone.focus();
@@ -61,7 +59,6 @@
     		form.ctmail.focus();
     		return false;
     	}
-
     	return true;
     }
     

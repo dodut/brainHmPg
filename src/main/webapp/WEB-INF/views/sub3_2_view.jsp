@@ -15,7 +15,7 @@
 <meta name="apple-mobile-web-app-title" content="(주)브레인컨설팅" />
 <meta name="application-name" content="(주)브레인컨설팅" />
 <meta name="theme-color" content="#ffffff" />
-<meta name="description" content="${dto.cntn}" />
+<%-- <meta name="description" content="${dto.cntn}" /> --%>
 <link rel="canonical" href="http://www.brain21c.co.kr/bbs/sub3_2/8014" />
 <meta property="og:type"            content="website"/>
 <meta property="og:title"           content="${dto.title}"/>
@@ -24,13 +24,13 @@
 <meta property="og:image"           content="http://www.brain21c.co.kr/thum_img/brin/og_img/kakao_da-un-ro-deu1644548037.jpg"/>
 <meta property="og:image:width" content="1575"/>
 <meta property="og:image:height" content="827"/>
-<meta property="og:description"     content="${dto.cntn}"/>
+<%-- <meta property="og:description"     content="${dto.cntn}"/> --%>
 <meta name="twitter:card"           content="summary">
 <meta name="twitter:title"          content="${dto.title}">
 <meta name="twitter:site"           content="(주)브레인컨설팅">
 <meta name="twitter:creator"        content="${dto.rgwriter}">
 <meta name="twitter:image"          content="http://www.brain21c.co.kr/thum_img/brin/og_img/kakao_da-un-ro-deu1644548037.jpg">
-<meta name="twitter:description"    content="${dto.cntn}">
+<%-- <meta name="twitter:description"    content="${dto.cntn}"> --%>
 <link rel="shortcut icon" href="/img_up/shop_pds/brin/etc/brin1520391827.ico" />
 <!-- (본 주석은 관리자로 로그인 되어있을때만  출력 됩니다) : 여기서 부터 load 우선순위가 -10 이하인 경우 출력 시작 or <load target='/jquery.min.js'>와 같이 load 방식으로 jquery를 불러오는경우에도 출력 된다.-->
 <script type="text/javascript" src="/img_up/_addon/jquery/1.11.3/jquery.min.js"></script>
@@ -634,4 +634,5 @@ function vote_Poll(){
 </script>
 
 </body>
+
 </html>
